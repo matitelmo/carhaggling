@@ -191,21 +191,40 @@ function startLoadingAnimation() {
 
 // FAQ Toggle Functionality
 function toggleFAQ(element) {
+    console.log('=== FAQ DEBUG START ===');
+    console.log('toggleFAQ called with element:', element);
+    
     const faqItem = element.closest('.faq-item');
     const answer = faqItem.querySelector('.faq-answer');
-    const isActive = element.classList.contains('active');
     
-    // Close all other FAQ items
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.classList.remove('active');
-        question.nextElementSibling.classList.remove('active');
-    });
+    console.log('FAQ item found:', faqItem);
+    console.log('Answer element found:', answer);
+    console.log('Answer is active:', answer.classList.contains('active'));
     
-    // Toggle current FAQ item
-    if (!isActive) {
-        element.classList.add('active');
+    // Simple display toggle approach
+    if (answer.style.display === 'block') {
+        // Close the FAQ
+        console.log('Closing FAQ...');
+        answer.style.display = 'none';
+        answer.classList.remove('active');
+        element.classList.remove('active');
+        element.setAttribute('aria-expanded', 'false');
+        answer.setAttribute('aria-hidden', 'true');
+        console.log('FAQ closed');
+    } else {
+        // Open the FAQ
+        console.log('Opening FAQ...');
+        answer.style.display = 'block';
         answer.classList.add('active');
+        element.classList.add('active');
+        element.setAttribute('aria-expanded', 'true');
+        answer.setAttribute('aria-hidden', 'false');
+        console.log('FAQ opened');
     }
+    
+    console.log('Final answer display:', answer.style.display);
+    console.log('Final answer classes:', answer.className);
+    console.log('=== FAQ DEBUG END ===');
 }
 
 // Mobile menu toggle
