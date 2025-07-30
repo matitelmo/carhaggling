@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarHaggling - Your AI Co-Pilot for Car Buying</title>
+    <meta name="description" content="Buy your next car at light speed with CarHaggling's AI co-pilot. Save time, money, and get your weekends back.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="Adobe Express - file.png" alt="CarHaggling" class="logo-image">
+                </div>
+                <nav class="nav">
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#our-ai">Our AI</a>
+                    <a href="#testimonials">Customer Stories</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+                <button class="cta-button primary glow-effect" onclick="openModal()">Get Started</button>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Buy Your Next Car at Light Speed</h1>
+                    <p class="hero-subtitle">CarHaggling's AI co-pilot scans the entire market, vets every vehicle, and negotiates the price for you. Stop wasting weekends. Start your search in 60 seconds.</p>
+                    
+                    <div class="hero-cta">
+                        <div class="car-type-selector">
+                            <p class="car-type-label">What type of car are you looking for?</p>
+                            <div class="car-icons">
+                                <button class="car-icon glow-effect" data-type="SUV" onclick="selectCarType('SUV')">
+                                    <span class="car-icon-text">SUV</span>
+                                </button>
+                                <button class="car-icon glow-effect" data-type="Sedan" onclick="selectCarType('Sedan')">
+                                    <span class="car-icon-text">Sedan</span>
+                                </button>
+                                <button class="car-icon glow-effect" data-type="Truck" onclick="selectCarType('Truck')">
+                                    <span class="car-icon-text">Truck</span>
+                                </button>
+                                <button class="car-icon glow-effect" data-type="Coupe" onclick="selectCarType('Coupe')">
+                                    <span class="car-icon-text">Coupe</span>
+                                </button>
+                                <button class="car-icon glow-effect" data-type="EV" onclick="selectCarType('EV')">
+                                    <span class="car-icon-text">EV</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="email-form" id="emailForm" style="display: none;">
+                            <input type="email" id="heroEmail" placeholder="Enter your email address" class="email-input">
+                            <button class="cta-button primary glow-effect" id="heroCtaButton" onclick="openModal()">Find My Perfect Car →</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="ai-hologram-container">
+                        <!-- AI Processing Matrix -->
+                        <div class="ai-matrix">
+                            <div class="matrix-grid">
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                                <div class="matrix-cell active"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Status Dashboard -->
+                        <div class="ai-dashboard">
+                            <div class="dashboard-panel">
+                                <div class="panel-header">
+                                    <div class="status-indicator online"></div>
+                                    <span class="panel-title">AI Co-Pilot</span>
+                                    <div class="signal-strength">
+                                        <div class="signal-bar"></div>
+                                        <div class="signal-bar"></div>
+                                        <div class="signal-bar"></div>
+                                        <div class="signal-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="metric-row">
+                                        <span class="metric-label">Processing</span>
+                                        <span class="metric-value">2,847 listings</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-label">Accuracy</span>
+                                        <span class="metric-value">99.2%</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span class="metric-label">Optimization</span>
+                                        <span class="metric-value">Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dashboard-panel">
+                                <div class="panel-header">
+                                    <div class="status-indicator processing"></div>
+                                    <span class="panel-title">Market Analysis</span>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="analysis-chart">
+                                        <div class="chart-bar" style="height: 75%"></div>
+                                        <div class="chart-bar" style="height: 90%"></div>
+                                        <div class="chart-bar" style="height: 60%"></div>
+                                        <div class="chart-bar" style="height: 85%"></div>
+                                        <div class="chart-bar" style="height: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Extended AI Metrics -->
+                        <div class="ai-metrics-grid">
+                            <div class="metric-panel">
+                                <div class="metric-header">
+                                    <div class="metric-icon">💬</div>
+                                    <span class="metric-title">Active Conversations</span>
+                                </div>
+                                <div class="metric-value-large">12</div>
+                                <div class="metric-subtitle">with dealers</div>
+                                <div class="metric-progress">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="metric-panel">
+                                <div class="metric-header">
+                                    <div class="metric-icon">📈</div>
+                                    <span class="metric-title">Price Trend</span>
+                                </div>
+                                <div class="metric-value-large trend-up">↓ 3.2%</div>
+                                <div class="metric-subtitle">this week</div>
+                                <div class="trend-indicator">
+                                    <div class="trend-line"></div>
+                                    <div class="trend-line"></div>
+                                    <div class="trend-line"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="metric-panel">
+                                <div class="metric-header">
+                                    <div class="metric-icon">🔍</div>
+                                    <span class="metric-title">Inspections</span>
+                                </div>
+                                <div class="metric-value-large">4</div>
+                                <div class="metric-subtitle">scheduled</div>
+                                <div class="inspection-status">
+                                    <div class="status-dot completed"></div>
+                                    <div class="status-dot completed"></div>
+                                    <div class="status-dot pending"></div>
+                                    <div class="status-dot pending"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="metric-panel">
+                                <div class="metric-header">
+                                    <div class="metric-icon">⭐</div>
+                                    <span class="metric-title">Feedback</span>
+                                </div>
+                                <div class="metric-value-large">4.9/5</div>
+                                <div class="metric-subtitle">user rating</div>
+                                <div class="rating-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                            
+                            <div class="metric-panel">
+                                <div class="metric-header">
+                                    <div class="metric-icon">🎯</div>
+                                    <span class="metric-title">Match Score</span>
+                                </div>
+                                <div class="metric-value-large">94%</div>
+                                <div class="metric-subtitle">best match</div>
+                                <div class="match-indicator">
+                                    <div class="match-circle">
+                                        <svg width="40" height="40" viewBox="0 0 40 40">
+                                            <circle cx="20" cy="20" r="18" stroke="#e9ecef" stroke-width="3" fill="none"/>
+                                            <circle cx="20" cy="20" r="18" stroke="#6A5AF9" stroke-width="3" fill="none" 
+                                                    stroke-dasharray="113" stroke-dashoffset="7" class="match-progress"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="metric-panel">
+                                <div class="metric-header">
+                                    <div class="metric-icon">⚡</div>
+                                    <span class="metric-title">Response Time</span>
+                                </div>
+                                <div class="metric-value-large">2.3s</div>
+                                <div class="metric-subtitle">average</div>
+                                <div class="response-indicator">
+                                    <div class="response-bar fast"></div>
+                                    <div class="response-bar fast"></div>
+                                    <div class="response-bar medium"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Proof Ticker -->
+            <div class="social-proof-ticker">
+                <div class="ticker-content">
+                    <span>Just saved Mark T. in Los Angeles $2,150 on a 2021 Honda CR-V</span>
+                    <span>Found a mint-condition 2019 Ford F-150 for Sarah P. in Austin</span>
+                    <span>Helped Jennifer K. find her dream Tesla Model 3 in under 48 hours</span>
+                    <span>Negotiated $3,200 off a 2020 Toyota Camry for Mike R. in Chicago</span>
+                    <span>Saved David L. $1,800 on a 2022 Hyundai Tucson in Seattle</span>
+                    <span>Found the perfect 2020 Subaru Outback for Lisa M. in Denver</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="container">
+            <p class="trust-label">As seen on</p>
+            <div class="trust-logos">
+                <div class="trust-logo">MotorTrend</div>
+                <div class="trust-logo">TechCrunch</div>
+                <div class="trust-logo">WIRED</div>
+                <div class="trust-logo">Road & Track</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">$2,847</div>
+                    <div class="stat-label">Average Savings</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">48hrs</div>
+                    <div class="stat-label">Average Time to Find</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1,247</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">99.2%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <div class="icon-brain">🧠</div>
+                    </div>
+                    <h3>Step 1: Define Your Dream Car</h3>
+                    <p>Tell our AI your exact criteria—from make and model to must-have features like a sunroof or specific color.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <div class="icon-radar">📡</div>
+                    </div>
+                    <h3>Step 2: Deploy Your AI Co-Pilot</h3>
+                    <p>Our agent scans thousands of listings, runs VIN checks, analyzes history reports, and flags potential issues.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <div class="icon-dashboard">✅</div>
+                    </div>
+                    <h3>Step 3: Receive Your Curated Shortlist</h3>
+                    <p>Get a private dashboard of fully-vetted, pre-negotiated vehicles ready for your final approval and a test drive.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our AI Section -->
+    <section class="our-ai" id="our-ai">
+        <div class="container">
+            <h2 class="section-title">Powered by Advanced AI</h2>
+            <div class="ai-features">
+                <div class="ai-feature">
+                    <h3>Market Intelligence</h3>
+                    <p>Our AI analyzes pricing trends across 50+ data sources to ensure you never overpay.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>VIN Analysis</h3>
+                    <p>Automated VIN checks against CarFax, AutoCheck, and NHTSA databases for complete vehicle history.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>Negotiation Engine</h3>
+                    <p>Advanced algorithms that negotiate like an expert, leveraging market data and seller psychology.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>Quality Assurance</h3>
+                    <p>Machine learning models that identify potential issues before they become problems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"I got back 3 weekends of my life and saved over $2,000. CarHaggling handled everything from finding the car to scheduling the inspection. It felt like the future."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👨‍💼</div>
+                            <div class="author-info">
+                                <h4>Mark Thompson</h4>
+                                <span>Busy Professional</span>
+                                <div class="author-location">Los Angeles, CA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"As a first-time buyer, I was terrified of getting ripped off. My AI co-pilot found me a perfectly maintained Civic and negotiated a price I never could have gotten myself. 10/10 service."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👩‍🎓</div>
+                            <div class="author-info">
+                                <h4>Sarah Chen</h4>
+                                <span>First-Time Buyer</span>
+                                <div class="author-location">Austin, TX</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The AI found me a Tesla Model 3 that was $3,500 below market value. The negotiation process was completely transparent, and I felt confident every step of the way."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👨‍💻</div>
+                            <div class="author-info">
+                                <h4>David Rodriguez</h4>
+                                <span>Tech Professional</span>
+                                <div class="author-location">San Francisco, CA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question" onclick="toggleFAQ(this)">How much does CarHaggling cost?</h3>
+                    <div class="faq-answer">
+                        <p>We operate on a success-based fee model. You only pay when you successfully purchase a vehicle through our service. Our fee is typically 2-3% of the final purchase price, but you'll save significantly more than our fee through our negotiation process.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question" onclick="toggleFAQ(this)">What if I don't find a car I like?</h3>
+                    <div class="faq-answer">
+                        <p>No problem! If we don't find you a car you love, you pay absolutely nothing. We're committed to your satisfaction and won't charge you unless you're completely happy with your purchase.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question" onclick="toggleFAQ(this)">How does the AI negotiation work?</h3>
+                    <div class="faq-answer">
+                        <p>Our AI analyzes thousands of data points including market prices, seller behavior patterns, and vehicle history to determine the optimal negotiation strategy. It communicates with sellers on your behalf, presenting offers that maximize your savings while maintaining a professional relationship.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question" onclick="toggleFAQ(this)">What areas do you serve?</h3>
+                    <div class="faq-answer">
+                        <p>We currently serve major metropolitan areas across the United States, including California, Texas, New York, Florida, and Illinois. We're rapidly expanding to new markets based on demand.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question" onclick="toggleFAQ(this)">How long does the process take?</h3>
+                    <div class="faq-answer">
+                        <p>From initial consultation to final purchase, the average process takes 2-4 weeks. However, some customers have found their perfect car in as little as 48 hours. The timeline depends on your specific requirements and market availability.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question" onclick="toggleFAQ(this)">Is my information secure?</h3>
+                    <div class="faq-answer">
+                        <p>Absolutely. We use bank-level encryption to protect your personal information. We never share your data with third parties without your explicit consent, and all communications are conducted through secure channels.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to find your perfect car?</h2>
+            <p>Join thousands of smart buyers who've already discovered the future of car buying.</p>
+            <button class="cta-button primary large glow-effect" onclick="openModal()">Get Started Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CarHaggling</h3>
+                    <p>Your AI Co-Pilot for Car Buying</p>
+                    <div class="company-info">
+                        <p>Founded in 2024</p>
+                        <p>Headquartered in San Francisco, CA</p>
+                        <p>Contact: hello@carhaggling.com</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#our-ai">Our AI</a>
+                    <a href="#testimonials">Customer Stories</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#careers">Careers</a>
+                    <a href="#press">Press</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#disclaimer">Disclaimer</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CarHaggling, Inc. All rights reserved. | Made with ❤️ in San Francisco</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            
+            <!-- Step 1: Welcome -->
+            <div class="modal-step" id="step1">
+                <h2>Welcome! Let's find your perfect car.</h2>
+                <form id="welcomeForm" onsubmit="handleWelcomeSubmit(event)">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" placeholder="For faster communication">
+                    </div>
+                    <button type="submit" class="cta-button primary glow-effect">Start My Consultation →</button>
+                </form>
+            </div>
+
+            <!-- Step 2: AI Scanning Animation -->
+            <div class="modal-step" id="step2" style="display: none;">
+                <h2>Deploying Your AI Co-Pilot...</h2>
+                <div class="scanning-animation">
+                    <div class="user-analysis">
+                        <p id="userAnalysisText">Analyzing market for <span id="userName"></span>...</p>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span class="progress-label">Market Analysis Progress</span>
+                            <span class="progress-percentage" id="progressText">0%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="status-updates">
+                        <div class="status-header">
+                            <h4>Real-time Analysis</h4>
+                            <span class="status-subtitle">Live updates from your AI co-pilot</span>
+                        </div>
+                        <ul id="statusList">
+                            <!-- Status updates will be added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Blurred Results -->
+            <div class="modal-step" id="step3" style="display: none;">
+                <h2>Your Vetted Shortlist is Ready!</h2>
+                <div class="results-preview">
+                    <div class="car-cards">
+                        <div class="car-card blurred">
+                            <div class="car-image-placeholder"></div>
+                            <div class="car-info-placeholder"></div>
+                        </div>
+                        <div class="car-card blurred">
+                            <div class="car-image-placeholder"></div>
+                            <div class="car-info-placeholder"></div>
+                        </div>
+                        <div class="car-card blurred">
+                            <div class="car-image-placeholder"></div>
+                            <div class="car-info-placeholder"></div>
+                        </div>
+                        <div class="car-card blurred">
+                            <div class="car-image-placeholder"></div>
+                            <div class="car-info-placeholder"></div>
+                        </div>
+                    </div>
+                    <p>Your AI has pre-negotiated prices and scheduled preliminary inspections.</p>
+                    <button class="cta-button primary glow-effect" onclick="showStep(4)">Unlock My Shortlist →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Waitlist Reveal -->
+            <div class="modal-step" id="step4" style="display: none;">
+                <div class="waitlist-success">
+                    <h2>You're on the VIP Waitlist! 🎉</h2>
+                    <p>Due to incredible demand and our commitment to quality, we are onboarding new clients in batches. Your spot is reserved!</p>
+                    
+                    <div class="waitlist-number">
+                        <span class="number">#1,247</span>
+                        <span class="label">in line</span>
+                    </div>
+                    
+                    <p class="reassurance">We will email you the moment your private dashboard is ready. As a thank you for being an early adopter, you'll receive a <strong>50% discount</strong> on your success fee for your first purchase.</p>
+                    
+                    <div class="waitlist-benefits">
+                        <h4>What happens next?</h4>
+                        <ul>
+                            <li>✅ Priority access to our AI co-pilot</li>
+                            <li>✅ Exclusive early adopter pricing</li>
+                            <li>✅ Dedicated customer success manager</li>
+                            <li>✅ 24/7 support during your car search</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="cta-button primary glow-effect" onclick="closeModal()">Sounds Good, Notify Me!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
