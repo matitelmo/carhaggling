@@ -724,9 +724,70 @@ function toggleFAQ(element) {
 
 // Mobile menu toggle
 function toggleMobileMenu() {
-    const nav = document.querySelector('.nav');
-    nav.classList.toggle('active');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const body = document.body;
+    
+    if (mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+        body.style.overflow = '';
+    } else {
+        mobileMenu.classList.add('active');
+        body.style.overflow = 'hidden';
+    }
 }
+
+// Close mobile menu when clicking on a link
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-nav a');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            toggleMobileMenu();
+        });
+    });
+    
+    // Close mobile menu when clicking outside
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                toggleMobileMenu();
+            }
+        });
+    }
+    
+    // Prevent body scroll when modal is open on mobile
+    const modalOverlay = document.getElementById('modalOverlay');
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+    }
+    
+    // Add touch support for better mobile interaction
+    let touchStartY = 0;
+    let touchEndY = 0;
+    
+    document.addEventListener('touchstart', function(e) {
+        touchStartY = e.changedTouches[0].screenY;
+    });
+    
+    document.addEventListener('touchend', function(e) {
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartY - touchEndY;
+        
+        // Swipe up to close mobile menu
+        if (diff > swipeThreshold && document.getElementById('mobileMenu').classList.contains('active')) {
+            toggleMobileMenu();
+        }
+    }
+});
 
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {

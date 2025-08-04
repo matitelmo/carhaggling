@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -35,8 +38,23 @@
         </div>
     </header>
 
+        <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <button class="mobile-menu-close" onclick="toggleMobileMenu()">&times;</button>
+            <nav class="mobile-menu-nav">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#our-ai">Our AI</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#testimonials">Customer Stories</a>
+                <a href="#faq">FAQ</a>
+                <a href="signup.html" class="cta-button primary">Start for $50</a>
+            </nav>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="main-content">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
