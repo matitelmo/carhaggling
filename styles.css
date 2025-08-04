@@ -1115,11 +1115,14 @@ p {
     box-shadow: var(--shadow-xl);
     max-width: 600px;
     width: 100%;
-    max-height: 80vh;
-    overflow-y: auto;
+    max-height: 90vh;
+    height: auto;
+    overflow: hidden;
     position: relative;
     transform: scale(0.95);
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-overlay.active .modal {
@@ -1252,6 +1255,9 @@ p {
 /* Step Content - Professional Design */
 .modal-step {
     padding: 20px 24px;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
 }
 
 .step-header {
@@ -1959,57 +1965,22 @@ p {
 /* Responsive Design */
 @media (max-width: 768px) {
     .modal {
-        margin: 20px;
-        max-height: calc(100vh - 40px);
+        margin: 16px;
+        max-height: calc(100vh - 32px);
+        max-width: calc(100vw - 32px);
     }
     
     .funnel-progress {
-        padding: 20px 24px 16px;
+        padding: 16px 20px 12px;
     }
     
     .progress-steps {
-        gap: 8px;
+        gap: 6px;
     }
     
     .step-label {
-        font-size: 10px;
-    }
-    
-    .modal-step {
-        padding: 24px;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .distance-option {
-        padding: 16px;
-    }
-    
-    .timeline-item {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .timeline-icon {
-        align-self: center;
-    }
-    
-    .step-header h2 {
-        font-size: 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .modal {
-        margin: 10px;
-        max-height: calc(100vh - 20px);
-    }
-    
-    .progress-steps {
-        flex-direction: column;
-        gap: 12px;
+        font-size: 9px;
+        line-height: 1.2;
     }
     
     .step-number {
@@ -2018,9 +1989,109 @@ p {
         font-size: 12px;
     }
     
+    .modal-step {
+        padding: 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .distance-option {
+        padding: 12px;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+    
+    .timeline-icon {
+        align-self: center;
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+    
+    .timeline-content h5 {
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.8rem;
+    }
+    
+    .success-benefits ul {
+        gap: 0.5rem;
+    }
+    
+    .success-benefits li {
+        font-size: 0.85rem;
+        padding: 0.25rem 0;
+    }
+    
+    .step-header h2 {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+    
+    .step-subtitle {
+        font-size: 13px;
+    }
+    
+    .reassurance-banner {
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .reassurance-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+    
+    .reassurance-content h4 {
+        font-size: 13px;
+    }
+    
+    .reassurance-content p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal {
+        margin: 8px;
+        max-height: calc(100vh - 16px);
+        max-width: calc(100vw - 16px);
+    }
+    
+    .funnel-progress {
+        padding: 12px 16px 8px;
+    }
+    
+    .progress-steps {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .step-number {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+    
+    .step-label {
+        font-size: 8px;
+    }
+    
     .reassurance-banner {
         flex-direction: column;
         text-align: center;
+        padding: 8px;
     }
     
     .location-preview {
@@ -2029,11 +2100,65 @@ p {
     }
     
     .modal-step {
-        padding: 20px;
+        padding: 16px;
     }
     
     .step-header h2 {
-        font-size: 20px;
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+    
+    .step-subtitle {
+        font-size: 12px;
+    }
+    
+    .form-group {
+        margin-bottom: 12px;
+    }
+    
+    .form-group label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .cta-button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .cta-button.large {
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+    
+    .timeline-item {
+        gap: 0.5rem;
+    }
+    
+    .timeline-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    
+    .timeline-content h5 {
+        font-size: 0.85rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.75rem;
+    }
+    
+    .success-benefits li {
+        font-size: 0.8rem;
+        padding: 0.2rem 0;
     }
 } 
 
@@ -2902,10 +3027,392 @@ p {
     }
     
     .ai-search-container {
-        padding: 24px;
+        padding: 20px;
     }
     
     .search-success {
-        padding: 24px;
+        padding: 20px;
+    }
+    
+    .ai-logo {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .ai-logo-text h3 {
+        font-size: 1.25rem;
+    }
+    
+    .ai-status {
+        font-size: 0.9rem;
+    }
+    
+    .search-progress-text {
+        font-size: 0.9rem;
+    }
+    
+    .activity-item {
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+    
+    .activity-text {
+        font-size: 0.85rem;
+    }
+    
+    .activity-time {
+        font-size: 0.75rem;
+    }
+    
+    .success-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .success-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .highlight-item {
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+    
+    .highlight-content h5 {
+        font-size: 0.9rem;
+    }
+    
+    .highlight-content p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-search-container {
+        padding: 16px;
+    }
+    
+    .search-success {
+        padding: 16px;
+    }
+    
+    .ai-logo-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .ai-status {
+        font-size: 0.8rem;
+    }
+    
+    .search-progress-text {
+        font-size: 0.8rem;
+    }
+    
+    .activity-item {
+        padding: 0.5rem;
+        gap: 0.4rem;
+    }
+    
+    .activity-text {
+        font-size: 0.8rem;
+    }
+    
+    .activity-time {
+        font-size: 0.7rem;
+    }
+    
+    .success-header h2 {
+        font-size: 1.25rem;
+    }
+    
+    .success-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .highlight-item {
+        padding: 0.5rem;
+        gap: 0.4rem;
+    }
+    
+    .highlight-content h5 {
+        font-size: 0.85rem;
+    }
+    
+    .highlight-content p {
+        font-size: 0.75rem;
+    }
+}
+
+/* Payment Explanation Styles */
+.payment-explanation {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.explanation-card {
+    background: var(--surface-color);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.explanation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+}
+
+.explanation-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.explanation-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.explanation-icon {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    border-radius: 50%;
+    color: var(--primary-color);
+}
+
+.explanation-header h3 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.explanation-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.fee-highlight {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.fee-amount {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.fee-label {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.explanation-content p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.explanation-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.explanation-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.explanation-features li:hover {
+    background: var(--primary-light);
+    transform: translateX(4px);
+}
+
+.explanation-summary {
+    background: linear-gradient(135deg, var(--primary-light), #e0f2fe);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    border: 2px solid var(--primary-color);
+}
+
+.summary-highlight h4 {
+    margin: 0 0 1rem 0;
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.summary-highlight ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.summary-highlight li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.summary-highlight li strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Mobile Responsive for Payment Explanation */
+@media (max-width: 768px) {
+    .payment-explanation {
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .explanation-card {
+        padding: 1rem;
+    }
+    
+    .explanation-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .explanation-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+    
+    .explanation-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .fee-amount {
+        font-size: 1.75rem;
+    }
+    
+    .fee-label {
+        font-size: 0.9rem;
+    }
+    
+    .explanation-content p {
+        font-size: 1rem;
+    }
+    
+    .explanation-features li {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+    
+    .explanation-summary {
+        padding: 1rem;
+    }
+    
+    .summary-highlight h4 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .summary-highlight li {
+        font-size: 0.85rem;
+        padding: 0.25rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-explanation {
+        gap: 0.75rem;
+    }
+    
+    .explanation-card {
+        padding: 0.75rem;
+    }
+    
+    .explanation-header {
+        gap: 0.25rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .explanation-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    
+    .explanation-header h3 {
+        font-size: 1rem;
+    }
+    
+    .fee-amount {
+        font-size: 1.5rem;
+    }
+    
+    .fee-label {
+        font-size: 0.8rem;
+    }
+    
+    .explanation-content p {
+        font-size: 0.9rem;
+    }
+    
+    .explanation-features li {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+        gap: 0.4rem;
+    }
+    
+    .explanation-summary {
+        padding: 0.75rem;
+    }
+    
+    .summary-highlight h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .summary-highlight li {
+        font-size: 0.8rem;
+        padding: 0.2rem 0;
     }
 } 

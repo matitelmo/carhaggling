@@ -155,7 +155,7 @@ function updateProgressBar(step) {
     const progressSteps = document.querySelectorAll('.progress-step');
     
     // Update progress bar
-    const progress = ((step - 1) / 3) * 100;
+    const progress = ((step - 1) / 4) * 100;
     progressFill.style.width = `${progress}%`;
     
     // Update step indicators
@@ -381,8 +381,8 @@ function handlePaymentSubmit(event) {
     
     // Track payment attempt
     trackEvent('payment_attempted', { 
-        step: 4,
-        total_steps: 4
+        step: 5,
+        total_steps: 5
     });
     
     // Simulate payment processing

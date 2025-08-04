@@ -816,6 +816,10 @@
                            </div>
                            <div class="progress-step" data-step="4">
                                <div class="step-number">4</div>
+                               <div class="step-label">Pricing</div>
+                           </div>
+                           <div class="progress-step" data-step="5">
+                               <div class="step-number">5</div>
                                <div class="step-label">Payment</div>
                            </div>
                        </div>
@@ -1103,8 +1107,74 @@
                 </form>
             </div>
 
-            <!-- Step 4: Payment -->
+            <!-- Step 4: Payment Explanation -->
             <div class="modal-step" id="step4" style="display: none;">
+                <div class="step-header">
+                    <h2>How our payment structure works</h2>
+                    <p class="step-subtitle">Transparent pricing with no hidden fees</p>
+                </div>
+                
+                <div class="payment-explanation">
+                    <div class="explanation-card">
+                        <div class="explanation-header">
+                            <div class="explanation-icon">💰</div>
+                            <h3>Step 1: Initial Search Fee</h3>
+                        </div>
+                        <div class="explanation-content">
+                            <div class="fee-highlight">
+                                <span class="fee-amount">$50</span>
+                                <span class="fee-label">upfront</span>
+                            </div>
+                            <p>This covers our AI's comprehensive market search and analysis. Our AI will:</p>
+                            <ul class="explanation-features">
+                                <li>🔍 Scan thousands of car listings in your area</li>
+                                <li>🎯 Apply your specific filters and preferences</li>
+                                <li>🤖 Negotiate prices with dealers on your behalf</li>
+                                <li>📊 Analyze market data from 50+ sources</li>
+                                <li>✅ Vet each vehicle for quality and value</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="explanation-card">
+                        <div class="explanation-header">
+                            <div class="explanation-icon">🚗</div>
+                            <h3>Step 2: Car Connection Fee</h3>
+                        </div>
+                        <div class="explanation-content">
+                            <div class="fee-highlight">
+                                <span class="fee-amount">$150</span>
+                                <span class="fee-label">per car</span>
+                            </div>
+                            <p>Only charged when we find cars that match your criteria. This includes:</p>
+                            <ul class="explanation-features">
+                                <li>📋 Complete car details and specifications</li>
+                                <li>💰 Pre-negotiated price information</li>
+                                <li>🤝 Direct connection with the seller</li>
+                                <li>📞 24/7 support throughout the purchase</li>
+                                <li>✅ VIN checks and history reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="explanation-summary">
+                        <div class="summary-highlight">
+                            <h4>💡 Why this structure works for you:</h4>
+                            <ul>
+                                <li><strong>Low risk:</strong> Only $50 to start your search</li>
+                                <li><strong>Pay for success:</strong> $150 only when we find cars you want</li>
+                                <li><strong>No hidden fees:</strong> Transparent pricing throughout</li>
+                                <li><strong>Money-back guarantee:</strong> Full refund if no matches found</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <button class="cta-button primary glow-effect large" onclick="showFunnelStep(5)">Continue to Payment →</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Payment -->
+            <div class="modal-step" id="step5" style="display: none;">
                 <div class="step-header">
                     <h2>Start your AI-powered car search</h2>
                     <p class="step-subtitle">Pay $50 to deploy your AI co-pilot and start saving</p>
