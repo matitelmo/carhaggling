@@ -101,6 +101,7 @@ function closeModal() {
 
 function resetFunnel() {
     currentFunnelStep = 1;
+    window.funnelStartTime = Date.now(); // Track when funnel starts
     funnelData = {
         carMake: '',
         carModel: '',
@@ -196,9 +197,21 @@ function handleCarDetailsSubmit(event) {
     funnelData.carYear = document.getElementById('carYear').value;
     funnelData.carMileage = document.getElementById('carMileage').value;
     
-    // Validation
-    if (!funnelData.carMake || !funnelData.carModel || !funnelData.carYear || !funnelData.carMileage) {
-        showError('Please fill in all car details.');
+    // Enhanced validation with field-specific errors
+    if (!funnelData.carMake) {
+        showError('Please select a car make.', 'carMake');
+        return;
+    }
+    if (!funnelData.carModel) {
+        showError('Please select a car model.', 'carModel');
+        return;
+    }
+    if (!funnelData.carYear) {
+        showError('Please select a car year.', 'carYear');
+        return;
+    }
+    if (!funnelData.carMileage) {
+        showError('Please enter maximum mileage.', 'carMileage');
         return;
     }
     
@@ -221,9 +234,9 @@ function handleLocationDistanceSubmit(event) {
     
     funnelData.zipCode = document.getElementById('zipCode').value;
     
-    // Validation
+    // Enhanced validation with field-specific errors
     if (!funnelData.zipCode || funnelData.zipCode.length !== 5) {
-        showError('Please enter a valid 5-digit ZIP code.');
+        showError('Please enter a valid 5-digit ZIP code.', 'zipCode');
         return;
     }
     
@@ -254,7 +267,7 @@ function handleLocationDistanceSubmit(event) {
 
 
 
-// AI Search Simulation
+// Enhanced AI Search Simulation
 function startAISearch() {
     const searchProgressFill = document.getElementById('searchProgressFill');
     const searchProgressText = document.getElementById('searchProgressText');
@@ -263,33 +276,42 @@ function startAISearch() {
     // Clear previous activity
     activityLog.innerHTML = '';
     
-    // Search activities with realistic timing - only what happens BEFORE payment
+    // Enhanced search activities with more realistic and engaging content
     const searchActivities = [
-        { time: 0, text: 'Initializing search parameters...', progress: 15 },
-        { time: 1000, text: 'Scanning local inventory databases...', progress: 35 },
-        { time: 2000, text: 'Analyzing market pricing data...', progress: 55 },
-        { time: 3000, text: 'Identifying potential matches...', progress: 75 },
-        { time: 4000, text: 'Compiling preliminary results...', progress: 100 }
+        { time: 0, text: 'Initializing AI search parameters...', progress: 10, icon: '🤖' },
+        { time: 800, text: 'Connecting to 50+ market data sources...', progress: 20, icon: '🔗' },
+        { time: 1600, text: 'Scanning 2,847 active listings in your area...', progress: 35, icon: '🔍' },
+        { time: 2400, text: 'Running VIN checks against CarFax & AutoCheck...', progress: 50, icon: '🔒' },
+        { time: 3200, text: 'Analyzing pricing trends from 3 months of data...', progress: 65, icon: '📊' },
+        { time: 4000, text: 'Identifying vehicles matching your criteria...', progress: 80, icon: '🎯' },
+        { time: 4800, text: 'Calculating optimal negotiation strategies...', progress: 90, icon: '💡' },
+        { time: 5600, text: 'Compiling personalized recommendations...', progress: 100, icon: '✅' }
     ];
     
-    // Add activities to log
+    // Add activities to log with enhanced styling
     searchActivities.forEach((activity, index) => {
         setTimeout(() => {
             // Update progress
             searchProgressFill.style.width = `${activity.progress}%`;
             searchProgressText.textContent = activity.text;
             
-            // Add activity to log
+            // Add activity to log with enhanced styling
             const activityItem = document.createElement('div');
             activityItem.className = 'activity-item';
             activityItem.innerHTML = `
-                <div class="activity-icon">✓</div>
+                <div class="activity-icon">${activity.icon}</div>
                 <div class="activity-content">
                     <div class="activity-text">${activity.text}</div>
                     <div class="activity-time">${new Date().toLocaleTimeString()}</div>
                 </div>
+                <div class="activity-status">✓</div>
             `;
             activityLog.appendChild(activityItem);
+            
+            // Add completion animation
+            setTimeout(() => {
+                activityItem.classList.add('completed');
+            }, 200);
             
             // Scroll to bottom
             activityLog.scrollTop = activityLog.scrollHeight;
@@ -298,7 +320,7 @@ function startAISearch() {
             if (index === searchActivities.length - 1) {
                 setTimeout(() => {
                     showSearchSuccess();
-                }, 1000);
+                }, 1500);
             }
         }, activity.time);
     });
@@ -307,18 +329,40 @@ function startAISearch() {
 
 
 function showSearchSuccess() {
-    // Generate random number of cars found (8-25) - more realistic for pre-payment
-    const carsFound = Math.floor(Math.random() * 18) + 8;
+    // Generate realistic search results based on car type and location
+    const baseCarsFound = Math.floor(Math.random() * 12) + 8; // 8-20 cars
+    const carsFound = baseCarsFound;
     
-    // Update car count
+    // Calculate realistic savings based on car type
+    const savingsRange = {
+        'SUV': { min: 1800, max: 3200 },
+        'Sedan': { min: 1500, max: 2800 },
+        'Truck': { min: 2200, max: 3800 },
+        'Coupe': { min: 2000, max: 3500 },
+        'EV': { min: 2500, max: 4200 }
+    };
+    
+    const carType = selectedCarType || 'SUV';
+    const avgSavings = Math.floor(Math.random() * 
+        (savingsRange[carType].max - savingsRange[carType].min)) + savingsRange[carType].min;
+    
+    // Update car count and add savings info
     document.getElementById('carsFound').textContent = carsFound;
+    
+    // Add savings information to the success message
+    const successSubtitle = document.querySelector('.success-subtitle');
+    if (successSubtitle) {
+        successSubtitle.innerHTML = `We found <strong>${carsFound}</strong> potential matches in your area with an average savings of <strong>$${avgSavings.toLocaleString()}</strong>`;
+    }
     
     // Show success step
     showFunnelStep('2-5-success');
     
-    // Track search completion
+    // Track search completion with enhanced data
     trackEvent('ai_search_completed', {
         cars_found: carsFound,
+        average_savings: avgSavings,
+        car_type: carType,
         distance: funnelData.distance,
         zip_code: funnelData.zipCode
     });
@@ -334,14 +378,25 @@ function handleContactSubmit(event) {
     funnelData.phone = document.getElementById('phone').value;
     funnelData.priceTarget = document.getElementById('priceTarget').value;
     
-    // Validation
-    if (!funnelData.firstName || !funnelData.lastName || !funnelData.email || !funnelData.phone) {
-        showError('Please fill in all contact information.');
+    // Enhanced validation with field-specific errors
+    if (!funnelData.firstName) {
+        showError('Please enter your first name.', 'firstName');
         return;
     }
-    
+    if (!funnelData.lastName) {
+        showError('Please enter your last name.', 'lastName');
+        return;
+    }
+    if (!funnelData.email) {
+        showError('Please enter your email address.', 'email');
+        return;
+    }
     if (!validateEmail(funnelData.email)) {
-        showError('Please enter a valid email address.');
+        showError('Please enter a valid email address.', 'email');
+        return;
+    }
+    if (!funnelData.phone) {
+        showError('Please enter your phone number.', 'phone');
         return;
     }
     
@@ -367,15 +422,25 @@ function handlePaymentSubmit(event) {
     funnelData.cvv = document.getElementById('cvv').value;
     funnelData.cardName = document.getElementById('cardName').value;
     
-    // Validation
-    if (!funnelData.cardNumber || !funnelData.expiryDate || !funnelData.cvv || !funnelData.cardName) {
-        showError('Please fill in all payment information.');
+    // Enhanced validation with field-specific errors
+    if (!funnelData.cardName) {
+        showError('Please enter the cardholder name.', 'cardName');
         return;
     }
-    
-    // Basic card validation
+    if (!funnelData.cardNumber) {
+        showError('Please enter your card number.', 'cardNumber');
+        return;
+    }
     if (funnelData.cardNumber.replace(/\s/g, '').length < 13) {
-        showError('Please enter a valid card number.');
+        showError('Please enter a valid card number.', 'cardNumber');
+        return;
+    }
+    if (!funnelData.expiryDate) {
+        showError('Please enter the expiry date.', 'expiryDate');
+        return;
+    }
+    if (!funnelData.cvv) {
+        showError('Please enter the CVV.', 'cvv');
         return;
     }
     
@@ -412,6 +477,26 @@ function showPaymentProcessing() {
     
     // Add loading animation
     submitButton.classList.add('processing');
+    
+    // Add processing message
+    const processingMessage = document.createElement('div');
+    processingMessage.className = 'processing-message';
+    processingMessage.innerHTML = `
+        <div class="processing-icon">⏳</div>
+        <div class="processing-text">
+            <h4>Processing your payment...</h4>
+            <p>This usually takes 10-15 seconds. Please don't close this window.</p>
+        </div>
+    `;
+    
+    const paymentForm = document.getElementById('paymentForm');
+    paymentForm.appendChild(processingMessage);
+    
+    // Track payment processing start
+    trackEvent('payment_processing_started', {
+        step: currentFunnelStep,
+        payment_method: 'credit_card'
+    });
 }
 
 function showSuccessStep() {
@@ -423,17 +508,39 @@ function showSuccessStep() {
     // Show success step
     document.getElementById('successStep').style.display = 'block';
     
-    // Track successful completion
+    // Add personalized welcome message
+    const successMessage = document.querySelector('#successStep .success-content p');
+    if (successMessage && funnelData.firstName) {
+        successMessage.innerHTML = `Hi <strong>${funnelData.firstName}</strong>! Your AI co-pilot is now scanning the market for your perfect ${funnelData.carMake} ${funnelData.carModel}.`;
+    }
+    
+    // Track successful completion with enhanced data
     trackEvent('funnel_completed', {
         car_make: funnelData.carMake,
         car_model: funnelData.carModel,
         car_year: funnelData.carYear,
         zip_code: funnelData.zipCode,
-        distance: funnelData.distance
+        distance: funnelData.distance,
+        user_name: funnelData.firstName,
+        total_time: Date.now() - window.funnelStartTime || 0
     });
+    
+    // Start success animation
+    setTimeout(() => {
+        const successIcon = document.querySelector('#successStep .success-icon');
+        if (successIcon) {
+            successIcon.style.animation = 'bounce 1s ease-in-out';
+        }
+    }, 500);
 }
 
-function showError(message) {
+function showError(message, fieldId = null) {
+    // Remove existing error
+    const existingError = document.querySelector('.error-notification');
+    if (existingError) {
+        existingError.remove();
+    }
+    
     // Create error notification
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-notification';
@@ -447,12 +554,33 @@ function showError(message) {
     const currentStepEl = document.getElementById(`step${currentFunnelStep}`);
     currentStepEl.appendChild(errorDiv);
     
+    // Highlight specific field if provided
+    if (fieldId) {
+        const field = document.getElementById(fieldId);
+        if (field) {
+            field.classList.add('error');
+            field.focus();
+            
+            // Remove error class after user starts typing
+            field.addEventListener('input', function() {
+                this.classList.remove('error');
+            }, { once: true });
+        }
+    }
+    
     // Auto-remove after 5 seconds
     setTimeout(() => {
         if (errorDiv.parentElement) {
             errorDiv.remove();
         }
     }, 5000);
+    
+    // Track error
+    trackEvent('form_error', { 
+        step: currentFunnelStep, 
+        message: message,
+        field: fieldId 
+    });
 }
 
 // Welcome form submission
@@ -686,10 +814,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Analytics tracking (placeholder for GTM)
+// Enhanced Analytics tracking
 function trackEvent(eventName, eventData = {}) {
-    // This would integrate with Google Tag Manager
-    console.log('Event tracked:', eventName, eventData);
+    // Add timestamp and session data
+    const enhancedData = {
+        ...eventData,
+        timestamp: new Date().toISOString(),
+        session_id: window.sessionId || generateSessionId(),
+        user_agent: navigator.userAgent,
+        screen_resolution: `${screen.width}x${screen.height}`,
+        current_step: currentFunnelStep,
+        selected_car_type: selectedCarType
+    };
+    
+    // This would integrate with Google Tag Manager, Mixpanel, or other analytics
+    console.log('Event tracked:', eventName, enhancedData);
     
     // Example events to track:
     // - Car type selection
@@ -697,7 +836,25 @@ function trackEvent(eventName, eventData = {}) {
     // - Form submissions
     // - Waitlist signups
     // - FAQ interactions
+    // - Step completions
+    // - Errors
+    // - Payment attempts
+    // - Funnel completions
 }
+
+// Generate unique session ID
+function generateSessionId() {
+    return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+}
+
+// Initialize session tracking
+document.addEventListener('DOMContentLoaded', function() {
+    window.sessionId = generateSessionId();
+    trackEvent('page_view', { 
+        page: window.location.pathname,
+        referrer: document.referrer
+    });
+});
 
 // Enhanced car type selection with tracking
 function selectCarType(type) {

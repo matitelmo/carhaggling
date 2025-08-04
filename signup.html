@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Car Search - CarHaggling</title>
+    <meta name="description" content="Join thousands of car buyers who are saving time and money with CarHaggling's AI co-pilot.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="signup-styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="Adobe Express - file.png" alt="CarHaggling" class="logo-image">
+                    </a>
+                </div>
+                <div class="header-actions">
+                    <a href="index.html" class="back-link">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Car Details</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Location</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">AI Search</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Results</div>
+                    </div>
+                    <div class="progress-step" data-step="5">
+                        <div class="step-number">5</div>
+                        <div class="step-label">Contact</div>
+                    </div>
+                    <div class="progress-step" data-step="6">
+                        <div class="step-number">6</div>
+                        <div class="step-label">Payment</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 1: Car Details -->
+            <div class="step-content active" id="step1">
+                <div class="step-header">
+                    <h1>Tell us about your dream car</h1>
+                    <p class="step-subtitle">Our AI will use this information to find the best matches in your area.</p>
+                </div>
+
+                <div class="trust-banner">
+                    <div class="trust-icon">🔒</div>
+                    <div class="trust-content">
+                        <h4>Join thousands improving their car buying experience</h4>
+                        <p>All information you share is secure and confidential.</p>
+                    </div>
+                </div>
+
+                <form class="car-details-form" id="carDetailsForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="carMake">Car Make</label>
+                            <select id="carMake" name="carMake" required>
+                                <option value="">Select Make</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Chevrolet">Chevrolet</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Hyundai">Hyundai</option>
+                                <option value="Kia">Kia</option>
+                                <option value="Mazda">Mazda</option>
+                                <option value="Subaru">Subaru</option>
+                                <option value="Volkswagen">Volkswagen</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Lexus">Lexus</option>
+                                <option value="Tesla">Tesla</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="carModel">Car Model</label>
+                            <select id="carModel" name="carModel" required>
+                                <option value="">Select Model</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="carYear">Year Range</label>
+                            <select id="carYear" name="carYear" required>
+                                <option value="">Select Year</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="carMileage">Max Mileage</label>
+                            <select id="carMileage" name="carMileage" required>
+                                <option value="">Select Mileage</option>
+                                <option value="10000">Under 10,000</option>
+                                <option value="25000">Under 25,000</option>
+                                <option value="50000">Under 50,000</option>
+                                <option value="75000">Under 75,000</option>
+                                <option value="100000">Under 100,000</option>
+                                <option value="150000">Under 150,000</option>
+                                <option value="200000">Any Mileage</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="cta-button primary">Continue</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 2: Location -->
+            <div class="step-content" id="step2">
+                <div class="step-header">
+                    <h2>Where should we search?</h2>
+                    <p class="step-subtitle">We'll search for cars within your preferred distance from your location.</p>
+                </div>
+
+                <form class="location-form" id="locationForm">
+                    <div class="form-group">
+                        <label for="zipCode">ZIP Code</label>
+                        <input type="text" id="zipCode" name="zipCode" placeholder="Enter your ZIP code" maxlength="5" required>
+                    </div>
+
+                    <div class="distance-section">
+                        <label>Search Distance</label>
+                        <div class="distance-options">
+                            <div class="distance-option" data-distance="25">
+                                <div class="distance-icon">📍</div>
+                                <div class="distance-content">
+                                    <h4>Local (25 miles)</h4>
+                                    <p>Best for city dwellers</p>
+                                </div>
+                                <div class="distance-check">✓</div>
+                            </div>
+                            <div class="distance-option selected" data-distance="50">
+                                <div class="distance-icon">🚗</div>
+                                <div class="distance-content">
+                                    <h4>Regional (50 miles)</h4>
+                                    <p>Recommended for most buyers</p>
+                                    <div class="recommended-badge">Recommended</div>
+                                </div>
+                                <div class="distance-check">✓</div>
+                            </div>
+                            <div class="distance-option" data-distance="100">
+                                <div class="distance-icon">🌍</div>
+                                <div class="distance-content">
+                                    <h4>Extended (100 miles)</h4>
+                                    <p>Best selection & deals</p>
+                                </div>
+                                <div class="distance-check">✓</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="cta-button secondary" onclick="goToStep(1)">Back</button>
+                        <button type="submit" class="cta-button primary">Continue</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 3: AI Search Progress -->
+            <div class="step-content" id="step3">
+                <div class="ai-search-container">
+                    <div class="ai-search-header">
+                        <div class="ai-logo">
+                            <div class="ai-logo-icon">🤖</div>
+                            <div class="ai-logo-text">
+                                <h3>CarHaggling AI</h3>
+                                <div class="ai-status">Searching...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search-progress">
+                        <div class="search-progress-bar">
+                            <div class="search-progress-fill" id="searchProgressFill"></div>
+                        </div>
+                        <div class="search-progress-text" id="searchProgressText">Initializing search parameters...</div>
+                    </div>
+
+                    <div class="search-activity">
+                        <h4>Search Activity</h4>
+                        <div class="activity-log" id="activityLog">
+                            <!-- Activity items will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Search Results -->
+            <div class="step-content" id="step4">
+                <div class="search-success">
+                    <div class="success-header">
+                        <div class="success-icon">🎯</div>
+                        <h2>Search Complete!</h2>
+                        <p class="success-subtitle">We found <strong id="carsFound">12</strong> vehicles matching your criteria</p>
+                    </div>
+
+                    <div class="search-highlights">
+                        <h4>What We Can Do For You:</h4>
+                        <div class="highlight-items">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">🎯</div>
+                                <div class="highlight-content">
+                                    <h5>Find Perfect Matches</h5>
+                                    <p>AI will identify vehicles that meet your exact criteria</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">💰</div>
+                                <div class="highlight-content">
+                                    <h5>Negotiate Better Prices</h5>
+                                    <p>Our AI will negotiate with dealers on your behalf</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">📋</div>
+                                <div class="highlight-content">
+                                    <h5>Get VIN Reports</h5>
+                                    <p>Complete vehicle history and inspection reports</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="cta-button secondary" onclick="goToStep(2)">Back</button>
+                        <button type="submit" class="cta-button primary" onclick="goToStep(5)">Continue to Contact</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Contact -->
+            <div class="step-content" id="step5">
+                <div class="step-header">
+                    <h2>How can we reach you?</h2>
+                    <p class="step-subtitle">We'll send you personalized car recommendations and keep you updated on your search.</p>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" name="contactEmail" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                        </div>
+                    </div>
+
+                    <div class="price-target-section">
+                        <label for="priceTarget">Target Price Range</label>
+                        <div class="price-slider-container">
+                            <input type="range" id="priceTarget" name="priceTarget" min="10000" max="100000" step="1000" value="35000">
+                            <div class="price-display">
+                                <span class="price-value">$35,000</span>
+                                <span class="price-note">or less</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-benefits">
+                        <h4>What you'll get:</h4>
+                        <ul>
+                            <li>Personalized car recommendations within 24 hours</li>
+                            <li>Pre-negotiated pricing on all vehicles</li>
+                            <li>Free vehicle history reports</li>
+                            <li>Direct connection to trusted dealers</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="cta-button secondary" onclick="goToStep(4)">Back</button>
+                        <button type="submit" class="cta-button primary">Continue</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 6: Payment -->
+            <div class="step-content" id="step6">
+                <div class="step-header">
+                    <h2>Complete your setup</h2>
+                    <p class="step-subtitle">A one-time fee of $50 gives you access to our AI-powered car search and negotiation service.</p>
+                </div>
+
+                <!-- Process Explanation -->
+                <div class="process-explanation">
+                    <h4>How Our Process Works</h4>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="process-step-number">1</div>
+                            <div class="process-step-content">
+                                <h5>Pay $50 Now</h5>
+                                <p>This covers our AI's comprehensive market search and analysis</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="process-step-number">2</div>
+                            <div class="process-step-content">
+                                <h5>AI Finds Your Car (Within 7 Days)</h5>
+                                <p>Our AI scans thousands of listings and negotiates prices for you</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="process-step-number">3</div>
+                            <div class="process-step-content">
+                                <h5>Get Your Car or Get Your Money Back</h5>
+                                <p>If we find cars within your target, you pay $100 per negotiated lead. If not, full refund!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-guarantee">
+                        <div class="guarantee-highlight">
+                            <span class="guarantee-icon">🛡️</span>
+                            <div class="guarantee-content">
+                                <h5>100% Risk-Free Guarantee</h5>
+                                <p>If we don't find cars matching your criteria within 7 days, you get your $50 back. No questions asked.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <h4>Search Summary</h4>
+                    <div class="summary-details">
+                        <div class="summary-item">
+                            <span class="summary-label">Vehicle:</span>
+                            <span class="summary-value" id="summaryCar">2021 Honda CR-V (Under 50,000 miles)</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Location:</span>
+                            <span class="summary-value" id="summaryLocation">90210</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Distance:</span>
+                            <span class="summary-value" id="summaryDistance">50 miles</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Contact:</span>
+                            <span class="summary-value" id="summaryContact">John Doe (john@example.com)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-section">
+                    <h4>Payment Details</h4>
+                    <div class="payment-total">
+                        <div class="total-item">
+                            <span>AI Search Service</span>
+                            <span>$50.00</span>
+                        </div>
+                        <div class="total-divider"></div>
+                        <div class="total-final">
+                            <span>Total</span>
+                            <span>$50.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-guarantee">
+                    <div class="guarantee-badge">
+                        <span class="guarantee-icon">✅</span>
+                        <span class="guarantee-text">100% Money-Back Guarantee</span>
+                    </div>
+                    <p>If you're not satisfied with our service within 30 days, we'll refund your payment in full.</p>
+                </div>
+
+                <form class="payment-form" id="paymentForm">
+                    <div class="form-group">
+                        <label for="cardName">Cardholder Name</label>
+                        <input type="text" id="cardName" name="cardName" placeholder="Enter cardholder name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="cta-button secondary" onclick="goToStep(5)">Back</button>
+                        <button type="submit" class="cta-button primary">Complete Setup</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Success Step -->
+            <div class="step-content" id="successStep">
+                <div class="success-content">
+                    <div class="success-icon">🎉</div>
+                    <h2>Welcome to CarHaggling!</h2>
+                    <p>Your AI co-pilot is now searching for your perfect car. You'll receive your personalized recommendations within 24 hours.</p>
+                    
+                    <div class="next-steps">
+                        <h4>What happens next?</h4>
+                        <div class="step-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🔍</div>
+                                <div class="timeline-content">
+                                    <h5>AI Search (Next 24 hours)</h5>
+                                    <p>Our AI scans thousands of listings to find your perfect match</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">📧</div>
+                                <div class="timeline-content">
+                                    <h5>Personalized Results</h5>
+                                    <p>You'll receive detailed reports with pre-negotiated pricing</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🤝</div>
+                                <div class="timeline-content">
+                                    <h5>Dealer Connection</h5>
+                                    <p>We'll connect you directly with trusted dealers in your area</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="success-benefits">
+                        <h4>Your benefits include:</h4>
+                        <ul>
+                            <li>Pre-negotiated pricing on all vehicles</li>
+                            <li>Free vehicle history reports</li>
+                            <li>Direct dealer connections</li>
+                            <li>30-day money-back guarantee</li>
+                        </ul>
+                    </div>
+
+                    <div class="success-actions">
+                        <a href="index.html" class="cta-button primary">Return to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CarHaggling</h3>
+                    <p>Your AI co-pilot for smarter car buying.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <p>Need help? Contact us at support@carhaggling.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Security</h4>
+                    <p>Your data is protected with bank-level encryption.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CarHaggling. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="signup-script.js"></script>
+</body>
+</html> 
