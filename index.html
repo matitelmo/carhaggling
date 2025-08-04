@@ -25,7 +25,7 @@
                     <a href="#testimonials">Customer Stories</a>
                     <a href="#faq">FAQ</a>
                 </nav>
-                <button class="cta-button primary glow-effect" onclick="openModal()">Get Started</button>
+                <button class="cta-button primary glow-effect" onclick="openModal()">Start for $50</button>
                 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                     <span></span>
                     <span></span>
@@ -67,7 +67,7 @@
                         
                         <div class="email-form" id="emailForm" style="display: none;">
                             <input type="email" id="heroEmail" placeholder="Enter your email address" class="email-input">
-                            <button class="cta-button primary glow-effect" id="heroCtaButton" onclick="openModal()">Find My Perfect Car →</button>
+                            <button class="cta-button primary glow-effect" id="heroCtaButton" onclick="openModal()">Start Search for $50 →</button>
                         </div>
                     </div>
                 </div>
@@ -346,83 +346,152 @@
     <!-- Pricing Section -->
     <section class="pricing-section" id="pricing">
         <div class="container">
-            <h2 class="section-title">Simple, Transparent Pricing</h2>
-            <p class="section-subtitle">One fee. No surprises. Maximum savings.</p>
+            <h2 class="section-title">Simple, Two-Tier Pricing</h2>
+            <p class="section-subtitle">Low risk to start. Pay only when we find your perfect car.</p>
             
-            <div class="pricing-card">
-                <div class="pricing-header">
-                    <div class="price">
-                        <span class="currency">$</span>
-                        <span class="amount">299</span>
-                        <span class="period">one-time</span>
+            <div class="pricing-tiers">
+                <!-- Tier 1: Search & Analysis -->
+                <div class="pricing-card tier-1">
+                    <div class="tier-badge">Step 1</div>
+                    <div class="pricing-header">
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">50</span>
+                            <span class="period">upfront</span>
+                        </div>
+                        <h3>AI Search & Analysis</h3>
+                        <p class="pricing-description">Our AI scans the market and negotiates prices for you</p>
                     </div>
-                    <h3>AI Co-Pilot Service</h3>
-                    <p class="pricing-description">Complete car buying assistance with advanced AI negotiation</p>
-                </div>
-                
-                <div class="pricing-features">
-                    <h4>What's Included:</h4>
-                    <ul class="feature-list">
-                        <li>
-                            <span class="feature-icon">🔍</span>
-                            <div class="feature-content">
-                                <strong>Market Analysis</strong>
-                                <span>Scan 2,847+ listings across major marketplaces</span>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="feature-icon">📊</span>
-                            <div class="feature-content">
-                                <strong>Pricing Intelligence</strong>
-                                <span>Analyze trends from 50+ data sources</span>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="feature-icon">🔒</span>
-                            <div class="feature-content">
-                                <strong>VIN Verification</strong>
-                                <span>Complete history checks via CarFax & AutoCheck</span>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="feature-icon">🤖</span>
-                            <div class="feature-content">
-                                <strong>AI Negotiation</strong>
-                                <span>Expert-level price negotiation on your behalf</span>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="feature-icon">✅</span>
-                            <div class="feature-content">
-                                <strong>Quality Assurance</strong>
-                                <span>Pre-purchase inspection scheduling</span>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="feature-icon">📱</span>
-                            <div class="feature-content">
-                                <strong>Dedicated Support</strong>
-                                <span>24/7 assistance throughout your purchase</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="pricing-guarantee">
-                    <div class="guarantee-badge">
-                        <span class="guarantee-icon">🛡️</span>
-                        <span class="guarantee-text">30-Day Satisfaction Guarantee</span>
+                    
+                    <div class="pricing-features">
+                        <h4>What's Included:</h4>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="feature-icon">🔍</span>
+                                <div class="feature-content">
+                                    <strong>Market Scan</strong>
+                                    <span>Scan all car listings in your area</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">🎯</span>
+                                <div class="feature-content">
+                                    <strong>Smart Filtering</strong>
+                                    <span>Apply your specific filters & preferences</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">🤖</span>
+                                <div class="feature-content">
+                                    <strong>AI Negotiation</strong>
+                                    <span>Expert price negotiation on your behalf</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">📊</span>
+                                <div class="feature-content">
+                                    <strong>Market Analysis</strong>
+                                    <span>Pricing intelligence from 50+ data sources</span>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <p>Not completely satisfied? Get a full refund within 30 days.</p>
+                    
+                    <div class="pricing-guarantee">
+                        <div class="guarantee-badge">
+                            <span class="guarantee-icon">🛡️</span>
+                            <span class="guarantee-text">1-Week Guarantee</span>
+                        </div>
+                        <p>No matching cars found? Get a full refund.</p>
+                    </div>
                 </div>
-                
-                <div class="pricing-cta">
-                    <button class="cta-button primary large glow-effect" onclick="openModal()">Deploy My AI Co-Pilot</button>
-                    <p class="pricing-note">No hidden fees • No commission • No surprises</p>
+
+                <!-- Tier 2: Car Connection -->
+                <div class="pricing-card tier-2">
+                    <div class="tier-badge">Step 2</div>
+                    <div class="pricing-header">
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">150</span>
+                            <span class="period">per car</span>
+                        </div>
+                        <h3>Car Connection</h3>
+                        <p class="pricing-description">Get car details and connect with sellers</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <h4>What's Included:</h4>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="feature-icon">📋</span>
+                                <div class="feature-content">
+                                    <strong>Detailed Information</strong>
+                                    <span>Complete car specs, history & photos</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">💰</span>
+                                <div class="feature-content">
+                                    <strong>Negotiated Price</strong>
+                                    <span>Pre-negotiated price details</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">🤝</span>
+                                <div class="feature-content">
+                                    <strong>Seller Connection</strong>
+                                    <span>Direct connection with the seller</span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✅</span>
+                                <div class="feature-content">
+                                    <strong>Purchase Support</strong>
+                                    <span>24/7 assistance throughout purchase</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-note">
+                        <p>Only charged when we find cars that match your criteria</p>
+                    </div>
                 </div>
             </div>
-            
 
+            <div class="pricing-summary">
+                <h3>How It Works:</h3>
+                <div class="summary-steps">
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <span class="step-text">Pay $50 upfront</span>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <span class="step-text">AI finds & negotiates</span>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span class="step-text">Pay $150 per car you want</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="risk-free-highlight">
+                <div class="risk-free-badge">
+                    <span class="risk-free-icon">🛡️</span>
+                    <span class="risk-free-text">100% Risk-Free</span>
+                </div>
+                <h4>No Risk Guarantee</h4>
+                <p>If our AI can't find cars matching your criteria within 1 week, you get a full refund. No questions asked.</p>
+            </div>
+
+            <div class="pricing-cta">
+                <button class="cta-button primary large glow-effect" onclick="openModal()">Start Your Search for $50</button>
+                <p class="pricing-note">No hidden fees • Guaranteed refund • Pay only for success</p>
+            </div>
         </div>
     </section>
 
@@ -479,7 +548,7 @@
                         <p>"As a first-time truck buyer, I was completely overwhelmed. The AI found me this mint-condition F-150 with only 28,000 miles. The dealer was firm on $46,000, but my AI co-pilot discovered the truck had been on their lot for 45 days and used that leverage to get it for $42,800. The whole process felt like having a car-buying expert in my corner."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">
-                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Sarah Chen" class="author-photo">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face" alt="Sarah Chen" class="author-photo">
                             </div>
                             <div class="author-info">
                                 <h4>Sarah Chen</h4>
@@ -581,7 +650,7 @@
                         How much does CarHaggling cost?
                     </h3>
                     <div class="faq-answer hidden" id="faq-answer-1" aria-hidden="true">
-                        <p>We charge a simple $299 upfront fee to deploy your AI co-pilot. This covers our comprehensive market analysis, vehicle vetting, and negotiation services. You'll typically save 3-5x this amount through our expert negotiation process.</p>
+                        <p>We use a simple two-tier pricing model: $50 upfront for AI search and analysis, then $150 per car when we find vehicles that match your criteria. If we can't find matching cars within 1 week, you get a full refund. This low-risk approach ensures you only pay for successful results.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -589,7 +658,7 @@
                         What if I don't find a car I like?
                     </h3>
                     <div class="faq-answer hidden" id="faq-answer-2" aria-hidden="true">
-                        <p>While our $299 fee covers the comprehensive analysis and negotiation services, we offer a satisfaction guarantee. If you're not completely satisfied with our service within 30 days, we'll provide a full refund.</p>
+                        <p>That's the beauty of our risk-free model! If our AI can't find cars matching your criteria within 1 week, you get a full refund of your $50 upfront fee. No questions asked. You only pay the $150 per car fee when we successfully find and connect you with vehicles you're interested in.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -681,7 +750,7 @@
         <div class="container">
             <h2>Ready to find your perfect car?</h2>
             <p>Join thousands of smart buyers who've already discovered the future of car buying.</p>
-            <button class="cta-button primary large glow-effect" onclick="openModal()">Get Started Now</button>
+            <button class="cta-button primary large glow-effect" onclick="openModal()">Start Your Search for $50</button>
         </div>
     </section>
 
@@ -730,107 +799,439 @@
         <div class="modal" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal()">&times;</button>
             
-            <!-- Step 1: Welcome -->
+                               <!-- Progress Bar -->
+                   <div class="funnel-progress">
+                       <div class="progress-steps">
+                           <div class="progress-step active" data-step="1">
+                               <div class="step-number">1</div>
+                               <div class="step-label">Car Details</div>
+                           </div>
+                           <div class="progress-step" data-step="2">
+                               <div class="step-number">2</div>
+                               <div class="step-label">Location & Distance</div>
+                           </div>
+                           <div class="progress-step" data-step="3">
+                               <div class="step-number">3</div>
+                               <div class="step-label">Contact</div>
+                           </div>
+                           <div class="progress-step" data-step="4">
+                               <div class="step-number">4</div>
+                               <div class="step-label">Payment</div>
+                           </div>
+                       </div>
+                       <div class="progress-bar">
+                           <div class="progress-fill" id="progressFill"></div>
+                       </div>
+                   </div>
+
+            <!-- Step 1: Car Details -->
             <div class="modal-step" id="step1">
-                <h2>Welcome! Let's find your perfect car.</h2>
-                <form id="welcomeForm" onsubmit="handleWelcomeSubmit(event)">
-                    <div class="form-group">
-                        <label for="fullName">Full Name</label>
-                        <input type="text" id="fullName" required>
+                <div class="step-header">
+                    <h2>Tell us about your dream car</h2>
+                    <p class="step-subtitle">Our AI will scan thousands of listings to find your perfect match</p>
+                </div>
+                
+                <div class="reassurance-banner">
+                    <div class="reassurance-icon">🎯</div>
+                    <div class="reassurance-content">
+                        <h4>You're in good company!</h4>
+                        <p>1,247 people found their perfect car last month, saving an average of $2,847</p>
                     </div>
+                </div>
+
+                <form id="carDetailsForm" onsubmit="handleCarDetailsSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="carMake">Car Make</label>
+                            <select id="carMake" required onchange="updateCarModels()">
+                                <option value="">Select Make</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Chevrolet">Chevrolet</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Hyundai">Hyundai</option>
+                                <option value="Kia">Kia</option>
+                                <option value="Mazda">Mazda</option>
+                                <option value="Subaru">Subaru</option>
+                                <option value="Volkswagen">Volkswagen</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Lexus">Lexus</option>
+                                <option value="Tesla">Tesla</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="carModel">Car Model</label>
+                            <select id="carModel" required>
+                                <option value="">Select Model</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="carYear">Year</label>
+                            <select id="carYear" required>
+                                <option value="">Select Year</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="carMileage">Max Mileage</label>
+                            <input type="number" id="carMileage" placeholder="e.g., 50000" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="cta-button primary glow-effect">Continue to Location →</button>
+                </form>
+            </div>
+
+            <!-- Step 2: Location & Distance -->
+            <div class="modal-step" id="step2" style="display: none;">
+                <div class="step-header">
+                    <h2>Where are you located & how far will you travel?</h2>
+                    <p class="step-subtitle">We'll search for cars within your preferred distance from your location</p>
+                </div>
+                
+                <div class="reassurance-banner">
+                    <div class="reassurance-icon">📍</div>
+                    <div class="reassurance-content">
+                        <h4>Local market expertise</h4>
+                        <p>Our AI knows your local market prices and can spot the best deals in your area</p>
+                    </div>
+                </div>
+
+                <form id="locationDistanceForm" onsubmit="handleLocationDistanceSubmit(event)">
+                    <div class="form-group">
+                        <label for="zipCode">ZIP Code</label>
+                        <input type="text" id="zipCode" placeholder="Enter your ZIP code" required maxlength="5" pattern="[0-9]{5}">
+                    </div>
+                    
+                    <div class="distance-section">
+                        <label>Search Distance</label>
+                        <div class="distance-options">
+                            <div class="distance-option" data-distance="25">
+                                <div class="distance-icon">🏘️</div>
+                                <div class="distance-content">
+                                    <h4>Local (25 miles)</h4>
+                                    <p>Quick test drives, familiar dealers</p>
+                                </div>
+                                <div class="distance-check">✓</div>
+                            </div>
+                            
+                            <div class="distance-option" data-distance="50">
+                                <div class="distance-icon">🚙</div>
+                                <div class="distance-content">
+                                    <h4>Regional (50 miles)</h4>
+                                    <p>More options, better prices</p>
+                                    <span class="recommended-badge">Recommended</span>
+                                </div>
+                                <div class="distance-check">✓</div>
+                            </div>
+                            
+                            <div class="distance-option" data-distance="100">
+                                <div class="distance-icon">🚐</div>
+                                <div class="distance-content">
+                                    <h4>Extended (100 miles)</h4>
+                                    <p>Maximum savings, most options</p>
+                                </div>
+                                <div class="distance-check">✓</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="location-preview">
+                        <div class="location-icon">🏠</div>
+                        <div class="location-info">
+                            <h4>Searching near you</h4>
+                            <p>We'll find cars within <span id="distanceDisplay">your preferred distance</span> from <span id="zipDisplay">your location</span></p>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="cta-button primary glow-effect">Start AI Search →</button>
+                </form>
+            </div>
+
+            <!-- Step 2.5: AI Search Simulation -->
+            <div class="modal-step" id="step2-5" style="display: none;">
+                <div class="ai-search-container">
+                    <div class="ai-search-header">
+                        <div class="ai-logo">
+                            <div class="ai-logo-icon">🤖</div>
+                            <div class="ai-logo-text">
+                                <h3>CarHaggling AI</h3>
+                                <span class="ai-status">Searching...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search-progress">
+                        <div class="search-progress-bar">
+                            <div class="search-progress-fill" id="searchProgressFill"></div>
+                        </div>
+                        <div class="search-progress-text" id="searchProgressText">Initializing search...</div>
+                    </div>
+
+
+
+                    <div class="search-activity">
+                        <h4>Real-time Search Activity</h4>
+                        <div class="activity-log" id="activityLog">
+                            <!-- Activity items will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2.5 Success: Search Results -->
+            <div class="modal-step" id="step2-5-success" style="display: none;">
+                <div class="search-success">
+                    <div class="success-header">
+                        <div class="success-icon">🎉</div>
+                        <h2>Search Complete!</h2>
+                        <p class="success-subtitle">We found <strong id="carsFound">0</strong> potential matches in your area</p>
+                    </div>
+
+
+
+                    <div class="search-highlights">
+                        <h4>What We Can Do For You:</h4>
+                        <div class="highlight-items">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">🎯</div>
+                                <div class="highlight-content">
+                                    <h5>Find Perfect Matches</h5>
+                                    <p>AI will identify vehicles that meet your exact criteria</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">💰</div>
+                                <div class="highlight-content">
+                                    <h5>Negotiate Better Prices</h5>
+                                    <p>Our AI will negotiate with dealers on your behalf</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">📋</div>
+                                <div class="highlight-content">
+                                    <h5>Get VIN Reports</h5>
+                                    <p>Complete vehicle history and inspection reports</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="cta-button primary glow-effect large" onclick="showFunnelStep(3)">Continue to Contact →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Contact Information -->
+            <div class="modal-step" id="step3" style="display: none;">
+                <div class="step-header">
+                    <h2>How should we reach you?</h2>
+                    <p class="step-subtitle">We'll notify you as soon as we find matching cars</p>
+                </div>
+                
+                <div class="reassurance-banner">
+                    <div class="reassurance-icon">🔒</div>
+                    <div class="reassurance-content">
+                        <h4>Your privacy is protected</h4>
+                        <p>We never sell your information. You'll only hear from us about your car search.</p>
+                    </div>
+                </div>
+
+                <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="phone">Phone Number (Optional)</label>
-                        <input type="tel" id="phone" placeholder="For faster communication">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="For faster communication and updates" required>
                     </div>
-                    <button type="submit" class="cta-button primary glow-effect">Start My Consultation →</button>
+                    
+                    <div class="price-target-section">
+                        <label for="priceTarget">What's your target price for this car?</label>
+                        <div class="price-slider-container">
+                            <div class="price-range">
+                                <span class="price-min">$10,000</span>
+                                <span class="price-max">$100,000</span>
+                            </div>
+                            <input type="range" id="priceTarget" min="10000" max="100000" step="1000" value="35000" class="price-slider">
+                            <div class="price-display">
+                                <span class="price-value">$35,000</span>
+                            </div>
+                        </div>
+                        <p class="price-note">This helps our AI focus on cars within your budget</p>
+                    </div>
+                    
+                    <div class="contact-benefits">
+                        <h4>What you'll receive:</h4>
+                        <ul>
+                            <li>📧 Email updates when we find matching cars</li>
+                            <li>📱 SMS alerts for urgent deals</li>
+                            <li>📞 Personal consultation call</li>
+                            <li>🎉 Priority access to new listings</li>
+                        </ul>
+                    </div>
+                    
+                    <button type="submit" class="cta-button primary glow-effect">Continue to Payment →</button>
                 </form>
             </div>
 
-            <!-- Step 2: AI Scanning Animation -->
-            <div class="modal-step" id="step2" style="display: none;">
-                <h2>Deploying Your AI Co-Pilot...</h2>
-                <div class="scanning-animation">
-                    <div class="user-analysis">
-                        <p id="userAnalysisText">Analyzing market for <span id="userName"></span>...</p>
-                    </div>
-                    
-                    <div class="progress-container">
-                        <div class="progress-header">
-                            <span class="progress-label">Market Analysis Progress</span>
-                            <span class="progress-percentage" id="progressText">0%</span>
-                        </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" id="progressBar"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="status-updates">
-                        <div class="status-header">
-                            <h4>Real-time Analysis</h4>
-                            <span class="status-subtitle">Live updates from your AI co-pilot</span>
-                        </div>
-                        <ul id="statusList">
-                            <!-- Status updates will be added here -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 3: Blurred Results -->
-            <div class="modal-step" id="step3" style="display: none;">
-                <h2>Your Vetted Shortlist is Ready!</h2>
-                <div class="results-preview">
-                    <div class="car-cards">
-                        <div class="car-card blurred">
-                            <div class="car-image-placeholder"></div>
-                            <div class="car-info-placeholder"></div>
-                        </div>
-                        <div class="car-card blurred">
-                            <div class="car-image-placeholder"></div>
-                            <div class="car-info-placeholder"></div>
-                        </div>
-                        <div class="car-card blurred">
-                            <div class="car-image-placeholder"></div>
-                            <div class="car-info-placeholder"></div>
-                        </div>
-                        <div class="car-card blurred">
-                            <div class="car-image-placeholder"></div>
-                            <div class="car-info-placeholder"></div>
-                        </div>
-                    </div>
-                    <p>Your AI has pre-negotiated prices and scheduled preliminary inspections.</p>
-                    <button class="cta-button primary glow-effect" onclick="showStep(4)">Unlock My Shortlist →</button>
-                </div>
-            </div>
-
-            <!-- Step 4: Waitlist Reveal -->
+            <!-- Step 4: Payment -->
             <div class="modal-step" id="step4" style="display: none;">
-                <div class="waitlist-success">
-                    <h2>You're on the VIP Waitlist! 🎉</h2>
-                    <p>Due to incredible demand and our commitment to quality, we are onboarding new clients in batches. Your spot is reserved!</p>
-                    
-                    <div class="waitlist-number">
-                        <span class="number">#1,247</span>
-                        <span class="label">in line</span>
+                <div class="step-header">
+                    <h2>Start your AI-powered car search</h2>
+                    <p class="step-subtitle">Pay $50 to deploy your AI co-pilot and start saving</p>
+                </div>
+                
+                <div class="reassurance-banner">
+                    <div class="reassurance-icon">🛡️</div>
+                    <div class="reassurance-content">
+                        <h4>100% Risk-Free Guarantee</h4>
+                        <p>If we don't find cars matching your criteria within 1 week, you get a full refund</p>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <h4>Your Search Summary</h4>
+                    <div class="summary-details">
+                        <div class="summary-item">
+                            <span class="summary-label">Car:</span>
+                            <span class="summary-value" id="summaryCar">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Location:</span>
+                            <span class="summary-value" id="summaryLocation">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Distance:</span>
+                            <span class="summary-value" id="summaryDistance">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Contact:</span>
+                            <span class="summary-value" id="summaryContact">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="paymentForm" onsubmit="handlePaymentSubmit(event)">
+                    <div class="payment-section">
+                        <h4>Payment Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required maxlength="19">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Expiry Date</label>
+                                <input type="text" id="expiryDate" placeholder="MM/YY" required maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" required maxlength="4">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardName">Name on Card</label>
+                            <input type="text" id="cardName" required>
+                        </div>
                     </div>
                     
-                    <p class="reassurance">We will email you the moment your private dashboard is ready. As a thank you for being an early adopter, you'll receive a <strong>50% discount</strong> on your $299 service fee for your first purchase.</p>
+                    <div class="payment-total">
+                        <div class="total-item">
+                            <span>AI Search & Analysis</span>
+                            <span>$50.00</span>
+                        </div>
+                        <div class="total-divider"></div>
+                        <div class="total-item total-final">
+                            <span>Total</span>
+                            <span>$50.00</span>
+                        </div>
+                    </div>
                     
-                    <div class="waitlist-benefits">
+                    <button type="submit" class="cta-button primary glow-effect large">Start My Search for $50</button>
+                    
+                    <div class="payment-guarantee">
+                        <p>🔒 Secure payment • 💰 Money-back guarantee • ⚡ Instant activation</p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Success Step -->
+            <div class="modal-step" id="successStep" style="display: none;">
+                <div class="success-content">
+                    <div class="success-icon">🎉</div>
+                    <h2>Welcome to CarHaggling!</h2>
+                    <p>Your AI co-pilot is now scanning the market for your perfect car.</p>
+                    
+                    <div class="next-steps">
                         <h4>What happens next?</h4>
+                        <div class="step-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🔍</div>
+                                <div class="timeline-content">
+                                    <h5>Market Scan (Next 24 hours)</h5>
+                                    <p>Our AI will analyze thousands of listings in your area</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🤖</div>
+                                <div class="timeline-content">
+                                    <h5>AI Negotiation (24-48 hours)</h5>
+                                    <p>Your AI co-pilot will negotiate prices on your behalf</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">📧</div>
+                                <div class="timeline-content">
+                                    <h5>Results Delivery (48-72 hours)</h5>
+                                    <p>You'll receive your curated shortlist with pre-negotiated prices</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="success-benefits">
+                        <h4>You're all set for success!</h4>
                         <ul>
-                            <li>✅ Priority access to our AI co-pilot</li>
-                            <li>✅ Exclusive early adopter pricing</li>
-                            <li>✅ Dedicated customer success manager</li>
-                            <li>✅ 24/7 support during your car search</li>
+                            <li>✅ AI-powered market analysis</li>
+                            <li>✅ Expert price negotiation</li>
+                            <li>✅ VIN checks and history reports</li>
+                            <li>✅ 24/7 customer support</li>
                         </ul>
                     </div>
                     
-                    <button class="cta-button primary glow-effect" onclick="closeModal()">Sounds Good, Notify Me!</button>
+                    <button class="cta-button primary glow-effect" onclick="closeModal()">Got it! Close</button>
                 </div>
             </div>
         </div>

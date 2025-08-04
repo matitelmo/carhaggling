@@ -3,6 +3,45 @@ let selectedCarType = '';
 let currentStep = 1;
 let userName = '';
 
+// Car make and model data
+const carModels = {
+    'Toyota': ['Camry', 'Corolla', 'RAV4', 'Highlander', 'Tacoma', 'Tundra', 'Prius', 'Avalon', 'Sienna', '4Runner', 'Sequoia', 'Land Cruiser'],
+    'Honda': ['Civic', 'Accord', 'CR-V', 'Pilot', 'Odyssey', 'HR-V', 'Passport', 'Ridgeline', 'Insight', 'Clarity'],
+    'Ford': ['F-150', 'F-250', 'F-350', 'Mustang', 'Explorer', 'Escape', 'Edge', 'Expedition', 'Ranger', 'Bronco', 'Maverick', 'Transit'],
+    'Chevrolet': ['Silverado', 'Colorado', 'Camaro', 'Corvette', 'Equinox', 'Traverse', 'Tahoe', 'Suburban', 'Malibu', 'Impala', 'Spark', 'Bolt'],
+    'Nissan': ['Altima', 'Sentra', 'Maxima', 'Rogue', 'Murano', 'Pathfinder', 'Armada', 'Frontier', 'Titan', 'Leaf', 'Versa'],
+    'Hyundai': ['Elantra', 'Sonata', 'Tucson', 'Santa Fe', 'Palisade', 'Venue', 'Kona', 'Accent', 'Veloster', 'Ioniq'],
+    'Kia': ['Forte', 'K5', 'Sorento', 'Telluride', 'Sportage', 'Soul', 'Rio', 'Stinger', 'EV6', 'Niro'],
+    'Mazda': ['Mazda3', 'Mazda6', 'CX-30', 'CX-5', 'CX-9', 'CX-50', 'MX-30', 'MX-5 Miata'],
+    'Subaru': ['Impreza', 'Legacy', 'Outback', 'Forester', 'Crosstrek', 'Ascent', 'BRZ', 'WRX'],
+    'Volkswagen': ['Golf', 'Jetta', 'Passat', 'Tiguan', 'Atlas', 'ID.4', 'Taos', 'Arteon'],
+    'BMW': ['1 Series', '2 Series', '3 Series', '4 Series', '5 Series', '6 Series', '7 Series', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'Z4', 'i3', 'i4', 'i7', 'iX'],
+    'Mercedes-Benz': ['A-Class', 'C-Class', 'E-Class', 'S-Class', 'CLA', 'CLS', 'GLA', 'GLB', 'GLC', 'GLE', 'GLS', 'G-Class', 'AMG GT', 'EQS', 'EQE'],
+    'Audi': ['A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'Q3', 'Q4', 'Q5', 'Q7', 'Q8', 'TT', 'R8', 'e-tron', 'e-tron GT'],
+    'Lexus': ['ES', 'IS', 'LS', 'LC', 'RC', 'UX', 'NX', 'RX', 'GX', 'LX', 'LFA'],
+    'Tesla': ['Model S', 'Model 3', 'Model X', 'Model Y', 'Cybertruck', 'Roadster']
+};
+
+// Funnel state management
+let funnelData = {
+    carMake: '',
+    carModel: '',
+    carYear: '',
+    carMileage: '',
+    zipCode: '',
+    distance: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    cardNumber: '',
+    expiryDate: '',
+    cvv: '',
+    cardName: ''
+};
+
+let currentFunnelStep = 1;
+
 // Car type selection functionality
 function selectCarType(type) {
     selectedCarType = type;
@@ -28,23 +67,22 @@ function selectCarType(type) {
     if (heroEmail && heroEmail.value) {
         document.getElementById('email').value = heroEmail.value;
     }
+    
+    // Track car type selection
+    trackEvent('car_type_selected', { car_type: type });
 }
 
-// Modal management
+// Enhanced modal open with funnel reset
 function openModal() {
     const modalOverlay = document.getElementById('modalOverlay');
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     
-    // Pre-fill email if available
-    const heroEmail = document.getElementById('heroEmail');
-    const modalEmail = document.getElementById('email');
-    if (heroEmail && heroEmail.value && modalEmail) {
-        modalEmail.value = heroEmail.value;
-    }
+    // Reset funnel
+    resetFunnel();
     
-    // Reset to step 1
-    showStep(1);
+    // Track modal open
+    trackEvent('modal_opened', { source: 'hero_cta' });
 }
 
 function closeModal() {
@@ -53,22 +91,368 @@ function closeModal() {
     document.body.style.overflow = 'auto';
     
     // Reset form
-    document.getElementById('welcomeForm').reset();
-    currentStep = 1;
+    document.getElementById('carDetailsForm').reset();
+    document.getElementById('locationForm').reset();
+    document.getElementById('distanceForm').reset();
+    document.getElementById('contactForm').reset();
+    document.getElementById('paymentForm').reset();
+    currentFunnelStep = 1;
 }
 
-function showStep(stepNum) {
+function resetFunnel() {
+    currentFunnelStep = 1;
+    funnelData = {
+        carMake: '',
+        carModel: '',
+        carYear: '',
+        carMileage: '',
+        zipCode: '',
+        distance: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        cardNumber: '',
+        expiryDate: '',
+        cvv: '',
+        cardName: ''
+    };
+    
+    // Reset all forms
+    document.getElementById('carDetailsForm').reset();
+    document.getElementById('locationForm').reset();
+    document.getElementById('distanceForm').reset();
+    document.getElementById('contactForm').reset();
+    document.getElementById('paymentForm').reset();
+    
+    // Reset car model dropdown
+    const carModelSelect = document.getElementById('carModel');
+    if (carModelSelect) {
+        carModelSelect.innerHTML = '<option value="">Select Model</option>';
+    }
+    
+    // Show first step
+    showFunnelStep(1);
+}
+
+function showFunnelStep(step) {
+    // Hide all steps
+    document.querySelectorAll('.modal-step').forEach(stepEl => {
+        stepEl.style.display = 'none';
+    });
+    
+    // Show target step
+    const targetStep = document.getElementById(`step${step}`);
+    if (targetStep) {
+        targetStep.style.display = 'block';
+        currentFunnelStep = step;
+        updateProgressBar(step);
+    }
+}
+
+function updateProgressBar(step) {
+    const progressFill = document.getElementById('progressFill');
+    const progressSteps = document.querySelectorAll('.progress-step');
+    
+    // Update progress bar
+    const progress = ((step - 1) / 3) * 100;
+    progressFill.style.width = `${progress}%`;
+    
+    // Update step indicators
+    progressSteps.forEach((stepEl, index) => {
+        if (index + 1 <= step) {
+            stepEl.classList.add('active');
+        } else {
+            stepEl.classList.remove('active');
+        }
+    });
+}
+
+// Update car models based on selected make
+function updateCarModels() {
+    const carMake = document.getElementById('carMake').value;
+    const carModelSelect = document.getElementById('carModel');
+    
+    // Clear existing options
+    carModelSelect.innerHTML = '<option value="">Select Model</option>';
+    
+    if (carMake && carMake !== 'other' && carModels[carMake]) {
+        carModels[carMake].forEach(model => {
+            const option = document.createElement('option');
+            option.value = model;
+            option.textContent = model;
+            carModelSelect.appendChild(option);
+        });
+    }
+}
+
+// Step 1: Car Details
+function handleCarDetailsSubmit(event) {
+    event.preventDefault();
+    
+    // Collect form data
+    funnelData.carMake = document.getElementById('carMake').value;
+    funnelData.carModel = document.getElementById('carModel').value;
+    funnelData.carYear = document.getElementById('carYear').value;
+    funnelData.carMileage = document.getElementById('carMileage').value;
+    
+    // Validation
+    if (!funnelData.carMake || !funnelData.carModel || !funnelData.carYear || !funnelData.carMileage) {
+        showError('Please fill in all car details.');
+        return;
+    }
+    
+    // Track step completion
+    trackEvent('funnel_step_completed', { 
+        step: 1, 
+        car_make: funnelData.carMake,
+        car_model: funnelData.carModel,
+        car_year: funnelData.carYear,
+        car_mileage: funnelData.carMileage
+    });
+    
+    // Move to next step
+    showFunnelStep(2);
+}
+
+// Step 2: Location & Distance
+function handleLocationDistanceSubmit(event) {
+    event.preventDefault();
+    
+    funnelData.zipCode = document.getElementById('zipCode').value;
+    
+    // Validation
+    if (!funnelData.zipCode || funnelData.zipCode.length !== 5) {
+        showError('Please enter a valid 5-digit ZIP code.');
+        return;
+    }
+    
+    const selectedOption = document.querySelector('.distance-option.selected');
+    if (!selectedOption) {
+        showError('Please select a search distance.');
+        return;
+    }
+    
+    const distance = selectedOption.dataset.distance;
+    funnelData.distance = distance;
+    
+    // Update displays
+    document.getElementById('zipDisplay').textContent = funnelData.zipCode;
+    document.getElementById('distanceDisplay').textContent = `${funnelData.distance} miles`;
+    
+    // Track step completion
+    trackEvent('funnel_step_completed', { 
+        step: 2, 
+        zip_code: funnelData.zipCode,
+        distance: funnelData.distance
+    });
+    
+    // Start AI search simulation
+    showFunnelStep('2-5');
+    startAISearch();
+}
+
+
+
+// AI Search Simulation
+function startAISearch() {
+    const searchProgressFill = document.getElementById('searchProgressFill');
+    const searchProgressText = document.getElementById('searchProgressText');
+    const activityLog = document.getElementById('activityLog');
+    
+    // Clear previous activity
+    activityLog.innerHTML = '';
+    
+    // Search activities with realistic timing - only what happens BEFORE payment
+    const searchActivities = [
+        { time: 0, text: 'Initializing search parameters...', progress: 15 },
+        { time: 1000, text: 'Scanning local inventory databases...', progress: 35 },
+        { time: 2000, text: 'Analyzing market pricing data...', progress: 55 },
+        { time: 3000, text: 'Identifying potential matches...', progress: 75 },
+        { time: 4000, text: 'Compiling preliminary results...', progress: 100 }
+    ];
+    
+    // Add activities to log
+    searchActivities.forEach((activity, index) => {
+        setTimeout(() => {
+            // Update progress
+            searchProgressFill.style.width = `${activity.progress}%`;
+            searchProgressText.textContent = activity.text;
+            
+            // Add activity to log
+            const activityItem = document.createElement('div');
+            activityItem.className = 'activity-item';
+            activityItem.innerHTML = `
+                <div class="activity-icon">✓</div>
+                <div class="activity-content">
+                    <div class="activity-text">${activity.text}</div>
+                    <div class="activity-time">${new Date().toLocaleTimeString()}</div>
+                </div>
+            `;
+            activityLog.appendChild(activityItem);
+            
+            // Scroll to bottom
+            activityLog.scrollTop = activityLog.scrollHeight;
+            
+            // If this is the last activity, show success after a delay
+            if (index === searchActivities.length - 1) {
+                setTimeout(() => {
+                    showSearchSuccess();
+                }, 1000);
+            }
+        }, activity.time);
+    });
+}
+
+
+
+function showSearchSuccess() {
+    // Generate random number of cars found (8-25) - more realistic for pre-payment
+    const carsFound = Math.floor(Math.random() * 18) + 8;
+    
+    // Update car count
+    document.getElementById('carsFound').textContent = carsFound;
+    
+    // Show success step
+    showFunnelStep('2-5-success');
+    
+    // Track search completion
+    trackEvent('ai_search_completed', {
+        cars_found: carsFound,
+        distance: funnelData.distance,
+        zip_code: funnelData.zipCode
+    });
+}
+
+// Step 3: Contact Information
+function handleContactSubmit(event) {
+    event.preventDefault();
+    
+    funnelData.firstName = document.getElementById('firstName').value;
+    funnelData.lastName = document.getElementById('lastName').value;
+    funnelData.email = document.getElementById('email').value;
+    funnelData.phone = document.getElementById('phone').value;
+    funnelData.priceTarget = document.getElementById('priceTarget').value;
+    
+    // Validation
+    if (!funnelData.firstName || !funnelData.lastName || !funnelData.email || !funnelData.phone) {
+        showError('Please fill in all contact information.');
+        return;
+    }
+    
+    if (!validateEmail(funnelData.email)) {
+        showError('Please enter a valid email address.');
+        return;
+    }
+    
+    // Track step completion
+    trackEvent('funnel_step_completed', { 
+        step: 3, 
+        has_phone: funnelData.phone.length > 0,
+        price_target: funnelData.priceTarget
+    });
+    
+    // Update summary
+    updateSummary();
+    
+    showFunnelStep(4);
+}
+
+// Step 4: Payment
+function handlePaymentSubmit(event) {
+    event.preventDefault();
+    
+    funnelData.cardNumber = document.getElementById('cardNumber').value;
+    funnelData.expiryDate = document.getElementById('expiryDate').value;
+    funnelData.cvv = document.getElementById('cvv').value;
+    funnelData.cardName = document.getElementById('cardName').value;
+    
+    // Validation
+    if (!funnelData.cardNumber || !funnelData.expiryDate || !funnelData.cvv || !funnelData.cardName) {
+        showError('Please fill in all payment information.');
+        return;
+    }
+    
+    // Basic card validation
+    if (funnelData.cardNumber.replace(/\s/g, '').length < 13) {
+        showError('Please enter a valid card number.');
+        return;
+    }
+    
+    // Track payment attempt
+    trackEvent('payment_attempted', { 
+        step: 4,
+        total_steps: 4
+    });
+    
+    // Simulate payment processing
+    showPaymentProcessing();
+    
+    // In real implementation, this would process the payment
+    setTimeout(() => {
+        showSuccessStep();
+    }, 2000);
+}
+
+function updateSummary() {
+    document.getElementById('summaryCar').textContent = 
+        `${funnelData.carYear} ${funnelData.carMake} ${funnelData.carModel} (${funnelData.carMileage} miles max)`;
+    document.getElementById('summaryLocation').textContent = funnelData.zipCode;
+    document.getElementById('summaryDistance').textContent = `${funnelData.distance} miles`;
+    document.getElementById('summaryContact').textContent = 
+        `${funnelData.firstName} ${funnelData.lastName} (${funnelData.email})`;
+}
+
+function showPaymentProcessing() {
+    const submitButton = document.querySelector('#paymentForm .cta-button');
+    const originalText = submitButton.textContent;
+    
+    submitButton.textContent = 'Processing Payment...';
+    submitButton.disabled = true;
+    
+    // Add loading animation
+    submitButton.classList.add('processing');
+}
+
+function showSuccessStep() {
     // Hide all steps
     document.querySelectorAll('.modal-step').forEach(step => {
         step.style.display = 'none';
     });
     
-    // Show target step
-    const targetStep = document.getElementById(`step${stepNum}`);
-    if (targetStep) {
-        targetStep.style.display = 'block';
-        currentStep = stepNum;
-    }
+    // Show success step
+    document.getElementById('successStep').style.display = 'block';
+    
+    // Track successful completion
+    trackEvent('funnel_completed', {
+        car_make: funnelData.carMake,
+        car_model: funnelData.carModel,
+        car_year: funnelData.carYear,
+        zip_code: funnelData.zipCode,
+        distance: funnelData.distance
+    });
+}
+
+function showError(message) {
+    // Create error notification
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-notification';
+    errorDiv.innerHTML = `
+        <div class="error-icon">⚠️</div>
+        <div class="error-message">${message}</div>
+        <button class="error-close" onclick="this.parentElement.remove()">&times;</button>
+    `;
+    
+    // Add to current step
+    const currentStepEl = document.getElementById(`step${currentFunnelStep}`);
+    currentStepEl.appendChild(errorDiv);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        if (errorDiv.parentElement) {
+            errorDiv.remove();
+        }
+    }, 5000);
 }
 
 // Welcome form submission
@@ -87,7 +471,7 @@ function handleWelcomeSubmit(event) {
     userName = fullName.split(' ')[0]; // Get first name
     
     // Show step 2 and start animation
-    showStep(2);
+    showFunnelStep(2);
     startLoadingAnimation();
 }
 
@@ -182,7 +566,7 @@ function startLoadingAnimation() {
                 
                 // Show step 3 after a brief delay
                 setTimeout(() => {
-                    showStep(3);
+                    showFunnelStep(3);
                 }, 2000);
             }, 1000);
         }
@@ -359,7 +743,7 @@ function openModal() {
     }
     
     // Reset to step 1
-    showStep(1);
+    showFunnelStep(1);
     
     // Track modal open
     trackEvent('modal_opened', { source: 'hero_cta' });
@@ -387,7 +771,7 @@ function handleWelcomeSubmit(event) {
     });
     
     // Show step 2 and start animation
-    showStep(2);
+    showFunnelStep(2);
     startLoadingAnimation();
 }
 
@@ -515,7 +899,7 @@ function handleWelcomeSubmit(event) {
     });
     
     // Show step 2 and start animation
-    showStep(2);
+    showFunnelStep(2);
     startLoadingAnimation();
 }
 
@@ -589,3 +973,118 @@ function updateTickerData() {
 
 // Update ticker data periodically
 setInterval(updateTickerData, 30000); // Update every 30 seconds 
+
+// Distance selection
+document.addEventListener('DOMContentLoaded', function() {
+                   // Distance option selection
+               document.querySelectorAll('.distance-option').forEach(option => {
+                   option.addEventListener('click', function() {
+                       // Remove selected class from all options
+                       document.querySelectorAll('.distance-option').forEach(opt => {
+                           opt.classList.remove('selected');
+                       });
+                       
+                       // Add selected class to clicked option
+                       this.classList.add('selected');
+                   });
+               });
+    
+    // Card number formatting
+    document.getElementById('cardNumber').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\s/g, '');
+        value = value.replace(/\D/g, '');
+        value = value.replace(/(\d{4})/g, '$1 ').trim();
+        e.target.value = value;
+    });
+    
+    // Expiry date formatting
+    document.getElementById('expiryDate').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 2) {
+            value = value.substring(0, 2) + '/' + value.substring(2, 4);
+        }
+        e.target.value = value;
+    });
+    
+                   // CVV formatting
+               document.getElementById('cvv').addEventListener('input', function(e) {
+                   e.target.value = e.target.value.replace(/\D/g, '');
+               });
+               
+               // Price slider functionality
+               const priceSlider = document.getElementById('priceTarget');
+               const priceValue = document.querySelector('.price-value');
+               
+               if (priceSlider && priceValue) {
+                   priceSlider.addEventListener('input', function(e) {
+                       const value = parseInt(e.target.value);
+                       priceValue.textContent = `$${value.toLocaleString()}`;
+                   });
+               }
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Close modal when clicking outside
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+    
+    // Pre-fill email from hero to modal
+    const heroEmail = document.getElementById('heroEmail');
+    const modalEmail = document.getElementById('email');
+    
+    if (heroEmail && modalEmail) {
+        heroEmail.addEventListener('input', function() {
+            modalEmail.value = this.value;
+        });
+    }
+    
+    // Auto-advance car type selection if user clicks email input first
+    const emailInput = document.getElementById('heroEmail');
+    if (emailInput) {
+        emailInput.addEventListener('focus', function() {
+            if (!selectedCarType) {
+                // Auto-select first car type
+                selectCarType('SUV');
+            }
+        });
+    }
+    
+    // Add FAQ click handlers
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', function() {
+            toggleFAQ(this);
+        });
+    });
+    
+    // Add keyboard support for FAQ
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleFAQ(this);
+            }
+        });
+    });
+}); 
