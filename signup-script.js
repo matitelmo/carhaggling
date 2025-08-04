@@ -18,6 +18,62 @@ let funnelData = {
     cardName: ''
 };
 
+// Function to get URL parameters
+function getUrlParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+// Function to pre-populate form from URL parameters
+function prePopulateForm() {
+    const make = getUrlParameter('make');
+    const model = getUrlParameter('model');
+    const year = getUrlParameter('year');
+    const mileage = getUrlParameter('mileage');
+    
+    if (make) {
+        const makeSelect = document.getElementById('carMake');
+        if (makeSelect) {
+            makeSelect.value = make;
+            funnelData.carMake = make;
+            console.log(`Pre-populated make: ${make}`);
+            
+            // Update car models if make is set
+            updateCarModels();
+            
+            // Set model after a short delay to allow models to load
+            if (model) {
+                setTimeout(() => {
+                    const modelSelect = document.getElementById('carModel');
+                    if (modelSelect) {
+                        modelSelect.value = model;
+                        funnelData.carModel = model;
+                        console.log(`Pre-populated model: ${model}`);
+                    }
+                }, 100);
+            }
+        }
+    }
+    
+    if (year) {
+        const yearSelect = document.getElementById('carYear');
+        if (yearSelect) {
+            yearSelect.value = year;
+            funnelData.carYear = year;
+            console.log(`Pre-populated year: ${year}`);
+        }
+    }
+    
+    if (mileage) {
+        const mileageSelect = document.getElementById('carMileage');
+        if (mileageSelect) {
+            mileageSelect.value = mileage;
+            funnelData.carMileage = mileage;
+            console.log(`Pre-populated mileage: ${mileage}`);
+        }
+    }
+}
+
 // Car make and model data
 const carModels = {
     'Toyota': ['Camry', 'Corolla', 'RAV4', 'Highlander', 'Tacoma', 'Tundra', 'Prius', 'Avalon', 'Sienna', '4Runner', 'Sequoia', 'Land Cruiser'],
@@ -551,6 +607,22 @@ function formatCVV(input) {
 // Initialize page
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM Content Loaded - Initializing signup page');
+    
+    // Pre-populate form from URL parameters
+    prePopulateForm();
+    
+    // Check if we should skip to step 2 (if all car details are provided)
+    const make = getUrlParameter('make');
+    const model = getUrlParameter('model');
+    const year = getUrlParameter('year');
+    const mileage = getUrlParameter('mileage');
+    
+    if (make && model && year && mileage) {
+        // Skip to step 2 since all car details are provided
+        setTimeout(() => {
+            goToStep(2);
+        }, 200); // Small delay to ensure pre-population is complete
+    }
     
     // Set up form event listeners
     const carDetailsForm = document.getElementById('carDetailsForm');

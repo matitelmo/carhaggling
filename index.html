@@ -40,219 +40,104 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">Buy Your Next Car at Light Speed</h1>
-                    <p class="hero-subtitle">CarHaggling's AI co-pilot scans the entire market, vets every vehicle, and negotiates the price for you. Stop wasting weekends. Start your search in 60 seconds.</p>
+                    <h1 class="hero-title">Find Your Perfect Car</h1>
+                    <p class="hero-subtitle">Our AI co-pilot scans the entire market, vets every vehicle, and negotiates the price for you. Stop wasting weekends. Start your search in 60 seconds.</p>
                     
-                    <div class="hero-cta">
-                        <div class="trust-banner">
-                            <div class="trust-icon">🔒</div>
-                            <div class="trust-content">
-                                <h4>Join thousands improving their car buying experience</h4>
-                                <p>All information you share is secure and confidential.</p>
+                    <!-- Complete Search Form -->
+                    <div class="search-form-container">
+                        <form class="search-form" id="heroSearchForm">
+                            <div class="search-row">
+                                <div class="search-field">
+                                    <label for="carMake">Car Make</label>
+                                    <select id="carMake" required onchange="updateCarModels()">
+                                        <option value="">Select Make</option>
+                                        <option value="Toyota">Toyota</option>
+                                        <option value="Honda">Honda</option>
+                                        <option value="Ford">Ford</option>
+                                        <option value="Chevrolet">Chevrolet</option>
+                                        <option value="Nissan">Nissan</option>
+                                        <option value="Hyundai">Hyundai</option>
+                                        <option value="Kia">Kia</option>
+                                        <option value="Mazda">Mazda</option>
+                                        <option value="Subaru">Subaru</option>
+                                        <option value="Volkswagen">Volkswagen</option>
+                                        <option value="BMW">BMW</option>
+                                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                        <option value="Audi">Audi</option>
+                                        <option value="Lexus">Lexus</option>
+                                        <option value="Tesla">Tesla</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="search-field">
+                                    <label for="carModel">Car Model</label>
+                                    <select id="carModel" required>
+                                        <option value="">Select Model</option>
+                                    </select>
+                                </div>
                             </div>
+                            <div class="search-row">
+                                <div class="search-field">
+                                    <label for="carYear">Year Range</label>
+                                    <select id="carYear" required>
+                                        <option value="">Select Year</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2015">2015</option>
+                                    </select>
+                                </div>
+                                <div class="search-field">
+                                    <label for="carMileage">Max Mileage</label>
+                                    <select id="carMileage" required>
+                                        <option value="">Select Mileage</option>
+                                        <option value="10000">Under 10,000</option>
+                                        <option value="25000">Under 25,000</option>
+                                        <option value="50000">Under 50,000</option>
+                                        <option value="75000">Under 75,000</option>
+                                        <option value="100000">Under 100,000</option>
+                                        <option value="150000">Under 150,000</option>
+                                        <option value="200000">Any Mileage</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="search-button">
+                                <span class="search-button-text">Start Your Search</span>
+                                <span class="search-button-icon">→</span>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="hero-benefits">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🔒</span>
+                            <span class="benefit-text">No commitment required</span>
                         </div>
-                        
-                        <div class="car-type-selector">
-                            <p class="car-type-label">What type of car are you looking for?</p>
-                            <div class="car-icons">
-                                <button class="car-icon glow-effect" data-type="SUV" onclick="selectCarType('SUV')">
-                                    <span class="car-icon-text">SUV</span>
-                                </button>
-                                <button class="car-icon glow-effect" data-type="Sedan" onclick="selectCarType('Sedan')">
-                                    <span class="car-icon-text">Sedan</span>
-                                </button>
-                                <button class="car-icon glow-effect" data-type="Truck" onclick="selectCarType('Truck')">
-                                    <span class="car-icon-text">Truck</span>
-                                </button>
-                                <button class="car-icon glow-effect" data-type="Coupe" onclick="selectCarType('Coupe')">
-                                    <span class="car-icon-text">Coupe</span>
-                                </button>
-                                <button class="car-icon glow-effect" data-type="EV" onclick="selectCarType('EV')">
-                                    <span class="car-icon-text">EV</span>
-                                </button>
-                            </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">⚡</span>
+                            <span class="benefit-text">Takes only 2 minutes</span>
                         </div>
-                        
-                        <div class="email-form" id="emailForm" style="display: none;">
-                            <input type="email" id="heroEmail" placeholder="Enter your email address" class="email-input">
-                            <a href="signup.html" class="cta-button primary glow-effect" id="heroCtaButton">Start Search for $50 →</a>
-                        </div>
-                        
-                        <div class="social-proof">
-                            <div class="proof-item">
-                                <span class="proof-icon">✅</span>
-                                <span class="proof-text">No commitment required</span>
-                            </div>
-                            <div class="proof-item">
-                                <span class="proof-icon">⚡</span>
-                                <span class="proof-text">Takes only 2 minutes</span>
-                            </div>
-                            <div class="proof-item">
-                                <span class="proof-icon">💰</span>
-                                <span class="proof-text">Save up to $3,500</span>
-                            </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">💰</span>
+                            <span class="benefit-text">Save up to $3,500</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="hero-visual">
-                    <div class="ai-hologram-container">
-                        <!-- AI Processing Matrix -->
-                        <div class="ai-matrix">
-                            <div class="matrix-grid">
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                                <div class="matrix-cell active"></div>
-                            </div>
-                        </div>
-                        
-                        <!-- AI Status Dashboard -->
-                        <div class="ai-dashboard">
-                            <div class="dashboard-panel">
-                                <div class="panel-header">
-                                    <div class="status-indicator online"></div>
-                                    <span class="panel-title">AI Co-Pilot</span>
-                                    <div class="signal-strength">
-                                        <div class="signal-bar"></div>
-                                        <div class="signal-bar"></div>
-                                        <div class="signal-bar"></div>
-                                        <div class="signal-bar"></div>
-                                    </div>
-                                </div>
-                                <div class="panel-content">
-                                    <div class="metric-row">
-                                        <span class="metric-label">Processing</span>
-                                        <span class="metric-value">2,847 listings</span>
-                                    </div>
-                                    <div class="metric-row">
-                                        <span class="metric-label">Accuracy</span>
-                                        <span class="metric-value">99.2%</span>
-                                    </div>
-                                    <div class="metric-row">
-                                        <span class="metric-label">Optimization</span>
-                                        <span class="metric-value">Active</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="dashboard-panel">
-                                <div class="panel-header">
-                                    <div class="status-indicator processing"></div>
-                                    <span class="panel-title">Market Analysis</span>
-                                </div>
-                                <div class="panel-content">
-                                    <div class="analysis-chart">
-                                        <div class="chart-bar" style="height: 75%"></div>
-                                        <div class="chart-bar" style="height: 90%"></div>
-                                        <div class="chart-bar" style="height: 60%"></div>
-                                        <div class="chart-bar" style="height: 85%"></div>
-                                        <div class="chart-bar" style="height: 70%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Extended AI Metrics -->
-                        <div class="ai-metrics-grid">
-                            <div class="metric-panel">
-                                <div class="metric-header">
-                                    <div class="metric-icon">💬</div>
-                                    <span class="metric-title">Active Conversations</span>
-                                </div>
-                                <div class="metric-value-large">12</div>
-                                <div class="metric-subtitle">with dealers</div>
-                                <div class="metric-progress">
-                                    <div class="progress-fill" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="metric-panel">
-                                <div class="metric-header">
-                                    <div class="metric-icon">📈</div>
-                                    <span class="metric-title">Price Trend</span>
-                                </div>
-                                <div class="metric-value-large trend-up">↓ 3.2%</div>
-                                <div class="metric-subtitle">this week</div>
-                                <div class="trend-indicator">
-                                    <div class="trend-line"></div>
-                                    <div class="trend-line"></div>
-                                    <div class="trend-line"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="metric-panel">
-                                <div class="metric-header">
-                                    <div class="metric-icon">🔍</div>
-                                    <span class="metric-title">Inspections</span>
-                                </div>
-                                <div class="metric-value-large">4</div>
-                                <div class="metric-subtitle">scheduled</div>
-                                <div class="inspection-status">
-                                    <div class="status-dot completed"></div>
-                                    <div class="status-dot completed"></div>
-                                    <div class="status-dot pending"></div>
-                                    <div class="status-dot pending"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="metric-panel">
-                                <div class="metric-header">
-                                    <div class="metric-icon">⭐</div>
-                                    <span class="metric-title">Feedback</span>
-                                </div>
-                                <div class="metric-value-large">4.9/5</div>
-                                <div class="metric-subtitle">user rating</div>
-                                <div class="rating-stars">
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                    <span class="star filled">★</span>
-                                </div>
-                            </div>
-                            
-                            <div class="metric-panel">
-                                <div class="metric-header">
-                                    <div class="metric-icon">🎯</div>
-                                    <span class="metric-title">Match Score</span>
-                                </div>
-                                <div class="metric-value-large">94%</div>
-                                <div class="metric-subtitle">best match</div>
-                                <div class="match-indicator">
-                                    <div class="match-circle">
-                                        <svg width="40" height="40" viewBox="0 0 40 40">
-                                            <circle cx="20" cy="20" r="18" stroke="#e9ecef" stroke-width="3" fill="none"/>
-                                            <circle cx="20" cy="20" r="18" stroke="#6A5AF9" stroke-width="3" fill="none" 
-                                                    stroke-dasharray="113" stroke-dashoffset="7" class="match-progress"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="metric-panel">
-                                <div class="metric-header">
-                                    <div class="metric-icon">⚡</div>
-                                    <span class="metric-title">Response Time</span>
-                                </div>
-                                <div class="metric-value-large">2.3s</div>
-                                <div class="metric-subtitle">average</div>
-                                <div class="response-indicator">
-                                    <div class="response-bar fast"></div>
-                                    <div class="response-bar fast"></div>
-                                    <div class="response-bar medium"></div>
+                    <div class="hero-image-container">
+                        <div class="hero-image">
+                            <img src="Honda CRV.webp" alt="Car Search" class="main-car-image">
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h3>AI-Powered Search</h3>
+                                    <p>Find your perfect car in minutes</p>
                                 </div>
                             </div>
                         </div>

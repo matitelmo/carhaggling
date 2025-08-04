@@ -42,34 +42,17 @@ let funnelData = {
 
 let currentFunnelStep = 1;
 
-// Car type selection functionality
-function selectCarType(type) {
-    selectedCarType = type;
+// Hero search form functionality
+function handleHeroSearch(formData) {
+    // Store search data for use in signup flow
+    localStorage.setItem('searchData', JSON.stringify(formData));
     
-    // Remove active class from all car icons
-    document.querySelectorAll('.car-icon').forEach(icon => {
-        icon.classList.remove('active');
-    });
+    // Track search event
+    trackEvent('hero_search_submitted', formData);
     
-    // Add active class to selected icon
-    event.target.closest('.car-icon').classList.add('active');
-    
-    // Update button text
-    const heroCtaButton = document.getElementById('heroCtaButton');
-    heroCtaButton.textContent = `Find My Perfect ${type} →`;
-    
-    // Show email form with animation
-    const emailForm = document.getElementById('emailForm');
-    emailForm.style.display = 'flex';
-    
-    // Pre-fill email if available from hero
-    const heroEmail = document.getElementById('heroEmail');
-    if (heroEmail && heroEmail.value) {
-        document.getElementById('email').value = heroEmail.value;
-    }
-    
-    // Track car type selection
-    trackEvent('car_type_selected', { car_type: type });
+    // Redirect to signup page with mileage parameter
+    const mileage = formData.maxMileage;
+    window.location.href = `signup.html?mileage=${mileage}`;
 }
 
 // Enhanced modal open with funnel reset
@@ -1089,12 +1072,26 @@ function animateNumber(element, start, end, originalText) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         
-        const current = Math.floor(start + (end - start) * progress);
-        element.textContent = originalText.replace(/\d+/, current.toLocaleString());
+        // Use easing function for smoother animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        
+        const current = Math.floor(start + (end - start) * easeOutQuart);
+        
+        // Preserve the original format (currency, units, etc.)
+        if (originalText.includes('$')) {
+            element.textContent = '$' + current.toLocaleString();
+        } else if (originalText.includes('%')) {
+            element.textContent = current + '%';
+        } else if (originalText.includes('hrs')) {
+            element.textContent = current + 'hrs';
+        } else {
+            element.textContent = current.toLocaleString();
+        }
         
         if (progress < 1) {
             requestAnimationFrame(updateNumber);
         } else {
+            // Ensure we end at the exact final value
             element.textContent = originalText;
         }
     }
@@ -1105,6 +1102,44 @@ function animateNumber(element, start, end, originalText) {
 // Initialize stats animation when page loads
 document.addEventListener('DOMContentLoaded', function() {
     animateStats();
+    
+    // Initialize hero search form
+    const heroSearchForm = document.getElementById('heroSearchForm');
+    if (heroSearchForm) {
+        heroSearchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const carMake = document.getElementById('carMake').value;
+            const carModel = document.getElementById('carModel').value;
+            const carYear = document.getElementById('carYear').value;
+            const carMileage = document.getElementById('carMileage').value;
+            
+            if (!carMake || !carModel || !carYear || !carMileage) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Store search data and redirect to signup with all parameters
+            localStorage.setItem('searchData', JSON.stringify({
+                carMake,
+                carModel,
+                carYear,
+                carMileage
+            }));
+            
+            const params = new URLSearchParams({
+                make: carMake,
+                model: carModel,
+                year: carYear,
+                mileage: carMileage
+            });
+            
+            window.location.href = `signup.html?${params.toString()}`;
+        });
+    }
+    
+    // Initialize car models dropdown
+    updateCarModels();
 });
 
 // Enhanced social proof ticker with more realistic data
