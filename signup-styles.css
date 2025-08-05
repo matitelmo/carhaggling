@@ -22,6 +22,12 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Responsive breakpoints */
+    --mobile: 480px;
+    --tablet: 768px;
+    --desktop: 1024px;
+    --large-desktop: 1200px;
 }
 
 /* Reset and Base Styles */
@@ -40,6 +46,10 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-size: 16px; /* Base font size for better mobile readability */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 .container {
@@ -200,7 +210,7 @@ body {
 }
 
 .step-header h1 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 2.5rem);
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 1rem;
@@ -211,7 +221,7 @@ body {
 }
 
 .step-header h2 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: 1rem;
@@ -219,7 +229,7 @@ body {
 }
 
 .step-subtitle {
-    font-size: 1.125rem;
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
     color: var(--text-light);
     max-width: 600px;
     margin: 0 auto;
@@ -315,16 +325,17 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2rem;
+    padding: clamp(0.875rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2rem);
     border: none;
     border-radius: var(--border-radius);
     font-family: var(--font-family);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
     text-decoration: none;
     cursor: pointer;
     transition: var(--transition);
     min-height: 48px;
+    min-width: 44px; /* Minimum touch target size for accessibility */
 }
 
 .cta-button.primary {
@@ -350,8 +361,8 @@ body {
 }
 
 .cta-button.large {
-    padding: 1.25rem 3rem;
-    font-size: 1.125rem;
+    padding: clamp(1rem, 4vw, 1.25rem) clamp(2rem, 6vw, 3rem);
+    font-size: clamp(1rem, 3vw, 1.125rem);
     width: 100%;
     margin-top: 1rem;
 }

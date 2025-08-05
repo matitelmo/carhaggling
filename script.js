@@ -694,31 +694,24 @@ function toggleFAQ(element) {
     
     console.log('FAQ item found:', faqItem);
     console.log('Answer element found:', answer);
-    console.log('Answer is active:', answer.classList.contains('active'));
+    console.log('Answer has hidden class:', answer.classList.contains('hidden'));
     
-    // Simple display toggle approach
-    if (answer.style.display === 'block') {
-        // Close the FAQ
-        console.log('Closing FAQ...');
-        answer.style.display = 'none';
-        answer.classList.remove('active');
-        element.classList.remove('active');
-        element.setAttribute('aria-expanded', 'false');
-        answer.setAttribute('aria-hidden', 'true');
-        console.log('FAQ closed');
-    } else {
-        // Open the FAQ
-        console.log('Opening FAQ...');
-        answer.style.display = 'block';
-        answer.classList.add('active');
+    // Toggle the hidden class (this is what the HTML onclick is already doing)
+    answer.classList.toggle('hidden');
+    
+    // Update ARIA attributes
+    const isExpanded = !answer.classList.contains('hidden');
+    element.setAttribute('aria-expanded', isExpanded);
+    answer.setAttribute('aria-hidden', !isExpanded);
+    
+    // Add/remove active class to question for styling
+    if (isExpanded) {
         element.classList.add('active');
-        element.setAttribute('aria-expanded', 'true');
-        answer.setAttribute('aria-hidden', 'false');
-        console.log('FAQ opened');
+    } else {
+        element.classList.remove('active');
     }
     
-    console.log('Final answer display:', answer.style.display);
-    console.log('Final answer classes:', answer.className);
+    console.log('Final hidden class state:', answer.classList.contains('hidden'));
     console.log('=== FAQ DEBUG END ===');
 }
 
@@ -1323,21 +1316,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Add FAQ click handlers
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', function() {
-            toggleFAQ(this);
-        });
-    });
-    
-    // Add keyboard support for FAQ
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleFAQ(this);
-            }
-        });
-    });
 }); 
