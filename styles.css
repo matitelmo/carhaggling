@@ -1340,6 +1340,51 @@ p {
         margin-bottom: 1rem;
     }
     
+    .icon-number {
+        font-size: 1.75rem;
+    }
+    
+    .step-details {
+        margin-top: 1rem;
+    }
+    
+    .detail-item {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .detail-icon {
+        font-size: 1rem;
+        margin-right: 0.5rem;
+    }
+    
+    .detail-item span:last-child {
+        font-size: 0.85rem;
+    }
+    
+    .process-highlight {
+        margin-top: 2rem;
+        padding: 1.5rem;
+    }
+    
+    .highlight-content h4 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .highlight-features {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .highlight-feature {
+        padding: 0.75rem;
+    }
+    
+    .highlight-feature span {
+        font-size: 0.9rem;
+    }
+    
     /* AI features mobile improvements */
     .ai-feature {
         padding: 1rem;
@@ -1978,6 +2023,105 @@ p {
     border-radius: 50%;
     color: var(--white);
     font-size: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+/* Ensure any leftover old icons are hidden */
+.icon-brain,
+.icon-radar,
+.icon-dashboard {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.step-details {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.detail-item:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateX(5px);
+}
+
+.detail-icon {
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+    min-width: 1.5rem;
+    text-align: center;
+}
+
+.detail-item span:last-child {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.process-highlight {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: var(--border-radius);
+    color: var(--white);
+    text-align: center;
+}
+
+.highlight-content h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+}
+
+.highlight-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.highlight-feature {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.highlight-feature:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.highlight-icon {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    min-width: 2rem;
+    text-align: center;
+}
+
+.highlight-feature span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .step h3 {
@@ -1985,42 +2129,88 @@ p {
     margin-bottom: 1rem;
 }
 
-/* Our AI Section */
-.our-ai {
+/* How It Works Section */
+.how-it-works {
     padding: 80px 0;
     background: var(--background-color);
 }
 
-.ai-features {
+.process-steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
 }
 
-.ai-feature {
+.process-step {
     background: var(--surface-color);
-    padding: 2rem;
-    border-radius: var(--border-radius);
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow);
     transition: var(--transition);
     border: 1px solid var(--border-color);
+    text-align: center;
+    position: relative;
 }
 
-.ai-feature:hover {
+.process-step:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
     border-color: var(--primary-color);
 }
 
-.ai-feature h3 {
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.process-step h3 {
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-size: 1.25rem;
+    font-weight: 600;
 }
 
-.ai-feature p {
+.process-step p {
     color: var(--text-light);
     line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Responsive adjustments for process steps */
+@media (max-width: 1024px) {
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .process-steps {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .process-step {
+        padding: 2rem 1.5rem;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
 }
 
 /* Testimonials */
