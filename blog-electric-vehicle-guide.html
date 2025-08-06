@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Complete Electric Vehicle Buying Guide: What You Need to Know - CarHaggling</title>
+    <meta name="description" content="Everything you need to know about buying an electric vehicle. From range anxiety to charging infrastructure, learn how to make the right EV choice for your lifestyle.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .blog-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+        
+        .blog-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        
+        .blog-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 50px 0 25px 0;
+            color: var(--primary-color);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 35px 0 20px 0;
+            color: var(--text-color);
+        }
+        
+        .blog-content p {
+            margin-bottom: 25px;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin: 25px 0;
+            padding-left: 30px;
+        }
+        
+        .blog-content li {
+            margin-bottom: 15px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-light), #f0f9ff);
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        .highlight-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .ev-benefit-box {
+            background: #f0fdf4;
+            border: 1px solid #22c55e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        
+        .ev-benefit-box h4 {
+            color: #16a34a;
+            margin-bottom: 10px;
+        }
+        
+        .consideration-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        
+        .consideration-box h4 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link::before {
+            content: "←";
+            margin-right: 8px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .checklist {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        
+        .checklist h4 {
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .checklist li::before {
+            content: "✓";
+            color: var(--success-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2.5rem;
+            }
+            
+            .blog-content h2 {
+                font-size: 1.75rem;
+            }
+            
+            .blog-content h3 {
+                font-size: 1.25rem;
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-container">
+        <a href="index.html" class="back-link">Back to CarHaggling</a>
+        
+        <article class="blog-content">
+            <header class="blog-header">
+                <h1 class="blog-title">The Complete Electric Vehicle Buying Guide: What You Need to Know</h1>
+                <div class="blog-meta">
+                    <time datetime="2024-01-25">January 25, 2024</time> • 18 min read
+                </div>
+            </header>
+            
+            <p>The electric vehicle revolution is here, and it's changing how we think about car ownership. With major automakers committing to electric futures and governments offering incentives, EVs are becoming an increasingly attractive option for many buyers. But buying an electric vehicle is different from buying a traditional car—there are new considerations, new technologies, and new ways to think about your driving needs.</p>
+            
+            <p>In this comprehensive guide, we'll walk you through everything you need to know about buying an electric vehicle, from understanding the technology to choosing the right model for your lifestyle. Whether you're a first-time EV buyer or looking to upgrade, this guide will help you make an informed decision.</p>
+            
+            <h2>Understanding Electric Vehicles: The Basics</h2>
+            
+            <p>Before diving into the buying process, it's important to understand what makes electric vehicles different from traditional gasoline-powered cars:</p>
+            
+            <h3>How Electric Vehicles Work</h3>
+            <p>Electric vehicles use electric motors powered by rechargeable battery packs instead of internal combustion engines. This fundamental difference creates several advantages and considerations:</p>
+            
+            <ul>
+                <li><strong>Instant torque:</strong> Electric motors provide immediate power, making EVs feel responsive and quick</li>
+                <li><strong>Regenerative braking:</strong> EVs can recapture energy when slowing down, extending range</li>
+                <li><strong>Fewer moving parts:</strong> Less maintenance and fewer things that can break</li>
+                <li><strong>Zero emissions:</strong> No tailpipe emissions during operation</li>
+                <li><strong>Quiet operation:</strong> Much quieter than gasoline engines</li>
+            </ul>
+            
+            <div class="ev-benefit-box">
+                <h4>⚡ Key EV Benefits</h4>
+                <p>Electric vehicles offer significant advantages including lower fuel costs, reduced maintenance, environmental benefits, and often better performance. The average EV owner saves $800-1,200 annually on fuel costs compared to gasoline vehicles.</p>
+            </div>
+            
+            <h2>Types of Electric Vehicles</h2>
+            
+            <p>Not all electric vehicles are created equal. Understanding the different types will help you choose the right option for your needs:</p>
+            
+            <h3>Battery Electric Vehicles (BEVs)</h3>
+            <p>These are fully electric vehicles that run entirely on battery power:</p>
+            <ul>
+                <li><strong>Pros:</strong> Zero emissions, lowest operating costs, simplest maintenance</li>
+                <li><strong>Cons:</strong> Limited range, longer charging times, charging infrastructure dependency</li>
+                <li><strong>Best for:</strong> Daily commuting, urban driving, environmentally conscious buyers</li>
+            </ul>
+            
+            <h3>Plug-in Hybrid Electric Vehicles (PHEVs)</h3>
+            <p>These combine electric and gasoline power:</p>
+            <ul>
+                <li><strong>Pros:</strong> Extended range, flexibility, can use existing gas stations</li>
+                <li><strong>Cons:</strong> More complex, still requires gasoline, higher maintenance</li>
+                <li><strong>Best for:</strong> Drivers who want EV benefits but need longer range</li>
+            </ul>
+            
+            <h3>Hybrid Electric Vehicles (HEVs)</h3>
+            <p>Traditional hybrids that can't be plugged in:</p>
+            <ul>
+                <li><strong>Pros:</strong> Better fuel economy, no charging infrastructure needed</li>
+                <li><strong>Cons:</strong> Limited electric-only range, still uses gasoline</li>
+                <li><strong>Best for:</strong> Drivers wanting better fuel economy without EV commitment</li>
+            </ul>
+            
+            <h2>Range Anxiety: Understanding Your Driving Needs</h2>
+            
+            <p>Range anxiety—the fear of running out of battery—is one of the biggest concerns for potential EV buyers. Here's how to address it:</p>
+            
+            <h3>Calculating Your Range Requirements</h3>
+            <p>Start by analyzing your typical driving patterns:</p>
+            
+            <div class="checklist">
+                <h4>📊 Range Assessment Checklist</h4>
+                <ul>
+                    <li>Daily commute distance (round trip)</li>
+                    <li>Weekend driving patterns</li>
+                    <li>Long-distance travel frequency</li>
+                    <li>Access to charging at home/work</li>
+                    <li>Local charging infrastructure</li>
+                    <li>Weather conditions in your area</li>
+                    <li>Driving style and habits</li>
+                </ul>
+            </div>
+            
+            <h3>Real-World Range vs. EPA Estimates</h3>
+            <p>EPA range estimates are based on ideal conditions. Real-world range can be 10-20% lower due to:</p>
+            <ul>
+                <li><strong>Weather:</strong> Cold weather can reduce range by 20-40%</li>
+                <li><strong>Speed:</strong> Highway driving at 70+ mph uses more energy</li>
+                <li><strong>Climate control:</strong> Heating and cooling affect battery life</li>
+                <li><strong>Terrain:</strong> Hilly areas require more energy</li>
+                <li><strong>Payload:</strong> Carrying passengers and cargo</li>
+            </ul>
+            
+            <div class="consideration-box">
+                <h4>🌡️ Weather Impact on Range</h4>
+                <p>Cold weather significantly impacts EV range. In temperatures below freezing, you might see 20-40% range reduction. Plan accordingly and consider a vehicle with longer range if you live in a cold climate.</p>
+            </div>
+            
+            <h2>Charging Infrastructure: What You Need to Know</h2>
+            
+            <p>Understanding charging options is crucial for EV ownership. There are three main types of charging:</p>
+            
+            <h3>Level 1 Charging (120V)</h3>
+            <p>Standard household outlet charging:</p>
+            <ul>
+                <li><strong>Speed:</strong> 2-5 miles of range per hour</li>
+                <li><strong>Cost:</strong> Uses existing household electricity</li>
+                <li><strong>Best for:</strong> Overnight charging, emergency top-ups</li>
+                <li><strong>Installation:</strong> No special equipment needed</li>
+            </ul>
+            
+            <h3>Level 2 Charging (240V)</h3>
+            <p>Dedicated home charging station:</p>
+            <ul>
+                <li><strong>Speed:</strong> 10-60 miles of range per hour</li>
+                <li><strong>Cost:</strong> $500-1,500 for equipment and installation</li>
+                <li><strong>Best for:</strong> Daily charging, faster home charging</li>
+                <li><strong>Installation:</strong> Requires electrician and dedicated circuit</li>
+            </ul>
+            
+            <h3>DC Fast Charging (400V+)</h3>
+            <p>Public fast charging stations:</p>
+            <ul>
+                <li><strong>Speed:</strong> 60-200+ miles of range in 30 minutes</li>
+                <li><strong>Cost:</strong> $0.20-0.40 per kWh typically</li>
+                <li><strong>Best for:</strong> Long-distance travel, quick top-ups</li>
+                <li><strong>Availability:</strong> Growing network of public stations</li>
+            </ul>
+            
+            <h3>Charging Network Considerations</h3>
+            <p>Different automakers have different charging networks:</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Network</th>
+                        <th>Coverage</th>
+                        <th>Cost</th>
+                        <th>Speed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tesla Supercharger</td>
+                        <td>Excellent</td>
+                        <td>$$</td>
+                        <td>Very Fast</td>
+                    </tr>
+                    <tr>
+                        <td>Electrify America</td>
+                        <td>Good</td>
+                        <td>$$</td>
+                        <td>Fast</td>
+                    </tr>
+                    <tr>
+                        <td>ChargePoint</td>
+                        <td>Good</td>
+                        <td>$</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td>EVgo</td>
+                        <td>Fair</td>
+                        <td>$$</td>
+                        <td>Fast</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>EV Incentives and Tax Credits</h2>
+            
+            <p>One of the biggest advantages of buying an EV is the available incentives and tax credits:</p>
+            
+            <h3>Federal Tax Credits</h3>
+            <p>The federal government offers tax credits for qualifying EVs:</p>
+            <ul>
+                <li><strong>Up to $7,500</strong> for new EVs meeting requirements</li>
+                <li><strong>Up to $4,000</strong> for used EVs (under $25,000)</li>
+                <li><strong>Income limits:</strong> $150,000 for single filers, $300,000 for joint</li>
+                <li><strong>Vehicle requirements:</strong> Must be assembled in North America</li>
+            </ul>
+            
+            <h3>State and Local Incentives</h3>
+            <p>Many states offer additional incentives:</p>
+            <ul>
+                <li><strong>Tax credits:</strong> Additional state tax benefits</li>
+                <li><strong>Rebates:</strong> Direct cash back for EV purchases</li>
+                <li><strong>HOV access:</strong> Carpool lane privileges</li>
+                <li><strong>Charging incentives:</strong> Home charger installation rebates</li>
+                <li><strong>Registration discounts:</strong> Reduced vehicle registration fees</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <h4>💰 Maximizing Your Savings</h4>
+                <p>Combine federal, state, and local incentives to maximize your savings. Some buyers can save $10,000 or more through various incentive programs. Always check current programs before purchasing.</p>
+            </div>
+            
+            <h2>Choosing the Right EV for Your Needs</h2>
+            
+            <p>With dozens of EV models available, choosing the right one requires careful consideration:</p>
+            
+            <h3>Key Factors to Consider</h3>
+            
+            <h4>Range Requirements</h4>
+            <ul>
+                <li><strong>Short range (150-250 miles):</strong> Good for daily commuting</li>
+                <li><strong>Medium range (250-350 miles):</strong> Balanced for most uses</li>
+                <li><strong>Long range (350+ miles):</strong> Best for frequent long trips</li>
+            </ul>
+            
+            <h4>Charging Speed</h4>
+            <ul>
+                <li><strong>Standard charging:</strong> 50-150 kW DC fast charging</li>
+                <li><strong>Fast charging:</strong> 150-250 kW DC fast charging</li>
+                <li><strong>Ultra-fast charging:</strong> 250+ kW DC fast charging</li>
+            </ul>
+            
+            <h4>Vehicle Size and Type</h4>
+            <ul>
+                <li><strong>Compact cars:</strong> Efficient, easy to park, lower cost</li>
+                <li><strong>SUVs and crossovers:</strong> More space, higher range, higher cost</li>
+                <li><strong>Luxury vehicles:</strong> Premium features, longer range, highest cost</li>
+            </ul>
+            
+            <h3>Popular EV Models Comparison</h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Range</th>
+                        <th>Starting Price</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tesla Model 3</td>
+                        <td>272-358 miles</td>
+                        <td>$38,990</td>
+                        <td>Tech enthusiasts</td>
+                    </tr>
+                    <tr>
+                        <td>Chevrolet Bolt EV</td>
+                        <td>259 miles</td>
+                        <td>$26,500</td>
+                        <td>Budget buyers</td>
+                    </tr>
+                    <tr>
+                        <td>Ford Mustang Mach-E</td>
+                        <td>230-312 miles</td>
+                        <td>$42,995</td>
+                        <td>Performance</td>
+                    </tr>
+                    <tr>
+                        <td>Hyundai Ioniq 5</td>
+                        <td>220-303 miles</td>
+                        <td>$41,450</td>
+                        <td>Value</td>
+                    </tr>
+                    <tr>
+                        <td>Rivian R1T</td>
+                        <td>270-400 miles</td>
+                        <td>$73,000</td>
+                        <td>Adventure</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>EV Maintenance and Ownership Costs</h2>
+            
+            <p>One of the biggest advantages of EVs is their lower maintenance requirements:</p>
+            
+            <h3>Maintenance Differences</h3>
+            <ul>
+                <li><strong>No oil changes:</strong> EVs don't use engine oil</li>
+                <li><strong>Fewer moving parts:</strong> Less wear and tear</li>
+                <li><strong>Regenerative braking:</strong> Brake pads last longer</li>
+                <li><strong>Battery maintenance:</strong> Minimal maintenance required</li>
+                <li><strong>Software updates:</strong> Often done over-the-air</li>
+            </ul>
+            
+            <h3>Battery Degradation</h3>
+            <p>Battery degradation is a concern for many buyers:</p>
+            <ul>
+                <li><strong>Typical degradation:</strong> 1-2% per year</li>
+                <li><strong>Warranty coverage:</strong> Most EVs have 8-year/100,000-mile battery warranties</li>
+                <li><strong>Factors affecting degradation:</strong> Temperature, charging habits, usage patterns</li>
+                <li><strong>Replacement cost:</strong> $5,000-15,000 (but rarely needed)</li>
+            </ul>
+            
+            <h3>Total Cost of Ownership</h3>
+            <p>While EVs have higher upfront costs, they often cost less over time:</p>
+            <ul>
+                <li><strong>Fuel savings:</strong> $800-1,200 annually</li>
+                <li><strong>Maintenance savings:</strong> $300-500 annually</li>
+                <li><strong>Tax incentives:</strong> $4,000-7,500 upfront</li>
+                <li><strong>Resale value:</strong> Generally good, especially for popular models</li>
+            </ul>
+            
+            <h2>Test Driving and Evaluating EVs</h2>
+            
+            <p>Test driving an EV is different from test driving a traditional car:</p>
+            
+            <h3>What to Test During Your Drive</h3>
+            <ul>
+                <li><strong>Acceleration:</strong> EVs feel different due to instant torque</li>
+                <li><strong>Regenerative braking:</strong> Test different regen levels</li>
+                <li><strong>Range display:</strong> Check how accurate the range estimate is</li>
+                <li><strong>Charging port:</strong> Test opening/closing the charging door</li>
+                <li><strong>Infotainment system:</strong> EV systems are often more complex</li>
+                <li><strong>One-pedal driving:</strong> Many EVs allow driving with just the accelerator</li>
+            </ul>
+            
+            <h3>Questions to Ask the Dealer</h3>
+            <ul>
+                <li>What's the real-world range in different conditions?</li>
+                <li>What charging options are included?</li>
+                <li>What's the battery warranty coverage?</li>
+                <li>Are there any known issues with this model?</li>
+                <li>What's the charging network coverage in my area?</li>
+                <li>What incentives are available for this vehicle?</li>
+            </ul>
+            
+            <h2>Preparing Your Home for EV Ownership</h2>
+            
+            <p>Most EV owners charge at home, so preparation is key:</p>
+            
+            <h3>Electrical System Assessment</h3>
+            <ul>
+                <li><strong>Panel capacity:</strong> Ensure your electrical panel can handle the additional load</li>
+                <li><strong>Circuit requirements:</strong> Level 2 charging typically needs a 240V, 40-50A circuit</li>
+                <li><strong>Professional installation:</strong> Always hire a licensed electrician</li>
+                <li><strong>Permits:</strong> Check local requirements for electrical work</li>
+            </ul>
+            
+            <h3>Charging Station Options</h3>
+            <ul>
+                <li><strong>Hardwired units:</strong> More reliable, better for outdoor installation</li>
+                <li><strong>Plug-in units:</strong> Easier to move, good for renters</li>
+                <li><strong>Smart features:</strong> WiFi connectivity, scheduling, usage tracking</li>
+                <li><strong>Load sharing:</strong> Important if you have multiple EVs</li>
+            </ul>
+            
+            <div class="consideration-box">
+                <h4>🏠 Home Charging Setup</h4>
+                <p>Plan for home charging installation before buying your EV. The process can take 2-4 weeks and cost $500-1,500. Many utilities offer rebates for home charger installation.</p>
+            </div>
+            
+            <h2>Common EV Myths and Misconceptions</h2>
+            
+            <p>Let's address some common concerns about electric vehicles:</p>
+            
+            <h3>Myth: EVs Don't Have Enough Range</h3>
+            <p><strong>Reality:</strong> Most modern EVs have 200-350 miles of range, which covers 95% of daily driving needs. The average American drives 37 miles per day.</p>
+            
+            <h3>Myth: EVs Are Too Expensive</h3>
+            <p><strong>Reality:</strong> While upfront costs are higher, total cost of ownership is often lower due to fuel and maintenance savings. Incentives can reduce the purchase price significantly.</p>
+            
+            <h3>Myth: Charging Takes Too Long</h3>
+            <p><strong>Reality:</strong> Home charging happens overnight while you sleep. DC fast charging can add 200+ miles in 30 minutes for long trips.</p>
+            
+            <h3>Myth: EVs Are Bad for the Environment</h3>
+            <p><strong>Reality:</strong> EVs produce fewer emissions over their lifetime, even accounting for battery production and electricity generation.</p>
+            
+            <h2>Future-Proofing Your EV Purchase</h2>
+            
+            <p>EV technology is evolving rapidly. Here's how to future-proof your purchase:</p>
+            
+            <h3>Technology Considerations</h3>
+            <ul>
+                <li><strong>Charging standards:</strong> Look for vehicles with the latest charging capabilities</li>
+                <li><strong>Software updates:</strong> Choose vehicles with over-the-air update capability</li>
+                <li><strong>Battery technology:</strong> Consider battery chemistry and cooling systems</li>
+                <li><strong>Autonomous features:</strong> Future-proof for upcoming autonomous capabilities</li>
+            </ul>
+            
+            <h3>Resale Value Factors</h3>
+            <ul>
+                <li><strong>Brand reputation:</strong> Established brands often have better resale value</li>
+                <li><strong>Battery health:</strong> Well-maintained batteries retain value better</li>
+                <li><strong>Technology relevance:</strong> Newer technology features help maintain value</li>
+                <li><strong>Market demand:</strong> Popular models hold value better</li>
+            </ul>
+            
+            <h2>Conclusion: Making the Switch to Electric</h2>
+            
+            <p>Buying an electric vehicle is a significant decision that requires careful consideration of your driving needs, charging infrastructure, and long-term goals. While the process may seem complex, the benefits of EV ownership—from lower operating costs to environmental impact—make it an attractive option for many drivers.</p>
+            
+            <p>Remember that the EV market is rapidly evolving, with new models and technologies being introduced regularly. Take your time to research, test drive multiple vehicles, and ensure your home is prepared for EV ownership. The investment in time and preparation will pay off in a vehicle that meets your needs for years to come.</p>
+            
+            <div class="highlight-box">
+                <h4>🎯 Key Takeaways</h4>
+                <ul>
+                    <li>Understand your driving needs and range requirements</li>
+                    <li>Research charging infrastructure in your area</li>
+                    <li>Take advantage of available incentives and tax credits</li>
+                    <li>Test drive multiple EVs to find the right fit</li>
+                    <li>Prepare your home for charging before purchase</li>
+                    <li>Consider total cost of ownership, not just purchase price</li>
+                    <li>Future-proof your purchase with the latest technology</li>
+                </ul>
+            </div>
+            
+            <p>With careful planning and research, buying an electric vehicle can be one of the smartest decisions you make for your wallet and the environment. The future of transportation is electric, and you're ready to be part of it.</p>
+        </article>
+    </div>
+</body>
+</html> 
