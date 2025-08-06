@@ -1,0 +1,42 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://carhaggling.com/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow any potential admin or private areas (if they exist in the future)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /.git/
+Disallow: /.env
+
+# Allow all important directories
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /assets/
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Block any potential security files
+Disallow: /wp-config.php
+Disallow: /config.php
+Disallow: /htaccess
+Disallow: /.htaccess
+Disallow: /error_log
+Disallow: /access_log 

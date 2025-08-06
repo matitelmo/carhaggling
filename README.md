@@ -1,4 +1,5 @@
-# CarHaggling - AI-Powered Car Buying Website
+# Stop Overpaying For Your Next Car
+
 
 A high-fidelity marketing website for CarHaggling, an AI-powered car buying service. This is a "smoke test" website designed to validate market demand by maximizing user signups for a waitlist.
 
