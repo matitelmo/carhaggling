@@ -18,6 +18,45 @@ let funnelData = {
     cardName: ''
 };
 
+// Search type toggle functionality for signup
+function toggleSearchTypeSignup(type, element) {
+    // Remove active class from all toggle options
+    document.querySelectorAll('.search-type-toggle .toggle-option').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Add active class to clicked element
+    element.classList.add('active');
+    
+    // Show/hide appropriate fields
+    const makeModelFields = document.querySelectorAll('.make-model-field');
+    const bodyTypeFields = document.querySelectorAll('.body-type-field');
+    
+    if (type === 'make-model') {
+        makeModelFields.forEach(field => {
+            field.style.display = 'block';
+            const select = field.querySelector('select');
+            if (select) select.required = true;
+        });
+        bodyTypeFields.forEach(field => {
+            field.style.display = 'none';
+            const select = field.querySelector('select');
+            if (select) select.required = false;
+        });
+    } else if (type === 'body-type') {
+        makeModelFields.forEach(field => {
+            field.style.display = 'none';
+            const select = field.querySelector('select');
+            if (select) select.required = false;
+        });
+        bodyTypeFields.forEach(field => {
+            field.style.display = 'block';
+            const select = field.querySelector('select');
+            if (select) select.required = true;
+        });
+    }
+}
+
 // Function to get URL parameters
 function getUrlParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);

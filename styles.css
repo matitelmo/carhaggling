@@ -462,7 +462,7 @@ p {
 
 /* Hero Section */
 .hero {
-    padding: 120px 0 80px;
+    padding: 96px 0 64px;
     background: linear-gradient(135deg, var(--surface-color) 0%, var(--background-color) 100%);
     position: relative;
     overflow: hidden;
@@ -477,6 +477,17 @@ p {
     bottom: 0;
     background: linear-gradient(45deg, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0.02) 100%);
     pointer-events: none;
+}
+
+/* New hero header layout */
+.hero-header {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 3rem;
 }
 
 .hero-content {
@@ -503,6 +514,41 @@ p {
     line-height: 1.6;
 }
 
+/* Search Type Toggle */
+.search-type-toggle {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1.5rem;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.toggle-option {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-radius: calc(var(--border-radius) - 4px);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.toggle-option.active {
+    background: var(--white);
+    color: var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+.toggle-option:hover:not(.active) {
+    color: var(--text-color);
+}
+
 /* CarEdge-style Search Form */
 .search-form-container {
     background: var(--white);
@@ -511,6 +557,8 @@ p {
     box-shadow: var(--shadow-xl);
     margin-bottom: clamp(1.5rem, 4vw, 2rem);
     border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: none;
 }
 
 .search-form {
@@ -563,6 +611,20 @@ p {
 
 .search-field select {
     cursor: pointer;
+}
+
+/* Field visibility for toggle */
+.make-model-field,
+.body-type-field {
+    transition: var(--transition);
+}
+
+.body-type-field[style*="display: none"] {
+    display: none !important;
+}
+
+.make-model-field[style*="display: none"] {
+    display: none !important;
 }
 
 .search-button {
@@ -635,7 +697,7 @@ p {
 .hero-image {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 267px;
     overflow: hidden;
 }
 
@@ -644,8 +706,6 @@ p {
     height: 100%;
     object-fit: cover;
     transition: var(--transition);
-    max-width: 100%;
-    height: auto;
 }
 
 .image-overlay {
@@ -656,6 +716,7 @@ p {
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
     padding: 2rem;
     color: var(--white);
+    z-index: 2;
 }
 
 .overlay-content h3 {
@@ -731,6 +792,12 @@ p {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+    .hero-header {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
     .hero-content {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -769,7 +836,7 @@ p {
     }
     
     .hero {
-        padding: 80px 0 60px;
+        padding: 64px 0 48px;
     }
     
     .hero-content {
@@ -832,7 +899,7 @@ p {
     }
     
     .hero-image {
-        height: 300px;
+        height: 200px;
         max-width: 100%;
     }
     
@@ -984,7 +1051,7 @@ p {
     }
     
     .hero {
-        padding: 60px 0 40px;
+        padding: 48px 0 32px;
     }
     
     .hero-title {
@@ -1043,7 +1110,7 @@ p {
     }
     
     .hero-image {
-        height: 250px;
+        height: 180px;
     }
     
     .overlay-content {

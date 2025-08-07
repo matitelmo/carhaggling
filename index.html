@@ -137,85 +137,17 @@
     <!-- Hero Section -->
     <section class="hero" id="main-content">
         <div class="container">
-            <div class="hero-content">
+            <!-- Hero Text and Image Row -->
+            <div class="hero-header">
                 <div class="hero-text">
                     <h1 class="hero-title">Stop Overpaying For Your Next Car</h1>
                     <p class="hero-subtitle">CarHaggling's AI co-pilot finds your perfect car, vets it for quality, and negotiates the price for you. Get an expert negotiator on your side.</p>
-                    
-                    <!-- Complete Search Form -->
-                    <div class="search-form-container">
-                        <form class="search-form" id="heroSearchForm">
-                            <div class="search-row">
-                                <div class="search-field">
-                                    <label for="carMake">Car Make</label>
-                                    <select id="carMake" required onchange="updateCarModels()">
-                                        <option value="">Select Make</option>
-                                        <option value="Toyota">Toyota</option>
-                                        <option value="Honda">Honda</option>
-                                        <option value="Ford">Ford</option>
-                                        <option value="Chevrolet">Chevrolet</option>
-                                        <option value="Nissan">Nissan</option>
-                                        <option value="Hyundai">Hyundai</option>
-                                        <option value="Kia">Kia</option>
-                                        <option value="Mazda">Mazda</option>
-                                        <option value="Subaru">Subaru</option>
-                                        <option value="Volkswagen">Volkswagen</option>
-                                        <option value="BMW">BMW</option>
-                                        <option value="Mercedes-Benz">Mercedes-Benz</option>
-                                        <option value="Audi">Audi</option>
-                                        <option value="Lexus">Lexus</option>
-                                        <option value="Tesla">Tesla</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                                <div class="search-field">
-                                    <label for="carModel">Car Model</label>
-                                    <select id="carModel" required>
-                                        <option value="">Select Model</option>
-                                    </select>
-                                </div>
-                                <div class="search-field">
-                                    <label for="carYear">Year Range</label>
-                                    <select id="carYear" required>
-                                        <option value="">Select Year</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2023">2023</option>
-                                        <option value="2022">2022</option>
-                                        <option value="2021">2021</option>
-                                        <option value="2020">2020</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2018">2018</option>
-                                        <option value="2017">2017</option>
-                                        <option value="2016">2016</option>
-                                        <option value="2015">2015</option>
-                                    </select>
-                                </div>
-                                <div class="search-field">
-                                    <label for="carMileage">Max Mileage</label>
-                                    <select id="carMileage" required>
-                                        <option value="">Select Mileage</option>
-                                        <option value="10000">Under 10,000</option>
-                                        <option value="25000">Under 25,000</option>
-                                        <option value="50000">Under 50,000</option>
-                                        <option value="75000">Under 75,000</option>
-                                        <option value="100000">Under 100,000</option>
-                                        <option value="150000">Under 150,000</option>
-                                        <option value="200000">Any Mileage</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit" class="search-button">
-                                <span class="search-button-text">Activate My AI Co-Pilot</span>
-                                <span class="search-button-icon">→</span>
-                            </button>
-                        </form>
-                    </div>
                 </div>
                 
                 <div class="hero-visual">
                     <div class="hero-image-container">
                         <div class="hero-image">
-                            <img src="Honda CRV.webp" alt="Car Search - Honda CR-V" class="main-car-image" width="600" height="400" loading="lazy">
+                            <img src="Honda CRV.webp" alt="Car Search - Honda CR-V" class="main-car-image" width="400" height="267" loading="lazy">
                             <div class="image-overlay">
                                 <div class="overlay-content">
                                     <h3>AI-Powered Search</h3>
@@ -226,6 +158,96 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Full-Width Search Form -->
+            <div class="search-form-container">
+                <form class="search-form" id="heroSearchForm">
+                    <!-- Search Type Toggle -->
+                    <div class="search-type-toggle">
+                        <button type="button" class="toggle-option active" data-type="make-model" onclick="toggleSearchType('make-model', this)">Make/Model</button>
+                        <button type="button" class="toggle-option" data-type="body-type" onclick="toggleSearchType('body-type', this)">Body Type</button>
+                    </div>
+                    
+                    <div class="search-row">
+                        <!-- Make/Model Fields -->
+                        <div class="search-field make-model-field">
+                            <label for="carMake">Car Make</label>
+                            <select id="carMake" required onchange="updateCarModels()">
+                                <option value="">Select Make</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Chevrolet">Chevrolet</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Hyundai">Hyundai</option>
+                                <option value="Kia">Kia</option>
+                                <option value="Mazda">Mazda</option>
+                                <option value="Subaru">Subaru</option>
+                                <option value="Volkswagen">Volkswagen</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Lexus">Lexus</option>
+                                <option value="Tesla">Tesla</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="search-field make-model-field">
+                            <label for="carModel">Car Model</label>
+                            <select id="carModel" required>
+                                <option value="">Select Model</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Body Type Field -->
+                        <div class="search-field body-type-field" style="display: none;">
+                            <label for="bodyType">Body Type</label>
+                            <select id="bodyType">
+                                <option value="">Select Type</option>
+                                <option value="suv">SUV</option>
+                                <option value="pickup">Pickup</option>
+                                <option value="sedan">Sedan</option>
+                                <option value="hatchback">Hatchback</option>
+                                <option value="minivan">Minivan</option>
+                                <option value="wagon">Wagon</option>
+                                <option value="coupe">Coupe</option>
+                                <option value="convertible">Convertible</option>
+                                <option value="cab-truck">Cab Truck</option>
+                                <option value="chassis">Chassis</option>
+                                <option value="van">Van</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="search-field">
+                            <label for="carYear">Used/New</label>
+                            <select id="carYear" required>
+                                <option value="">Select Option</option>
+                                <option value="new">New</option>
+                                <option value="used">Used</option>
+                            </select>
+                        </div>
+                        <div class="search-field">
+                            <label for="carMileage">Max Mileage</label>
+                            <select id="carMileage" required>
+                                <option value="">Select Mileage</option>
+                                <option value="10000">Under 10,000</option>
+                                <option value="25000">Under 25,000</option>
+                                <option value="50000">Under 50,000</option>
+                                <option value="75000">Under 75,000</option>
+                                <option value="100000">Under 100,000</option>
+                                <option value="150000">Under 150,000</option>
+                                <option value="200000">Any Mileage</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="search-button">
+                        <span class="search-button-text">Activate My AI Co-Pilot</span>
+                        <span class="search-button-icon">→</span>
+                    </button>
+                </form>
+            </div>
+        </div>
             
             <!-- Social Proof Ticker -->
             <div class="social-proof-ticker">
@@ -1009,8 +1031,15 @@
                 </div>
 
                 <form id="carDetailsForm" onsubmit="handleCarDetailsSubmit(event)">
+                    <!-- Search Type Toggle -->
+                    <div class="search-type-toggle">
+                        <button type="button" class="toggle-option active" data-type="make-model" onclick="toggleSearchTypeModal('make-model', this)">Make/Model</button>
+                        <button type="button" class="toggle-option" data-type="body-type" onclick="toggleSearchTypeModal('body-type', this)">Body Type</button>
+                    </div>
+                    
                     <div class="form-row">
-                        <div class="form-group">
+                        <!-- Make/Model Fields -->
+                        <div class="form-group make-model-field">
                             <label for="carMake">Car Make</label>
                             <select id="carMake" required onchange="updateCarModels()">
                                 <option value="">Select Make</option>
@@ -1032,29 +1061,41 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group make-model-field">
                             <label for="carModel">Car Model</label>
                             <select id="carModel" required>
                                 <option value="">Select Model</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Body Type Field -->
+                        <div class="form-group body-type-field" style="display: none;">
+                            <label for="bodyTypeModal">Body Type</label>
+                            <select id="bodyTypeModal">
+                                <option value="">Select Type</option>
+                                <option value="suv">SUV</option>
+                                <option value="pickup">Pickup</option>
+                                <option value="sedan">Sedan</option>
+                                <option value="hatchback">Hatchback</option>
+                                <option value="minivan">Minivan</option>
+                                <option value="wagon">Wagon</option>
+                                <option value="coupe">Coupe</option>
+                                <option value="convertible">Convertible</option>
+                                <option value="cab-truck">Cab Truck</option>
+                                <option value="chassis">Chassis</option>
+                                <option value="van">Van</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="carYear">Year</label>
+                            <label for="carYear">Used/New</label>
                             <select id="carYear" required>
-                                <option value="">Select Year</option>
-                                <option value="2024">2024</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="2015">2015</option>
+                                <option value="">Select Option</option>
+                                <option value="new">New</option>
+                                <option value="used">Used</option>
                             </select>
                         </div>
                         <div class="form-group">

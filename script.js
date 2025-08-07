@@ -42,6 +42,83 @@ let funnelData = {
 
 let currentFunnelStep = 1;
 
+// Search type toggle functionality
+function toggleSearchType(type, element) {
+    // Remove active class from all toggle options
+    document.querySelectorAll('.search-type-toggle .toggle-option').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Add active class to clicked element
+    element.classList.add('active');
+    
+    // Show/hide appropriate fields
+    const makeModelFields = document.querySelectorAll('.make-model-field');
+    const bodyTypeFields = document.querySelectorAll('.body-type-field');
+    
+    if (type === 'make-model') {
+        makeModelFields.forEach(field => {
+            field.style.display = 'block';
+            const select = field.querySelector('select');
+            if (select) select.required = true;
+        });
+        bodyTypeFields.forEach(field => {
+            field.style.display = 'none';
+            const select = field.querySelector('select');
+            if (select) select.required = false;
+        });
+    } else if (type === 'body-type') {
+        makeModelFields.forEach(field => {
+            field.style.display = 'none';
+            const select = field.querySelector('select');
+            if (select) select.required = false;
+        });
+        bodyTypeFields.forEach(field => {
+            field.style.display = 'block';
+            const select = field.querySelector('select');
+            if (select) select.required = true;
+        });
+    }
+}
+
+function toggleSearchTypeModal(type, element) {
+    // Remove active class from all toggle options in modal
+    document.querySelectorAll('#step1 .search-type-toggle .toggle-option').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Add active class to clicked element
+    element.classList.add('active');
+    
+    // Show/hide appropriate fields in modal
+    const makeModelFields = document.querySelectorAll('#step1 .make-model-field');
+    const bodyTypeFields = document.querySelectorAll('#step1 .body-type-field');
+    
+    if (type === 'make-model') {
+        makeModelFields.forEach(field => {
+            field.style.display = 'block';
+            const select = field.querySelector('select');
+            if (select) select.required = true;
+        });
+        bodyTypeFields.forEach(field => {
+            field.style.display = 'none';
+            const select = field.querySelector('select');
+            if (select) select.required = false;
+        });
+    } else if (type === 'body-type') {
+        makeModelFields.forEach(field => {
+            field.style.display = 'none';
+            const select = field.querySelector('select');
+            if (select) select.required = false;
+        });
+        bodyTypeFields.forEach(field => {
+            field.style.display = 'block';
+            const select = field.querySelector('select');
+            if (select) select.required = true;
+        });
+    }
+}
+
 // Hero search form functionality
 function handleHeroSearch(formData) {
     // Store search data for use in signup flow
