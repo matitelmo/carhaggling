@@ -1,0 +1,47 @@
+<!-- Google Analytics Tracking Code -->
+<!-- Replace GA_MEASUREMENT_ID with your actual Google Analytics Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'GA_MEASUREMENT_ID', {
+    page_title: document.title,
+    page_location: window.location.href,
+    custom_map: {
+      'custom_parameter_1': 'car_make',
+      'custom_parameter_2': 'car_model',
+      'custom_parameter_3': 'user_location'
+    }
+  });
+</script>
+
+<!-- Enhanced Ecommerce Tracking for CarHaggling -->
+<script>
+  // Track form submissions
+  document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        gtag('event', 'form_submit', {
+          'event_category': 'engagement',
+          'event_label': form.id || 'car_search_form',
+          'value': 1
+        });
+      });
+    });
+    
+    // Track CTA button clicks
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    ctaButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        gtag('event', 'cta_click', {
+          'event_category': 'engagement',
+          'event_label': button.textContent.trim(),
+          'value': 1
+        });
+      });
+    });
+  });
+</script> 

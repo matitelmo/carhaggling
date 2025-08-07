@@ -1316,4 +1316,81 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Initialize blog carousel
+    initializeBlogCarousel();
 }); 
+
+// Blog Carousel functionality
+let carouselPosition = 0;
+let cardsPerView = 3; // Default, will be calculated
+
+function initializeBlogCarousel() {
+    const carouselContainer = document.querySelector('.blog-carousel-container');
+    const carouselCards = document.querySelectorAll('.blog-carousel .blog-card');
+    
+    if (!carouselContainer || carouselCards.length === 0) return;
+    
+    // Calculate cards per view based on screen width
+    updateCardsPerView();
+    
+    // Initialize navigation buttons
+    updateCarouselNav();
+    
+    // Add window resize listener
+    window.addEventListener('resize', function() {
+        updateCardsPerView();
+        updateCarouselNav();
+    });
+}
+
+function updateCardsPerView() {
+    // Always show 3 cards regardless of screen size
+    cardsPerView = 3;
+}
+
+function scrollCarousel(direction) {
+    const carouselContainer = document.querySelector('.blog-carousel-container');
+    if (!carouselContainer) return;
+    
+    const carouselCards = document.querySelectorAll('.blog-carousel .blog-card');
+    const containerWidth = carouselContainer.offsetWidth;
+    
+    // Calculate gap based on screen size
+    let gap = 30; // Default gap for desktop
+    if (window.innerWidth <= 480) {
+        gap = 15; // Small mobile gap
+    } else if (window.innerWidth <= 768) {
+        gap = 20; // Mobile gap
+    }
+    
+    const cardWidth = containerWidth / 3 + gap; // card width + gap
+    const maxPosition = Math.max(0, carouselCards.length - 3); // Always show 3 cards
+    
+    if (direction === 'next' && carouselPosition < maxPosition) {
+        carouselPosition++;
+    } else if (direction === 'prev' && carouselPosition > 0) {
+        carouselPosition--;
+    }
+    
+    const translateX = -carouselPosition * cardWidth;
+    carouselContainer.style.transform = `translateX(${translateX}px)`;
+    
+    // Update navigation button states
+    updateCarouselNav();
+}
+
+function updateCarouselNav() {
+    const carouselCards = document.querySelectorAll('.blog-carousel .blog-card');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    const maxPosition = Math.max(0, carouselCards.length - 3); // Always show 3 cards
+    
+    if (prevBtn) {
+        prevBtn.disabled = carouselPosition === 0;
+    }
+    
+    if (nextBtn) {
+        nextBtn.disabled = carouselPosition >= maxPosition;
+    }
+}

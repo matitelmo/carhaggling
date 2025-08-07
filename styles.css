@@ -5384,6 +5384,73 @@ p {
     margin-top: 50px;
 }
 
+/* Blog Carousel */
+.blog-carousel {
+    position: relative;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.blog-carousel-container {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.3s ease-in-out;
+    padding: 0 20px;
+    justify-content: flex-start;
+}
+
+.blog-carousel .blog-card {
+    width: calc((100% - 60px) / 3); /* 3 cards with 2 gaps of 30px each */
+    min-width: 300px;
+    flex-shrink: 0;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+}
+
+.carousel-nav:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+}
+
+.carousel-nav:disabled:hover {
+    background: var(--surface-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
 .blog-card {
     background: var(--surface-color);
     border-radius: var(--border-radius-lg);
@@ -5510,6 +5577,34 @@ p {
         align-items: flex-start;
         gap: 5px;
     }
+    
+    /* Blog Carousel Mobile Styles */
+    .blog-carousel {
+        margin-top: 30px;
+    }
+    
+    .blog-carousel-container {
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .blog-carousel .blog-card {
+        width: calc((100% - 40px) / 3); /* 3 cards with 2 gaps of 20px each */
+        min-width: 250px;
+    }
+    
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-prev {
+        left: 5px;
+    }
+    
+    .carousel-next {
+        right: 5px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -5528,6 +5623,34 @@ p {
     
     .blog-card-content h3 {
         font-size: 1rem;
+    }
+    
+    /* Blog Carousel Small Mobile Styles */
+    .blog-carousel {
+        margin-top: 25px;
+    }
+    
+    .blog-carousel-container {
+        gap: 15px;
+        padding: 0 10px;
+    }
+    
+    .blog-carousel .blog-card {
+        width: calc((100% - 30px) / 3); /* 3 cards with 2 gaps of 15px each */
+        min-width: 200px;
+    }
+    
+    .carousel-nav {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .carousel-prev {
+        left: 2px;
+    }
+    
+    .carousel-next {
+        right: 2px;
     }
 }
 
