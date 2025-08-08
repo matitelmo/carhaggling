@@ -1595,6 +1595,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('msg3'),
             document.getElementById('msg4'),
             document.getElementById('msg5'),
+            document.getElementById('msg6'),
         ];
         const typingIndicators = [
             document.getElementById('ai-typing1'),
@@ -1646,10 +1647,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }, delay);
         delay += 2000;
 
-        // Show final dealer message
+        // Show first part of final dealer message
         setTimeout(() => {
             messages[4].style.opacity = '1';
             messages[4].style.transform = 'translateY(0)';
+        }, delay);
+        delay += 2000;
+
+        // Show second part of final dealer message
+        setTimeout(() => {
+            messages[5].style.opacity = '1';
+            messages[5].style.transform = 'translateY(0)';
         }, delay);
         delay += 2000;
 
