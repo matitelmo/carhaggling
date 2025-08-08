@@ -1573,3 +1573,42 @@ function updateCarouselNav() {
         nextBtn.disabled = carouselPosition >= maxPosition;
     }
 }
+
+// SCRIPT FOR HAGGLING DEMO ANIMATION
+document.addEventListener('DOMContentLoaded', function() {
+    const demoSection = document.getElementById('haggling-demo-section');
+    if (!demoSection) return;
+
+    const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+            animateChat();
+            observer.disconnect(); // Animate only once
+        }
+    }, { threshold: 0.5 });
+
+    observer.observe(demoSection);
+
+    function animateChat() {
+        const messages = [
+            document.getElementById('msg1'),
+            document.getElementById('msg2'),
+            document.getElementById('msg3'),
+            document.getElementById('msg4'),
+            document.getElementById('msg5'),
+        ];
+        const summary = document.getElementById('summary');
+
+        let delay = 500;
+        messages.forEach((msg, index) => {
+            setTimeout(() => {
+                msg.style.opacity = '1';
+                msg.style.transform = 'translateY(0)';
+            }, delay);
+            delay += 2500; // Time between messages
+        });
+
+        setTimeout(() => {
+            summary.style.opacity = '1';
+        }, delay);
+    }
+});
