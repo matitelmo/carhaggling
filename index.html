@@ -371,30 +371,55 @@
     <section class="haggling-demo-section" id="haggling-demo-section">
         <div class="demo-container">
             <h2>Watch Our AI Negotiate in Real-Time</h2>
+            <button class="play-demo-btn" id="playDemoBtn">
+                <span class="play-icon">►</span>
+                Play Negotiation Demo
+            </button>
             <div class="chat-window">
                 <div class="message dealer" id="msg1" style="opacity: 0;">
                     <div class="avatar dealer-avatar">D</div>
                     <div class="text">The listed price for the 2021 RAV4 is a firm $26,500.</div>
+                    <span class="timestamp">11:31 AM</span>
                 </div>
+
+                <div class="typing-indicator" id="ai-typing1" style="display: none;">
+                    <div class="avatar ai-avatar">AI</div>
+                    <div class="text"><span>.</span><span>.</span><span>.</span></div>
+                </div>
+
                 <div class="message ai" id="msg2" style="opacity: 0;">
                     <div class="text">Thank you. Based on market data for this VIN, including a 42-day lot time and two recent auction sales of comparable models, our initial offer is $24,200.</div>
                     <div class="avatar ai-avatar">AI</div>
+                    <span class="timestamp">11:32 AM</span>
                 </div>
+
                 <div class="message dealer" id="msg3" style="opacity: 0;">
                     <div class="avatar dealer-avatar">D</div>
                     <div class="text">That's well below invoice. The best I can do is $25,800.</div>
+                    <span class="timestamp">11:33 AM</span>
                 </div>
+
+                <div class="typing-indicator" id="ai-typing2" style="display: none;">
+                    <div class="avatar ai-avatar">AI</div>
+                    <div class="text"><span>.</span><span>.</span><span>.</span></div>
+                </div>
+
                 <div class="message ai" id="msg4" style="opacity: 0;">
                     <div class="text">I understand. However, the vehicle's history report shows minor cosmetic damage to the rear bumper. Factoring that in, our final offer is $24,750, and we can wire a deposit today.</div>
                     <div class="avatar ai-avatar">AI</div>
+                    <span class="timestamp">11:34 AM</span>
                 </div>
-                 <div class="message dealer" id="msg5" style="opacity: 0;">
+
+                <div class="message dealer" id="msg5" style="opacity: 0;">
                     <div class="avatar dealer-avatar">D</div>
                     <div class="text">Let me talk to my manager... Okay, you have a deal.</div>
+                    <span class="timestamp">11:35 AM</span>
                 </div>
             </div>
             <div class="summary-box" id="summary" style="opacity: 0;">
-                <p>In <strong>20 seconds</strong>, our AI saved this user <strong>$1,750</strong>. Activate your own AI negotiator for just $49.</p>
+                <h3>This is the power you get.</h3>
+                <p>Our AI used real-time data to save this user <strong>$1,750</strong>. Now, it's your turn.</p>
+                <button class="primary-cta" onclick="openModal()">Activate My AI Negotiator for $49</button>
             </div>
         </div>
     </section>

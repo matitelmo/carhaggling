@@ -1576,17 +1576,17 @@ function updateCarouselNav() {
 
 // SCRIPT FOR HAGGLING DEMO ANIMATION
 document.addEventListener('DOMContentLoaded', function() {
-    const demoSection = document.getElementById('haggling-demo-section');
-    if (!demoSection) return;
+    const playBtn = document.getElementById('playDemoBtn');
+    if (!playBtn) return;
 
-    const observer = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
-            animateChat();
-            observer.disconnect(); // Animate only once
-        }
-    }, { threshold: 0.5 });
-
-    observer.observe(demoSection);
+    playBtn.addEventListener('click', function() {
+        // Disable the button
+        playBtn.classList.add('disabled');
+        playBtn.textContent = 'Demo Playing...';
+        
+        // Start the animation
+        animateChat();
+    });
 
     function animateChat() {
         const messages = [
@@ -1596,17 +1596,64 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('msg4'),
             document.getElementById('msg5'),
         ];
+        const typingIndicators = [
+            document.getElementById('ai-typing1'),
+            document.getElementById('ai-typing2'),
+        ];
         const summary = document.getElementById('summary');
 
         let delay = 500;
-        messages.forEach((msg, index) => {
-            setTimeout(() => {
-                msg.style.opacity = '1';
-                msg.style.transform = 'translateY(0)';
-            }, delay);
-            delay += 2500; // Time between messages
-        });
+        
+        // Show first dealer message
+        setTimeout(() => {
+            messages[0].style.opacity = '1';
+            messages[0].style.transform = 'translateY(0)';
+        }, delay);
+        delay += 2000;
 
+        // Show first typing indicator
+        setTimeout(() => {
+            typingIndicators[0].style.display = 'flex';
+        }, delay);
+        delay += 1500;
+
+        // Hide typing indicator and show first AI message
+        setTimeout(() => {
+            typingIndicators[0].style.display = 'none';
+            messages[1].style.opacity = '1';
+            messages[1].style.transform = 'translateY(0)';
+        }, delay);
+        delay += 2000;
+
+        // Show second dealer message
+        setTimeout(() => {
+            messages[2].style.opacity = '1';
+            messages[2].style.transform = 'translateY(0)';
+        }, delay);
+        delay += 2000;
+
+        // Show second typing indicator
+        setTimeout(() => {
+            typingIndicators[1].style.display = 'flex';
+        }, delay);
+        delay += 1500;
+
+        // Hide typing indicator and show second AI message
+        setTimeout(() => {
+            typingIndicators[1].style.display = 'none';
+            messages[3].style.opacity = '1';
+            messages[3].style.transform = 'translateY(0)';
+        }, delay);
+        delay += 2000;
+
+        // Show final dealer message
+        setTimeout(() => {
+            messages[4].style.opacity = '1';
+            messages[4].style.transform = 'translateY(0)';
+        }, delay);
+        delay += 2000;
+
+        // Show summary
         setTimeout(() => {
             summary.style.opacity = '1';
         }, delay);
