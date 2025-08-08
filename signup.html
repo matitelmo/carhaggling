@@ -86,7 +86,7 @@
                     </div>
                     <div class="progress-step" data-step="5">
                         <div class="step-number">5</div>
-                        <div class="step-label">Contact</div>
+                        <div class="step-label">Account</div>
                     </div>
                     <div class="progress-step" data-step="6">
                         <div class="step-number">6</div>
@@ -315,7 +315,7 @@
 
                     <div class="form-actions">
                         <button type="button" class="cta-button secondary" onclick="goToStep(2)">Back</button>
-                        <button type="submit" class="cta-button primary" onclick="goToStep(5)">Continue to Contact</button>
+                        <button type="button" class="cta-button primary" onclick="goToStep(5)">Continue to Create Account</button>
                     </div>
                 </div>
             </div>
@@ -323,8 +323,8 @@
             <!-- Step 5: Contact -->
             <div class="step-content" id="step5">
                 <div class="step-header">
-                    <h2>How can we reach you?</h2>
-                    <p class="step-subtitle">We'll send you personalized car recommendations and keep you updated on your search.</p>
+                    <h2>Create an account to access the offers</h2>
+                    <p class="step-subtitle">Create your account to access personalized car recommendations and exclusive offers.</p>
                 </div>
 
                 <form class="contact-form" id="contactForm">
@@ -348,6 +348,16 @@
                             <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Create a password for your account" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                        </div>
+                    </div>
 
                     <div class="price-target-section">
                         <label for="priceTarget">Target Price Range</label>
@@ -361,12 +371,14 @@
                     </div>
 
                     <div class="contact-benefits">
-                        <h4>What you'll get:</h4>
+                        <h4>What you'll get with your account:</h4>
                         <ul>
                             <li>Personalized car recommendations within 24 hours</li>
                             <li>Pre-negotiated pricing on all vehicles</li>
                             <li>Free vehicle history reports</li>
                             <li>Direct connection to trusted dealers</li>
+                            <li>Access to exclusive member-only offers</li>
+                            <li>Save your preferences for future searches</li>
                         </ul>
                     </div>
 
@@ -386,27 +398,27 @@
 
                 <!-- Process Explanation -->
                 <div class="process-explanation">
-                    <h4>How Our Process Works</h4>
+                    <h4>What Your AI Co-Pilot Does For You</h4>
                     <div class="process-steps">
                         <div class="process-step">
                             <div class="process-step-number">1</div>
                             <div class="process-step-content">
-                                <h5>Pay $49 Activation Fee</h5>
-                                <p>This covers our AI's comprehensive market search and analysis</p>
+                                <h5>Comprehensive Market Search</h5>
+                                <p>Our AI searches thousands of listings across all dealers in your area to find every car matching your exact criteria</p>
                             </div>
                         </div>
                         <div class="process-step">
                             <div class="process-step-number">2</div>
                             <div class="process-step-content">
-                                <h5>AI Finds & Negotiates (Within 7 Days)</h5>
-                                <p>Our AI scans thousands of listings and negotiates prices for you</p>
+                                <h5>OTD Price Negotiation</h5>
+                                <p>We negotiate the complete out-the-door price with dealers, including all fees, taxes, and add-ons - saving you $1,500-$5,000 on average</p>
                             </div>
                         </div>
                         <div class="process-step">
                             <div class="process-step-number">3</div>
                             <div class="process-step-content">
-                                <h5>Pay Success Deposit & Complete Purchase</h5>
-                                <p>Pay 20% of savings as refundable deposit to unlock seller info. Deposit converts to our fee when you buy, or refunded if deal fails.</p>
+                                <h5>Pre-Purchase Inspection Coordination</h5>
+                                <p>We arrange and coordinate professional vehicle inspections to ensure you're buying a quality car with no hidden issues</p>
                             </div>
                         </div>
                     </div>
@@ -416,7 +428,7 @@
                             <span class="guarantee-icon">🛡️</span>
                             <div class="guarantee-content">
                                 <h5>100% Risk-Free Guarantee</h5>
-                                <p>If we don't find cars matching your criteria within 7 days, you get your $49 back. No questions asked.</p>
+                                <p>If we can't find you any cars within your target price within 7 days, we'll refund you the $49. No questions asked.</p>
                             </div>
                         </div>
                     </div>

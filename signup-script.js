@@ -14,6 +14,8 @@ let funnelData = {
     lastName: '',
     email: '',
     phone: '',
+    password: '',
+    confirmPassword: '',
     cardNumber: '',
     expiryDate: '',
     cvv: '',
@@ -138,6 +140,14 @@ const carModels = {
     'Tesla': ['Model S', 'Model 3', 'Model X', 'Model Y', 'Cybertruck', 'Roadster']
 };
 
+// Utility function to scroll to top
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
 // Navigation functions
 function goToStep(step) {
     console.log(`=== NAVIGATING TO STEP ${step} ===`);
@@ -160,6 +170,14 @@ function goToStep(step) {
         targetStep.classList.add('active');
         currentStep = step;
         updateProgressBar(step);
+        
+        // Scroll to top of page smoothly with a small delay for better UX
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 100);
         
         console.log(`Successfully navigated to step ${step}`);
         
@@ -499,6 +517,8 @@ function handleContactSubmit(event) {
     funnelData.lastName = document.getElementById('lastName').value;
     funnelData.email = document.getElementById('contactEmail').value;
     funnelData.phone = document.getElementById('phone').value;
+    funnelData.password = document.getElementById('password').value;
+    funnelData.confirmPassword = document.getElementById('confirmPassword').value;
     funnelData.priceTarget = document.getElementById('priceTarget').value;
     
     // Validation
@@ -517,10 +537,27 @@ function handleContactSubmit(event) {
         return;
     }
     
+    // Password validation
+    if (!funnelData.password) {
+        showError('Please create a password for your account.');
+        return;
+    }
+    
+    if (funnelData.password.length < 8) {
+        showError('Password must be at least 8 characters long.');
+        return;
+    }
+    
+    if (funnelData.password !== funnelData.confirmPassword) {
+        showError('Passwords do not match. Please try again.');
+        return;
+    }
+    
     // Track step completion
     trackEvent('funnel_step_completed', { 
         step: 5, 
         has_phone: funnelData.phone.length > 0,
+        has_password: true,
         price_target: funnelData.priceTarget
     });
     
@@ -595,6 +632,14 @@ function showSuccessStep() {
     
     // Show success step
     document.getElementById('successStep').classList.add('active');
+    
+    // Scroll to top of page smoothly with a small delay for better UX
+    setTimeout(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, 100);
     
     // Track successful completion
     trackEvent('funnel_completed', {
