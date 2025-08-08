@@ -6328,27 +6328,27 @@ p {
   }
   
   .phone-mockup {
-    max-width: 200px;
-    height: 375px;
-    border-radius: 20px;
-    padding: 6px;
+    max-width: 240px;
+    height: 450px;
+    border-radius: 24px;
+    padding: 7px;
   }
   
   .phone-notch {
-    width: 75px;
-    height: 12px;
-    border-radius: 0 0 8px 8px;
+    width: 90px;
+    height: 14px;
+    border-radius: 0 0 10px 10px;
   }
   
   .chat-window {
-    border-radius: 14px;
-    padding: 10px 8px 8px 8px;
+    border-radius: 17px;
+    padding: 12px 10px 10px 10px;
   }
   
   .avatar {
-    width: 20px;
-    height: 20px;
-    font-size: 0.7rem;
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
   }
   
   .message .text {
