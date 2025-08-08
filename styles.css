@@ -5779,7 +5779,7 @@ p {
 /* STYLES FOR HAGGLING DEMO */
 .demo-container {
     text-align: center;
-    padding: 30px 20px;
+    padding: 15px 20px;
     background-color: #f8f9fa;
 }
 
@@ -6010,7 +6010,7 @@ p {
 /* Mobile responsiveness for demo */
 @media (max-width: 768px) {
     .demo-container {
-        padding: 40px 15px;
+        padding: 20px 15px;
     }
     
     .demo-container h2 {
@@ -6087,7 +6087,7 @@ p {
 
 @media (max-width: 480px) {
     .demo-container {
-        padding: 30px 10px;
+        padding: 15px 10px;
     }
     
     .demo-container h2 {
