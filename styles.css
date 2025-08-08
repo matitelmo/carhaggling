@@ -6323,6 +6323,10 @@ p {
 
 /* Desktop: Make demo smaller */
 @media (min-width: 769px) {
+  .demo-container {
+    padding: 30px 20px;
+  }
+  
   .phone-mockup {
     max-width: 200px;
     height: 375px;
@@ -6357,34 +6361,34 @@ p {
   }
   
   .demo-container h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .play-demo-btn {
-    padding: 12px 24px;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-  }
-  
-  .summary-box {
-    padding: 15px;
-    margin-top: 20px;
-  }
-  
-  .summary-box h3 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-  
-  .summary-box p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 15px;
   }
   
-  .primary-cta {
-    padding: 10px 20px;
+  .play-demo-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .summary-box {
+    padding: 10px;
+    margin-top: 15px;
+  }
+  
+  .summary-box h3 {
     font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  
+  .summary-box p {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+  }
+  
+  .primary-cta {
+    padding: 8px 16px;
+    font-size: 0.8rem;
   }
 }
 
