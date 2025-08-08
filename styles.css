@@ -6321,6 +6321,73 @@ p {
   position: relative;
 }
 
+/* Desktop: Make demo smaller */
+@media (min-width: 769px) {
+  .phone-mockup {
+    max-width: 200px;
+    height: 375px;
+    border-radius: 20px;
+    padding: 6px;
+  }
+  
+  .phone-notch {
+    width: 75px;
+    height: 12px;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .chat-window {
+    border-radius: 14px;
+    padding: 10px 8px 8px 8px;
+  }
+  
+  .avatar {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+  }
+  
+  .message .text {
+    font-size: 0.7rem;
+    padding: 8px 12px;
+  }
+  
+  .timestamp {
+    font-size: 0.6rem;
+  }
+  
+  .demo-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .play-demo-btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .summary-box {
+    padding: 15px;
+    margin-top: 20px;
+  }
+  
+  .summary-box h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .summary-box p {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+  
+  .primary-cta {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
 .phone-notch {
   position: absolute;
   top: 12px;
