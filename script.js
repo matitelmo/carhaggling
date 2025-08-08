@@ -26,6 +26,7 @@ const carModels = {
 let funnelData = {
     carMake: '',
     carModel: '',
+    bodyType: '',
     carYear: '',
     carMileage: '',
     zipCode: '',
@@ -55,8 +56,12 @@ function toggleSearchType(type, element) {
     // Show/hide appropriate fields
     const makeModelFields = document.querySelectorAll('.make-model-field');
     const bodyTypeFields = document.querySelectorAll('.body-type-field');
+    const searchRow = document.querySelector('.search-row');
     
     if (type === 'make-model') {
+        // Remove body-type-mode class for 4-column layout
+        searchRow.classList.remove('body-type-mode');
+        
         makeModelFields.forEach(field => {
             field.style.display = 'block';
             const select = field.querySelector('select');
@@ -68,6 +73,9 @@ function toggleSearchType(type, element) {
             if (select) select.required = false;
         });
     } else if (type === 'body-type') {
+        // Add body-type-mode class for 3-column layout
+        searchRow.classList.add('body-type-mode');
+        
         makeModelFields.forEach(field => {
             field.style.display = 'none';
             const select = field.querySelector('select');
@@ -93,8 +101,12 @@ function toggleSearchTypeModal(type, element) {
     // Show/hide appropriate fields in modal
     const makeModelFields = document.querySelectorAll('#step1 .make-model-field');
     const bodyTypeFields = document.querySelectorAll('#step1 .body-type-field');
+    const searchRow = document.querySelector('#step1 .search-row');
     
     if (type === 'make-model') {
+        // Remove body-type-mode class for 4-column layout
+        if (searchRow) searchRow.classList.remove('body-type-mode');
+        
         makeModelFields.forEach(field => {
             field.style.display = 'block';
             const select = field.querySelector('select');
@@ -106,6 +118,9 @@ function toggleSearchTypeModal(type, element) {
             if (select) select.required = false;
         });
     } else if (type === 'body-type') {
+        // Add body-type-mode class for 3-column layout
+        if (searchRow) searchRow.classList.add('body-type-mode');
+        
         makeModelFields.forEach(field => {
             field.style.display = 'none';
             const select = field.querySelector('select');
@@ -165,6 +180,7 @@ function resetFunnel() {
     funnelData = {
         carMake: '',
         carModel: '',
+        bodyType: '',
         carYear: '',
         carMileage: '',
         zipCode: '',
@@ -186,10 +202,15 @@ function resetFunnel() {
     document.getElementById('contactForm').reset();
     document.getElementById('paymentForm').reset();
     
-    // Reset car model dropdown
+    // Reset car model dropdowns
     const carModelSelect = document.getElementById('carModel');
     if (carModelSelect) {
         carModelSelect.innerHTML = '<option value="">Select Model</option>';
+    }
+    
+    const carModelModalSelect = document.getElementById('carModelModal');
+    if (carModelModalSelect) {
+        carModelModalSelect.innerHTML = '<option value="">Select Model</option>';
     }
     
     // Show first step
@@ -247,45 +268,79 @@ function updateCarModels() {
     }
 }
 
+// Update car models for modal form
+function updateCarModelsModal() {
+    const carMake = document.getElementById('carMakeModal').value;
+    const carModelSelect = document.getElementById('carModelModal');
+    
+    // Clear existing options
+    carModelSelect.innerHTML = '<option value="">Select Model</option>';
+    
+    if (carMake && carMake !== 'other' && carModels[carMake]) {
+        carModels[carMake].forEach(model => {
+            const option = document.createElement('option');
+            option.value = model;
+            option.textContent = model;
+            carModelSelect.appendChild(option);
+        });
+    }
+}
+
+function redirectToSignup(data) {
+    localStorage.setItem('funnelData', JSON.stringify(data));
+    const params = new URLSearchParams(data);
+    params.append('startStep', 2);
+    window.location.href = `signup.html?${params.toString()}`;
+}
+
 // Step 1: Car Details
 function handleCarDetailsSubmit(event) {
     event.preventDefault();
+    event.stopPropagation(); // Prevent event bubbling
     
-    // Collect form data
-    funnelData.carMake = document.getElementById('carMake').value;
-    funnelData.carModel = document.getElementById('carModel').value;
-    funnelData.carYear = document.getElementById('carYear').value;
-    funnelData.carMileage = document.getElementById('carMileage').value;
-    
-    // Enhanced validation with field-specific errors
-    if (!funnelData.carMake) {
-        showError('Please select a car make.', 'carMake');
-        return;
-    }
-    if (!funnelData.carModel) {
-        showError('Please select a car model.', 'carModel');
-        return;
-    }
-    if (!funnelData.carYear) {
-        showError('Please select a car year.', 'carYear');
-        return;
-    }
-    if (!funnelData.carMileage) {
-        showError('Please enter maximum mileage.', 'carMileage');
-        return;
+    // Ensure we're in the modal context
+    const modalOverlay = document.getElementById('modalOverlay');
+    if (!modalOverlay || !modalOverlay.classList.contains('active')) {
+        return; // Not in modal, don't process
     }
     
-    // Track step completion
-    trackEvent('funnel_step_completed', { 
-        step: 1, 
-        car_make: funnelData.carMake,
-        car_model: funnelData.carModel,
-        car_year: funnelData.carYear,
-        car_mileage: funnelData.carMileage
-    });
+    // Determine which search type is active
+    const activeToggle = document.querySelector('#step1 .search-type-toggle .toggle-option.active');
+    const searchType = activeToggle ? activeToggle.getAttribute('data-type') : 'make-model';
     
-    // Move to next step
-    showFunnelStep(2);
+    let data = {
+        searchType: searchType,
+        carMake: '',
+        carModel: '',
+        bodyType: '',
+        carYear: document.getElementById('carYearModal').value,
+        carMileage: document.getElementById('carMileageModal').value
+    };
+    
+    // Collect search-type specific data and validate
+    if (searchType === 'make-model') {
+        data.carMake = document.getElementById('carMakeModal').value;
+        data.carModel = document.getElementById('carModelModal').value;
+        if (!data.carMake || !data.carModel) {
+            showError('Please select both car make and model.', 'carMakeModal');
+            return;
+        }
+    } else if (searchType === 'body-type') {
+        data.bodyType = document.getElementById('bodyTypeModal').value;
+        if (!data.bodyType) {
+            showError('Please select a body type.', 'bodyTypeModal');
+            return;
+        }
+    }
+    
+    // Validate common fields
+    if (!data.carYear || !data.carMileage) {
+        showError('Please fill in all required fields.', 'carYearModal');
+        return;
+    }
+    
+    trackEvent('funnel_step_1_completed', data);
+    redirectToSignup(data);
 }
 
 // Step 2: Location & Distance
@@ -1240,37 +1295,84 @@ document.addEventListener('DOMContentLoaded', function() {
         heroSearchForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const carMake = document.getElementById('carMake').value;
-            const carModel = document.getElementById('carModel').value;
-            const carYear = document.getElementById('carYear').value;
-            const carMileage = document.getElementById('carMileage').value;
-            
-            if (!carMake || !carModel || !carYear || !carMileage) {
-                alert('Please fill in all fields');
+            // Check if modal is open - if so, don't process hero form
+            const modalOverlay = document.getElementById('modalOverlay');
+            if (modalOverlay && modalOverlay.classList.contains('active')) {
                 return;
             }
             
-            // Store search data and redirect to signup with all parameters
-            localStorage.setItem('searchData', JSON.stringify({
+            // Determine which search type is active
+            const activeToggle = document.querySelector('.search-type-toggle .toggle-option.active');
+            const searchType = activeToggle ? activeToggle.getAttribute('data-type') : 'make-model';
+            
+            // Collect common form data
+            const carYear = document.getElementById('carYear').value;
+            const carMileage = document.getElementById('carMileage').value;
+            
+            // Collect search-type specific data and validate
+            let carMake = '';
+            let carModel = '';
+            let bodyType = '';
+            
+            if (searchType === 'make-model') {
+                carMake = document.getElementById('carMake').value;
+                carModel = document.getElementById('carModel').value;
+                
+                // Validate Make/Model fields
+                if (!carMake || !carModel) {
+                    alert('Please select both car make and model');
+                    return;
+                }
+            } else if (searchType === 'body-type') {
+                bodyType = document.getElementById('bodyType').value;
+                
+                // Validate Body Type field
+                if (!bodyType) {
+                    alert('Please select a body type');
+                    return;
+                }
+            }
+            
+            // Validate common fields
+            if (!carYear || !carMileage) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Build unified data and redirect to signup at step 2
+            const data = {
+                searchType,
                 carMake,
                 carModel,
+                bodyType,
                 carYear,
                 carMileage
-            }));
+            };
             
-            const params = new URLSearchParams({
-                make: carMake,
-                model: carModel,
-                year: carYear,
-                mileage: carMileage
-            });
-            
-            window.location.href = `signup.html?${params.toString()}`;
+            // Use the shared redirect helper (saves to localStorage and appends startStep=2)
+            if (typeof redirectToSignup === 'function') {
+                redirectToSignup(data);
+            } else {
+                // Fallback (should not happen): do minimal equivalent
+                localStorage.setItem('funnelData', JSON.stringify(data));
+                const params = new URLSearchParams(data);
+                params.append('startStep', 2);
+                window.location.href = `signup.html?${params.toString()}`;
+            }
         });
     }
     
     // Initialize car models dropdown
     updateCarModels();
+    
+    // Add direct event listener to modal submit button to ensure it works
+    const modalSubmitButton = document.querySelector('#carDetailsForm button[type="submit"]');
+    if (modalSubmitButton) {
+        modalSubmitButton.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            // Let the form's onsubmit handle it
+        });
+    }
 });
 
 // Enhanced social proof ticker with more realistic data

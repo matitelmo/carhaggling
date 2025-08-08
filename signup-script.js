@@ -1,3 +1,5 @@
+console.log('=== SIGNUP SCRIPT LOADED - VERSION 2 ===');
+
 // Global variables
 let currentStep = 1;
 let userName = '';
@@ -63,53 +65,57 @@ function getUrlParameter(name) {
     return urlParams.get(name);
 }
 
-// Function to pre-populate form from URL parameters
+// Function to pre-populate form from the global funnelData object
 function prePopulateForm() {
-    const make = getUrlParameter('make');
-    const model = getUrlParameter('model');
-    const year = getUrlParameter('year');
-    const mileage = getUrlParameter('mileage');
-    
-    if (make) {
+    // Data is now expected to be in the global funnelData variable
+    console.log('Pre-populating form with data:', funnelData);
+
+    // Handle search type toggle first
+    if (funnelData.searchType === 'body-type') {
+        const bodyTypeToggle = document.querySelector('.search-type-toggle .toggle-option[data-type="body-type"]');
+        if (bodyTypeToggle) {
+            bodyTypeToggle.click(); // Programmatically click the toggle to show the right fields
+        }
+        const bodyTypeSelect = document.getElementById('bodyType');
+        if (bodyTypeSelect && funnelData.bodyType) {
+            bodyTypeSelect.value = funnelData.bodyType;
+            console.log(`Pre-populated body type: ${funnelData.bodyType}`);
+        }
+    } else { // Default to 'make-model'
+        const makeModelToggle = document.querySelector('.search-type-toggle .toggle-option[data-type="make-model"]');
+        if (makeModelToggle && !makeModelToggle.classList.contains('active')) {
+             makeModelToggle.click();
+        }
         const makeSelect = document.getElementById('carMake');
-        if (makeSelect) {
-            makeSelect.value = make;
-            funnelData.carMake = make;
-            console.log(`Pre-populated make: ${make}`);
+        if (makeSelect && funnelData.carMake) {
+            makeSelect.value = funnelData.carMake;
+            console.log(`Pre-populated make: ${funnelData.carMake}`);
+            updateCarModels(); // Crucial to load the models for the selected make
             
-            // Update car models if make is set
-            updateCarModels();
-            
-            // Set model after a short delay to allow models to load
-            if (model) {
+            // Set model after a short delay for the model list to populate
+            if (funnelData.carModel) {
                 setTimeout(() => {
                     const modelSelect = document.getElementById('carModel');
                     if (modelSelect) {
-                        modelSelect.value = model;
-                        funnelData.carModel = model;
-                        console.log(`Pre-populated model: ${model}`);
+                        modelSelect.value = funnelData.carModel;
+                        console.log(`Pre-populated model: ${funnelData.carModel}`);
                     }
                 }, 100);
             }
         }
     }
     
-    if (year) {
-        const yearSelect = document.getElementById('carYear');
-        if (yearSelect) {
-            yearSelect.value = year;
-            funnelData.carYear = year;
-            console.log(`Pre-populated year: ${year}`);
-        }
+    // Populate common fields
+    const yearSelect = document.getElementById('carYear');
+    if (yearSelect && funnelData.carYear) {
+        yearSelect.value = funnelData.carYear;
+        console.log(`Pre-populated year: ${funnelData.carYear}`);
     }
     
-    if (mileage) {
-        const mileageSelect = document.getElementById('carMileage');
-        if (mileageSelect) {
-            mileageSelect.value = mileage;
-            funnelData.carMileage = mileage;
-            console.log(`Pre-populated mileage: ${mileage}`);
-        }
+    const mileageSelect = document.getElementById('carMileage');
+    if (mileageSelect && funnelData.carMileage) {
+        mileageSelect.value = funnelData.carMileage;
+        console.log(`Pre-populated mileage: ${funnelData.carMileage}`);
     }
 }
 
@@ -144,10 +150,12 @@ function goToStep(step) {
     // Hide all steps
     document.querySelectorAll('.step-content').forEach(content => {
         content.classList.remove('active');
+        console.log('Removed active class from:', content.id);
     });
     
     // Show target step
     const targetStep = document.getElementById(`step${step}`);
+    console.log('Target step element:', targetStep);
     if (targetStep) {
         targetStep.classList.add('active');
         currentStep = step;
@@ -647,20 +655,29 @@ function formatCVV(input) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM Content Loaded - Initializing signup page');
     
-    // Pre-populate form from URL parameters
-    prePopulateForm();
+    // Load data from localStorage
+    const savedData = JSON.parse(localStorage.getItem('funnelData'));
+    console.log('Saved data from localStorage:', savedData);
     
-    // Check if we should skip to step 2 (if all car details are provided)
-    const make = getUrlParameter('make');
-    const model = getUrlParameter('model');
-    const year = getUrlParameter('year');
-    const mileage = getUrlParameter('mileage');
+    if (savedData) {
+        funnelData = { ...funnelData, ...savedData };
+        console.log('Updated funnelData:', funnelData);
+        prePopulateForm();
+    }
     
-    if (make && model && year && mileage) {
-        // Skip to step 2 since all car details are provided
+    // Check if we should start at a different step
+    const startStep = parseInt(getUrlParameter('startStep'));
+    console.log('startStep from URL:', startStep);
+    
+    if (startStep && startStep > 1) {
+        console.log('Should start at step', startStep, '- setting timeout...');
         setTimeout(() => {
-            goToStep(2);
-        }, 200); // Small delay to ensure pre-population is complete
+            console.log('Executing goToStep(', startStep, ')');
+            goToStep(startStep);
+        }, 150); // Delay to ensure everything is loaded
+    } else {
+        console.log('Starting at step 1 (default)');
+        updateProgressBar(1);
     }
     
     // Set up form event listeners
@@ -669,71 +686,54 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     const paymentForm = document.getElementById('paymentForm');
     
-    console.log('Forms found:', {
-        carDetailsForm: !!carDetailsForm,
-        locationForm: !!locationForm,
-        contactForm: !!contactForm,
-        paymentForm: !!paymentForm
-    });
-    
     if (carDetailsForm) carDetailsForm.addEventListener('submit', handleCarDetailsSubmit);
     if (locationForm) locationForm.addEventListener('submit', handleLocationSubmit);
     if (contactForm) contactForm.addEventListener('submit', handleContactSubmit);
     if (paymentForm) paymentForm.addEventListener('submit', handlePaymentSubmit);
     
-    // Set up car make change listener
+    // Set up other listeners
+    setupCarMakeListener();
+    setupDistanceListeners();
+    setupPriceSliderListener();
+    setupCardFormattingListeners();
+    
+    // Track page load
+    trackEvent('signup_page_loaded');
+});
+
+// Refactored setup functions
+function setupCarMakeListener() {
     const carMakeSelect = document.getElementById('carMake');
     if (carMakeSelect) {
-        console.log('Setting up car make change listener');
         carMakeSelect.addEventListener('change', updateCarModels);
-    } else {
-        console.error('Car make select element not found during initialization');
     }
-    
-    // Set up distance option listeners
+}
+
+function setupDistanceListeners() {
     document.querySelectorAll('.distance-option').forEach(option => {
         option.addEventListener('click', function() {
             selectDistance(this);
         });
     });
-    
-    // Set up price slider listener
+}
+
+function setupPriceSliderListener() {
     const priceSlider = document.getElementById('priceTarget');
     if (priceSlider) {
-        priceSlider.addEventListener('input', function(e) {
-            updatePriceDisplay(e.target.value);
-        });
+        priceSlider.addEventListener('input', e => updatePriceDisplay(e.target.value));
     }
-    
-    // Set up card formatting listeners
+}
+
+function setupCardFormattingListeners() {
     const cardNumber = document.getElementById('cardNumber');
     const expiryDate = document.getElementById('expiryDate');
     const cvv = document.getElementById('cvv');
     
-    if (cardNumber) {
-        cardNumber.addEventListener('input', function(e) {
-            formatCardNumber(e.target);
-        });
-    }
-    
-    if (expiryDate) {
-        expiryDate.addEventListener('input', function(e) {
-            formatExpiryDate(e.target);
-        });
-    }
-    
-    if (cvv) {
-        cvv.addEventListener('input', function(e) {
-            formatCVV(e.target);
-        });
-    }
-    
-    // Track page load
-    trackEvent('signup_page_loaded');
-    
-    // Initialize progress bar
-    updateProgressBar(1);
-});
+    if (cardNumber) cardNumber.addEventListener('input', e => formatCardNumber(e.target));
+    if (expiryDate) expiryDate.addEventListener('input', e => formatExpiryDate(e.target));
+    if (cvv) cvv.addEventListener('input', e => formatCVV(e.target));
+}
+
 
 // Add CSS for error notifications
 const errorStyles = `

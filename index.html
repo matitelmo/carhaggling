@@ -161,7 +161,7 @@
             
             <!-- Full-Width Search Form -->
             <div class="search-form-container">
-                <form class="search-form" id="heroSearchForm">
+                <form class="search-form" id="heroSearchForm" novalidate>
                     <!-- Search Type Toggle -->
                     <div class="search-type-toggle">
                         <button type="button" class="toggle-option active" data-type="make-model" onclick="toggleSearchType('make-model', this)">Make/Model</button>
@@ -1030,7 +1030,7 @@
                     </div>
                 </div>
 
-                <form id="carDetailsForm" onsubmit="handleCarDetailsSubmit(event)">
+                <form id="carDetailsForm" onsubmit="handleCarDetailsSubmit(event)" novalidate>
                     <!-- Search Type Toggle -->
                     <div class="search-type-toggle">
                         <button type="button" class="toggle-option active" data-type="make-model" onclick="toggleSearchTypeModal('make-model', this)">Make/Model</button>
@@ -1040,8 +1040,8 @@
                     <div class="form-row">
                         <!-- Make/Model Fields -->
                         <div class="form-group make-model-field">
-                            <label for="carMake">Car Make</label>
-                            <select id="carMake" required onchange="updateCarModels()">
+                            <label for="carMakeModal">Car Make</label>
+                            <select id="carMakeModal" required onchange="updateCarModelsModal()">
                                 <option value="">Select Make</option>
                                 <option value="Toyota">Toyota</option>
                                 <option value="Honda">Honda</option>
@@ -1062,8 +1062,8 @@
                             </select>
                         </div>
                         <div class="form-group make-model-field">
-                            <label for="carModel">Car Model</label>
-                            <select id="carModel" required>
+                            <label for="carModelModal">Car Model</label>
+                            <select id="carModelModal" required>
                                 <option value="">Select Model</option>
                             </select>
                         </div>
@@ -1091,16 +1091,16 @@
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="carYear">Used/New</label>
-                            <select id="carYear" required>
+                            <label for="carYearModal">Used/New</label>
+                            <select id="carYearModal" required>
                                 <option value="">Select Option</option>
                                 <option value="new">New</option>
                                 <option value="used">Used</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="carMileage">Max Mileage</label>
-                            <input type="number" id="carMileage" placeholder="e.g., 50000" required>
+                            <label for="carMileageModal">Max Mileage</label>
+                            <input type="number" id="carMileageModal" placeholder="e.g., 50000" required>
                         </div>
                     </div>
                     
