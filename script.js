@@ -1579,22 +1579,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const playBtn = document.getElementById('playDemoBtn');
     if (!playBtn) return;
 
-    // Update button to show it's playing automatically
-    playBtn.classList.add('disabled');
-    playBtn.textContent = 'Demo Playing...';
-    
-    // Start the animation automatically after a short delay
-    setTimeout(() => {
-        animateChat();
-    }, 1000);
-
-    // Keep the click handler for manual replay if needed
     playBtn.addEventListener('click', function() {
-        if (playBtn.classList.contains('disabled')) {
-            // If already playing, do nothing
-            return;
-        }
-        
         // Disable the button
         playBtn.classList.add('disabled');
         playBtn.textContent = 'Demo Playing...';
