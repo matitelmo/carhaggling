@@ -375,45 +375,52 @@
                 <span class="play-icon">►</span>
                 Play Negotiation Demo
             </button>
-            <div class="chat-window">
-                <div class="message dealer" id="msg1" style="opacity: 0;">
-                    <div class="avatar dealer-avatar">D</div>
-                    <div class="text">The listed price for the 2021 RAV4 is a firm $26,500.</div>
-                    <span class="timestamp">11:31 AM</span>
-                </div>
+            <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="chat-window">
+                    <div class="message dealer" id="msg1" style="opacity: 0;">
+                        <div class="avatar dealer-avatar">D</div>
+                        <div class="text">Hi there! The 2021 RAV4 is listed at $26,500. It's a great car, low miles, clean history. What are you thinking?</div>
+                        <span class="timestamp">11:31 AM</span>
+                    </div>
 
-                <div class="typing-indicator" id="ai-typing1" style="display: none;">
-                    <div class="avatar ai-avatar">AI</div>
-                    <div class="text"><span>.</span><span>.</span><span>.</span></div>
-                </div>
+                    <div class="typing-indicator" id="ai-typing1" style="display: none;">
+                        <div class="avatar ai-avatar">AI</div>
+                        <div class="text"><span></span><span></span><span></span></div>
+                    </div>
 
-                <div class="message ai" id="msg2" style="opacity: 0;">
-                    <div class="text">Thank you. Based on market data for this VIN, including a 42-day lot time and two recent auction sales of comparable models, our initial offer is $24,200.</div>
-                    <div class="avatar ai-avatar">AI</div>
-                    <span class="timestamp">11:32 AM</span>
-                </div>
+                    <div class="message ai" id="msg2" style="opacity: 0;">
+                        <div class="text">Thanks for the info. I've been doing my research on this VIN - it's been on your lot for 42 days and I'm seeing similar models going for around $24,200 at auction. I'm ready to move quickly if we can work something out around that price.
+                            <span class="data-popup" id="popup1">📊 Market Analysis</span>
+                        </div>
+                        <div class="avatar ai-avatar">AI</div>
+                        <span class="timestamp">11:32 AM</span>
+                    </div>
 
-                <div class="message dealer" id="msg3" style="opacity: 0;">
-                    <div class="avatar dealer-avatar">D</div>
-                    <div class="text">That's well below invoice. The best I can do is $25,800.</div>
-                    <span class="timestamp">11:33 AM</span>
-                </div>
+                    <div class="message dealer" id="msg3" style="opacity: 0;">
+                        <div class="avatar dealer-avatar">D</div>
+                        <div class="text">$24,200? That's way below what we have in it. I'd be losing money at that price. Best I can do is $25,800 - that's giving you a good deal while keeping us in business.</div>
+                        <span class="timestamp">11:33 AM</span>
+                    </div>
 
-                <div class="typing-indicator" id="ai-typing2" style="display: none;">
-                    <div class="avatar ai-avatar">AI</div>
-                    <div class="text"><span>.</span><span>.</span><span>.</span></div>
-                </div>
+                    <div class="typing-indicator" id="ai-typing2" style="display: none;">
+                        <div class="avatar ai-avatar">AI</div>
+                        <div class="text"><span></span><span></span><span></span></div>
+                    </div>
 
-                <div class="message ai" id="msg4" style="opacity: 0;">
-                    <div class="text">I understand. However, the vehicle's history report shows minor cosmetic damage to the rear bumper. Factoring that in, our final offer is $24,750, and we can wire a deposit today.</div>
-                    <div class="avatar ai-avatar">AI</div>
-                    <span class="timestamp">11:34 AM</span>
-                </div>
+                    <div class="message ai" id="msg4" style="opacity: 0;">
+                        <div class="text">I get it, but I just pulled the history report and there's some minor damage to the rear bumper that wasn't mentioned. That's going to cost me money to fix. How about we meet in the middle at $24,750? I can wire the deposit today and pick it up this week.
+                            <span class="data-popup" id="popup2">🔍 VIN History Report</span>
+                        </div>
+                        <div class="avatar ai-avatar">AI</div>
+                        <span class="timestamp">11:34 AM</span>
+                    </div>
 
-                <div class="message dealer" id="msg5" style="opacity: 0;">
-                    <div class="avatar dealer-avatar">D</div>
-                    <div class="text">Let me talk to my manager... Okay, you have a deal.</div>
-                    <span class="timestamp">11:35 AM</span>
+                    <div class="message dealer" id="msg5" style="opacity: 0;">
+                        <div class="avatar dealer-avatar">D</div>
+                        <div class="text">Let me run this by my manager... *2 minutes later* Alright, we can do $24,750. When can you come in to finalize everything?</div>
+                        <span class="timestamp">11:35 AM</span>
+                    </div>
                 </div>
             </div>
             <div class="summary-box" id="summary" style="opacity: 0;">
@@ -708,14 +715,15 @@
     <section id="comparison-section">
         <div class="comparison-container">
             <h2>The CarHaggling Advantage</h2>
-            <table class="comparison-table">
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
                 <thead>
                     <tr>
                         <th>Feature</th>
                         <th>CarHaggling</th>
-                        <th>Carvana/CarMax</th>
+                        <th>Carvana</th>
                         <th>TrueCar</th>
-                        <th>Doing It Yourself</th>
+                        <th>DIY Search</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -756,6 +764,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
             <p class="comparison-summary">Only CarHaggling gives you access to the entire market <strong>and</strong> an expert negotiator on your side.</p>
         </div>
     </section>
